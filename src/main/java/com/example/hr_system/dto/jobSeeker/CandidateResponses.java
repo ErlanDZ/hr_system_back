@@ -16,7 +16,7 @@ public class CandidateResponses {
     com.example.hr_system.dto.image.Response image;
     String firstname;
     String lastname;
-    com.example.hr_system.dto.experience.Response experience;
+    Response experience;
     String country;
     String city;
 
