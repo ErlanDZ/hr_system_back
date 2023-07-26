@@ -24,7 +24,7 @@ public class JobSeekerResponses {
 
 
 
-    private Response image;
+    private Long imageId;
     private String firstname;
     private String lastname;
     @Column(name = "about")

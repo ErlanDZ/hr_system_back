@@ -29,7 +29,7 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         response.setId(jobSeeker.getId());
 
         if (jobSeeker.getImage() != null) {
-            response.setImage(imageMapper.toDto(jobSeeker.getImage()));
+            response.setImageId(jobSeeker.getImage().getId());
         }
         response.setFirstname(jobSeeker.getFirstname());
         response.setLastname(jobSeeker.getLastname());

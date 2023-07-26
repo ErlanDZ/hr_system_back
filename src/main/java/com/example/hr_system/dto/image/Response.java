@@ -9,8 +9,8 @@ public class Response {
     Long id;
     String name;
     String type;
-    Response imageData;
-
+    byte[] imageData;
     Long jobSeekerId;
+
 
 }

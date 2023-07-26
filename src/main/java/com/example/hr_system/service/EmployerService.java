@@ -41,6 +41,8 @@ public interface EmployerService {
     Employer convertToEntity(Long id, EmployerRequests employerRequests);
 
 
+    //ImageData responseToImage(Response image);
+
     ImageData responseToImage(Response image);
 
     Response uploadImage(MultipartFile file, Long id) throws IOException;

@@ -12,6 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class EmployerResponse {
     private Long id;
-    private Response image;
+    private Long imageId;
     private String companyName;
 }

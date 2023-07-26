@@ -8,15 +8,17 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 public class CandidateResponses {
 
     Long isFavorite;
-    com.example.hr_system.dto.image.Response image;
+    Long imageId;
     String firstname;
     String lastname;
-    Response experience;
+    List<String> experience;
     String country;
     String city;
 

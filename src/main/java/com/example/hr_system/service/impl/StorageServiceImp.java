@@ -32,6 +32,7 @@ public class StorageServiceImp implements StorageService {
                 .build());
 
         repository.save(imageData);
+        System.out.println(imageData.getId()+"lddl\n\n\n");
         return imageData;
     }
 
@@ -43,6 +44,8 @@ public class StorageServiceImp implements StorageService {
                 .type(file.getContentType())
                 .imageData(file.getBytes())
                 .build());
+        System.out.println(imageData.getId()+"lddl2nd\n\n\n");
+
 
         return repository.save(imageData);
     }

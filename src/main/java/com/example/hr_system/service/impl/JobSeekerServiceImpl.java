@@ -95,7 +95,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         jobSeekerRepository.save(jobSeeker1);
 
         return new JobSeekerResponses(jobSeeker1.getId(),
-                employerService.imageToResponse(jobSeeker1.getImage()),
+                jobSeeker1.getImage().getId(),
                 jobSeeker1.getFirstname(),
                 jobSeeker1.getLastname(),
                 jobSeeker1.getAbout(),
@@ -116,8 +116,8 @@ public class JobSeekerServiceImpl implements JobSeekerService {
 
 
         JobSeeker jobSeeker1 = jobSeekerRepository.findById(id).orElseThrow(() -> new RuntimeException("user can be null"));
-
-        jobSeeker1.setImage(employerService.responseToImage(jobSeeker.getImage()));
+        System.out.println(jobSeeker.toString());
+        jobSeeker1.setImage(storageRepository.findById(jobSeeker.getImageId()).orElseThrow());
         jobSeeker1.setFirstname(jobSeeker.getFirstname());
         jobSeeker1.setLastname(jobSeeker.getLastname());
         jobSeeker1.setBirthday(jobSeeker.getBirthday());
@@ -140,8 +140,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         jobSeekerRepository.save(jobSeeker1);
 
         return new JobSeekerResponses(jobSeeker1.getId(),
-                employerService.imageToResponse(
-                        jobSeeker1.getImage()),
+                jobSeeker1.getImage().getId(),
                 jobSeeker1.getFirstname(),
                 jobSeeker1.getLastname(),
                 jobSeeker1.getAbout(),
@@ -182,9 +181,12 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         JobSeeker jobSeeker = getById(id);
         if (jobSeeker.getImage() != null) {
             ImageData image = jobSeeker.getImage();
+            System.out.println(jobSeeker.getImage().getId()+"1q1\n\n\n");
             jobSeeker.setImage(null);
             ImageData save = storageService.uploadImage(file, image);
             jobSeeker.setImage(save);
+            System.out.println(jobSeeker.getImage().getId()+"2q2\n\n\n");
+
             jobSeekerRepository.save(jobSeeker);
         } else {
             ImageData image = storageService.uploadImage(file);

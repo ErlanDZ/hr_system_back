@@ -1,6 +1,7 @@
 package com.example.hr_system.repository;
 
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
+import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
 import org.springframework.data.jpa.repository.JpaRepository;

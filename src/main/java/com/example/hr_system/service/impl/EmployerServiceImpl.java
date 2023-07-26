@@ -12,6 +12,7 @@ import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.repository.EmployerRepository;
 import com.example.hr_system.repository.JobSeekerRepository;
+import com.example.hr_system.repository.StorageRepository;
 import com.example.hr_system.service.EmployerService;
 import com.example.hr_system.mapper.EmployerMapper;
 
@@ -23,6 +24,7 @@ import org.webjars.NotFoundException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -34,6 +36,7 @@ public class EmployerServiceImpl implements EmployerService {
     private final JobSeekerRepository jobSeekerRepository;
     private final EmployerMapper employerMapper;
     private final StorageService storageService;
+    private final StorageRepository storageRepository;
 
 
     @Override
@@ -79,11 +82,11 @@ public class EmployerServiceImpl implements EmployerService {
         }
         CandidateResponses candidateResponses = new CandidateResponses();
         candidateResponses.setIsFavorite(jobSeeker.getIsFavorite());
-        candidateResponses.setImage(imageToResponse(jobSeeker.getImage()));
+        candidateResponses.setImageId(jobSeeker.getImage().getId());
         candidateResponses.setFirstname(jobSeeker.getFirstname());
         candidateResponses.setLastname(jobSeeker.getLastname());
-//        candidateResponses.setPosition(jobSeeker.getPosition());
-//        candidateResponses.setExperience(jobSeeker.getYear());
+        candidateResponses.setExperience(Collections.singletonList(String.valueOf(jobSeeker.getExperience())));
+
         candidateResponses.setCountry(jobSeeker.getCountry());
         candidateResponses.setCity(jobSeeker.getCity());
 
@@ -96,8 +99,8 @@ public class EmployerServiceImpl implements EmployerService {
         response.setId(image.getId());
         response.setName(image.getName());
         response.setType(image.getType());
-        response.setImageData(imageToResponse(image));
-        response.setJobSeekerId(image.getJobSeeker().getId());
+        response.setImageData(image.getImageData());
+       // response.setJobSeekerId(image.getJobSeeker().getId());
 
         return response;
     }
@@ -181,7 +184,13 @@ public class EmployerServiceImpl implements EmployerService {
     @Override
     public ImageData responseToImage(Response image) {
         ImageData imageData = new ImageData();
-        imageData.getJobSeeker().setId(image.getJobSeekerId());
+       // image.getId();
+        System.out.println("dd");
+        storageRepository.findById(image.getId());
+        System.out.println("dds");
+//        imageData.setJobSeeker().orElseThrow(()->
+//                new NotFoundException("job seeker not found!")));
+////        imageData.getJobSeeker().setId(image.getJobSeekerId());
         imageData.setImageData(imageData.getImageData());
         imageData.setName(image.getName());
         imageData.setId(image.getId());

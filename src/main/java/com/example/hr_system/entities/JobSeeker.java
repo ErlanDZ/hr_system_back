@@ -66,7 +66,7 @@ public class JobSeeker {
 
     private Long isFavorite;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.PERSIST,CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private Experience experience;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobSeeker")
@@ -75,7 +75,4 @@ public class JobSeeker {
 //
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobSeeker")
 //    private List<Resume> resumeList;
-
-
-
 }

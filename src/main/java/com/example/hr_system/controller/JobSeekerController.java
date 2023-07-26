@@ -7,6 +7,7 @@ import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
 import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
+import com.example.hr_system.repository.StorageRepository;
 import com.example.hr_system.service.JobSeekerService;
 import com.example.hr_system.service.StorageService;
 import com.example.hr_system.service.VacancyService;
@@ -18,12 +19,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.webjars.NotFoundException;
 
 import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("job_seeker/")
 //@PreAuthorize("hasAnyAuthority('JOB_SEEKER')")
 @AllArgsConstructor
 @CrossOrigin(origins = "*")
@@ -32,8 +34,9 @@ public class JobSeekerController {
     private final JobSeekerServiceImpl jobSeekerServiceImpl;
     private final StorageService service;
     private final VacancyService vacancyService;
+    private final StorageRepository storageRepository;
 
-    @PostMapping("/upload/{id}")
+    @PostMapping("image/upload/{id}")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile file,@PathVariable Long id) throws IOException {
 
 
@@ -41,7 +44,7 @@ public class JobSeekerController {
                 .body(jobSeekerService.uploadImage(file,id));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("image/{id}")
     public ResponseEntity<?> downloadImage(@PathVariable Long id){
         System.out.println("asghjd");
         return service.downloadImage(id);
@@ -55,15 +58,13 @@ public class JobSeekerController {
 
 
     @PostMapping("/update/jobseeker/{id}")
-    public JobSeekerResponses update(@PathVariable("id") Long id,
-                                     @RequestParam("image") MultipartFile file, @RequestBody JobSeekerRequests jobSeeker) throws IOException {
-        if(file!=null){
-            ImageData uploadImage = service.uploadImage(file);
-            return jobSeekerServiceImpl.updateWithImage(id,jobSeeker, uploadImage);
+    public JobSeekerResponses update(@PathVariable("id") Long id, @RequestBody JobSeekerRequests jobSeeker) throws IOException {
+        if (jobSeeker.getImageId() == null) {
+            new NotFoundException("we could not found image");
 
         }
+        return jobSeekerService.update(id, jobSeeker);
 
-        return jobSeekerService.update(id,jobSeeker);
     }
 
     @GetMapping("/vacancies")

@@ -1,8 +1,10 @@
 package com.example.hr_system.mapper;
 
 import com.example.hr_system.dto.JobSeekerVacanciesResponses;
+import com.example.hr_system.dto.image.Response;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponse;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
+import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
 
@@ -17,4 +19,5 @@ public interface JobSeekerMapper {
 
     List<JobSeekerVacanciesResponses> convertToVacancyJobSeekerResponses(List<Vacancy> vacancies);
 
+  //  ImageData responseToImage(Response image);
 }

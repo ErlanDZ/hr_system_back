@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Data
 public class JobSeekerRequests {
 
-    private Response image;
+    private Long imageId;
     private String firstname;
     private String lastname;
     private LocalDate birthday;
@@ -28,7 +28,6 @@ public class JobSeekerRequests {
     private String address;
     private String phoneNumber;
     private String email;
-    @Column(name = "about")
     private String about;
     private Education education;
     private String institution;
