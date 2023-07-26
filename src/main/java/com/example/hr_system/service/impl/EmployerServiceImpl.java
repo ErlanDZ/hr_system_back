@@ -24,7 +24,6 @@ import org.webjars.NotFoundException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -85,10 +84,10 @@ public class EmployerServiceImpl implements EmployerService {
         candidateResponses.setImageId(jobSeeker.getImage().getId());
         candidateResponses.setFirstname(jobSeeker.getFirstname());
         candidateResponses.setLastname(jobSeeker.getLastname());
-        candidateResponses.setExperience(Collections.singletonList(String.valueOf(jobSeeker.getExperience())));
-
-        candidateResponses.setCountry(jobSeeker.getCountry());
+        candidateResponses.setPosition(jobSeeker.getPosition().getName());
+        candidateResponses.setExperience(jobSeeker.getExperience().getName());
         candidateResponses.setCity(jobSeeker.getCity());
+        candidateResponses.setCountry(jobSeeker.getCountry());
 
         return candidateResponses;
     }
@@ -152,7 +151,7 @@ public class EmployerServiceImpl implements EmployerService {
 
     @Override
     public EmployerResponses getById(Long id) {
-        return employerMapper.toDto(employerRepository.findById(id).orElseThrow(() -> new RuntimeException("we don't have employer with id :" + id)));
+        return employerMapper.toDto(employerRepository.findById(id).orElseThrow(() -> new NotFoundException("we don't have employer with id :" + id)));
     }
     @Override
     public SimpleResponse deleteById(Long id) {
@@ -171,6 +170,9 @@ public class EmployerServiceImpl implements EmployerService {
             return null;
         }
         Employer employer = employerRepository.findById(id).get();
+        if(employerRequests.getImageId()!=null){
+            employer.setImage(storageRepository.findById(employerRequests.getImageId()).get());
+        }
         employer.setAboutCompany(employerRequests.getAboutCompany());
         employer.setCountry(employerRequests.getCountry());
         employer.setCity(employerRequests.getCity());
@@ -212,6 +214,12 @@ public class EmployerServiceImpl implements EmployerService {
             employer.setImage(image);
             employerRepository.save(employer);
         }
+
+        return null;
+    }
+
+    @Override
+    public List<CandidateResponses> filter(String position, String education, String country, String city, String experience) {
 
         return null;
     }

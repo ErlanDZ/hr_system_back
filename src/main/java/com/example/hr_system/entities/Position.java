@@ -21,7 +21,10 @@ public class Position {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "position")
+    @OneToMany(mappedBy = "position")
     private List<Vacancy> vacancies;
+
+    @OneToMany(mappedBy = "position")
+    private List<JobSeeker> jobSeekers;
 
 }

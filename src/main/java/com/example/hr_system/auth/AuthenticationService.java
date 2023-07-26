@@ -113,7 +113,6 @@ public class AuthenticationService {
         jobSeekerRequest.setFirstname(user.getFirstname());
         jobSeekerRequest.setLastname(user.getLastname());
         jobSeekerRequest.setPassword(user.getPassword());
-        jobSeekerRequest.setRole(Role.JOB_SEEKER);
         jobSeekerService.save(jobSeekerRequest);
 
 //    user.setJobSeeker(jobSeeker);

@@ -1,8 +1,7 @@
 package com.example.hr_system.dto.position;
 
 import com.example.hr_system.dto.category.CategoryRequest;
-import com.example.hr_system.dto.experience.Response;
-import com.example.hr_system.entities.Experience;
+import com.example.hr_system.dto.experience.ExperienceResponse;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +18,6 @@ public class PositionRequest {
 
     private CategoryRequest categoryRequest;
 
-    private Response experience;
+    private ExperienceResponse experience;
 
 }

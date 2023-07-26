@@ -1,5 +1,6 @@
 package com.example.hr_system.mapper.impl;
 
+import com.example.hr_system.dto.position.CandidateResponse;
 import com.example.hr_system.dto.position.PositionRequest;
 import com.example.hr_system.dto.position.PositionResponse;
 import com.example.hr_system.entities.Position;
@@ -15,6 +16,23 @@ import java.util.List;
 @AllArgsConstructor
 public class PositionMapperImpl implements PositionMapper {
     private CategoryMapper categoryMapper;
+
+    @Override
+    public List<CandidateResponse> listCandidatePositionToDto(List<Position> positions){
+        List<CandidateResponse> candidateResponses = new ArrayList<>();
+        for (Position position: positions){
+            candidateResponses.add(candidatePositionToDto(position));
+        }
+        return candidateResponses;
+    }
+
+
+    @Override
+    public CandidateResponse candidatePositionToDto(Position position) {
+        CandidateResponse candidateResponse = new CandidateResponse();
+        candidateResponse.setName(position.getName());
+        return candidateResponse;
+    }
 
     @Override
     public PositionResponse toDto(Position position) {

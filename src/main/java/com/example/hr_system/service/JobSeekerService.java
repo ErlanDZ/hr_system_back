@@ -5,7 +5,10 @@ import com.example.hr_system.dto.jobSeeker.JobSeekerRequest;
 import com.example.hr_system.dto.jobSeeker.JobSeekerRequests;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponse;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
+import com.example.hr_system.entities.Experience;
 import com.example.hr_system.entities.JobSeeker;
+import com.example.hr_system.entities.Position;
+import com.example.hr_system.enums.Education;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,4 +29,16 @@ public interface JobSeekerService {
     void responseForVacancy(Long vacancyId);
 
     Response uploadImage(MultipartFile file,Long id) throws IOException;
+
+    List<JobSeeker> filterJobSeekers(
+            Position position,
+            Education education,
+            String country,
+            String city,
+            Experience experience
+    );
+    List<JobSeeker> searchByFirstAndLastName(
+            String firstname,
+            String lastname
+    );
 }

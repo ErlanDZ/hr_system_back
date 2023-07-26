@@ -46,4 +46,6 @@ public interface EmployerService {
     ImageData responseToImage(Response image);
 
     Response uploadImage(MultipartFile file, Long id) throws IOException;
+
+    List<CandidateResponses> filter(String position, String education, String country, String city, String experience);
 }

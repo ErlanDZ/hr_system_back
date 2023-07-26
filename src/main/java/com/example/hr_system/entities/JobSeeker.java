@@ -39,7 +39,8 @@ public class JobSeeker {
     private String institution;
     private Month month;
     private LocalDate year;
-    private String position;
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.DETACH})
+    private Position position;
     private String working_place;
     private String firstname;
     private String lastname;
@@ -66,7 +67,7 @@ public class JobSeeker {
 
     private Long isFavorite;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.DETACH})
     private Experience experience;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobSeeker")

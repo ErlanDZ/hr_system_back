@@ -1,11 +1,12 @@
 package com.example.hr_system.dto.employer;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class EmployerRequests {
+    private Long imageId;
     private String aboutCompany;
     private String country;
     private String city;

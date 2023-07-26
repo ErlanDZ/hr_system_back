@@ -5,11 +5,12 @@ import com.example.hr_system.dto.jobSeeker.JobSeekerRequest;
 import com.example.hr_system.dto.jobSeeker.JobSeekerRequests;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponse;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
-import com.example.hr_system.entities.ImageData;
-import com.example.hr_system.entities.JobSeeker;
-import com.example.hr_system.entities.Vacancy;
+import com.example.hr_system.entities.*;
+import com.example.hr_system.enums.Education;
+import com.example.hr_system.enums.Role;
 import com.example.hr_system.mapper.JobSeekerMapper;
 import com.example.hr_system.repository.JobSeekerRepository;
+import com.example.hr_system.repository.PositionRepository;
 import com.example.hr_system.repository.StorageRepository;
 import com.example.hr_system.repository.VacancyRepository;
 import com.example.hr_system.service.EmployerService;
@@ -22,7 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,6 +35,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
     private final JobSeekerRepository jobSeekerRepository;
     private final VacancyRepository vacancyRepository;
     private final StorageService storageService;
+    private final PositionRepository positionRepository;
 
 
     @Override
@@ -56,59 +57,59 @@ public class JobSeekerServiceImpl implements JobSeekerService {
 
         jobSeeker1.setEmail(jobSeeker.getEmail());
         jobSeeker1.setPassword(jobSeeker.getPassword());
-        jobSeeker1.setRole(jobSeeker.getRole());
+        jobSeeker1.setRole(Role.JOB_SEEKER);
         jobSeekerRepository.save(jobSeeker1);
 
         return new JobSeekerResponse(jobSeeker1.getId(), jobSeeker1.getFirstname(), jobSeeker1.getLastname(), jobSeeker1.getRole());
     }
 
 
-    public JobSeekerResponses updateWithImage(Long id, JobSeekerRequests jobSeeker, ImageData imageData) {
-
-
-        JobSeeker jobSeeker1 = jobSeekerRepository.findById(id).orElseThrow(() -> new RuntimeException("user can be null"));
-        imageData.setJobSeeker(jobSeeker1);
-        jobSeeker1.setImage(imageData);
-        storageRepository.save(imageData);
-
-
-        jobSeeker1.setImage(imageData);
-        jobSeeker1.setFirstname(jobSeeker.getFirstname());
-        jobSeeker1.setLastname(jobSeeker.getLastname());
-        jobSeeker1.setBirthday(jobSeeker.getBirthday());
-        jobSeeker1.setCountry(jobSeeker.getCountry());
-        jobSeeker1.setCity(jobSeeker.getCity());
-        jobSeeker1.setAddress(jobSeeker.getAddress());
-        jobSeeker1.setPhoneNumber(jobSeeker.getPhoneNumber());
-        jobSeeker1.setAbout(jobSeeker.getAbout());
-        jobSeeker1.setEducation(jobSeeker.getEducation());
-        jobSeeker1.setInstitution(jobSeeker.getInstitution());
-        jobSeeker1.setMonth(jobSeeker.getMonth());
-        jobSeeker1.setYear(jobSeeker.getYear());
-        jobSeeker1.setUntilNow(jobSeeker.isUntilNow());
-        jobSeeker1.setPosition(jobSeeker.getPosition());
-        jobSeeker1.setWorking_place(jobSeeker.getWorking_place());
-        jobSeeker1.setSkills(jobSeeker.getSkills());
-        jobSeeker1.setResume(jobSeeker.getResume());
-        jobSeeker1.setRole(jobSeeker.getRole());
-
-        jobSeekerRepository.save(jobSeeker1);
-
-        return new JobSeekerResponses(jobSeeker1.getId(),
-                jobSeeker1.getImage().getId(),
-                jobSeeker1.getFirstname(),
-                jobSeeker1.getLastname(),
-                jobSeeker1.getAbout(),
-                jobSeeker1.getEducation(),
-                jobSeeker1.getInstitution(),
-                jobSeeker1.getMonth(),
-                jobSeeker1.getYear(),
-                jobSeeker1.getPosition(),
-                jobSeeker1.getWorking_place(),
-                jobSeeker1.getResume(), jobSeeker1.getBirthday(), jobSeeker1.getCountry(),
-                jobSeeker1.getCity(),
-                jobSeeker1.getAddress(), jobSeeker1.getEmail(), jobSeeker1.getPhoneNumber(), jobSeeker1.getRole());
-    }
+//    public JobSeekerResponses updateWithImage(Long id, JobSeekerRequests jobSeeker, ImageData imageData) {
+//
+//
+//        JobSeeker jobSeeker1 = jobSeekerRepository.findById(id).orElseThrow(() -> new RuntimeException("user can be null"));
+//        imageData.setJobSeeker(jobSeeker1);
+//        jobSeeker1.setImage(imageData);
+//        storageRepository.save(imageData);
+//
+//
+//        jobSeeker1.setImage(imageData);
+//        jobSeeker1.setFirstname(jobSeeker.getFirstname());
+//        jobSeeker1.setLastname(jobSeeker.getLastname());
+//        jobSeeker1.setBirthday(jobSeeker.getBirthday());
+//        jobSeeker1.setCountry(jobSeeker.getCountry());
+//        jobSeeker1.setCity(jobSeeker.getCity());
+//        jobSeeker1.setAddress(jobSeeker.getAddress());
+//        jobSeeker1.setPhoneNumber(jobSeeker.getPhoneNumber());
+//        jobSeeker1.setAbout(jobSeeker.getAbout());
+//        jobSeeker1.setEducation(jobSeeker.getEducation());
+//        jobSeeker1.setInstitution(jobSeeker.getInstitution());
+//        jobSeeker1.setMonth(jobSeeker.getMonth());
+//        jobSeeker1.setYear(jobSeeker.getYear());
+//        jobSeeker1.setUntilNow(jobSeeker.isUntilNow());
+//        jobSeeker1.setPosition(jobSeeker.getPosition());
+//        jobSeeker1.setWorking_place(jobSeeker.getWorking_place());
+//        jobSeeker1.setSkills(jobSeeker.getSkills());
+//        jobSeeker1.setResume(jobSeeker.getResume());
+//        jobSeeker1.setRole(jobSeeker.getRole());
+//
+//        jobSeekerRepository.save(jobSeeker1);
+//
+//        return new JobSeekerResponses(jobSeeker1.getId(),
+//                jobSeeker1.getImage().getId(),
+//                jobSeeker1.getFirstname(),
+//                jobSeeker1.getLastname(),
+//                jobSeeker1.getAbout(),
+//                jobSeeker1.getEducation(),
+//                jobSeeker1.getInstitution(),
+//                jobSeeker1.getMonth(),
+//                jobSeeker1.getYear(),
+//                jobSeeker1.getPosition(),
+//                jobSeeker1.getWorking_place(),
+//                jobSeeker1.getResume(), jobSeeker1.getBirthday(), jobSeeker1.getCountry(),
+//                jobSeeker1.getCity(),
+//                jobSeeker1.getAddress(), jobSeeker1.getEmail(), jobSeeker1.getPhoneNumber(), jobSeeker1.getRole());
+//    }
 
 
     @Override
@@ -131,11 +132,11 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         jobSeeker1.setMonth(jobSeeker.getMonth());
         jobSeeker1.setYear(jobSeeker.getYear());
         jobSeeker1.setUntilNow(jobSeeker.isUntilNow());
-        jobSeeker1.setPosition(jobSeeker.getPosition());
+        jobSeeker1.setPosition(positionRepository.findByName(jobSeeker.getPosition()));
         jobSeeker1.setWorking_place(jobSeeker.getWorking_place());
         jobSeeker1.setSkills(jobSeeker.getSkills());
         jobSeeker1.setResume(jobSeeker.getResume());
-        jobSeeker1.setRole(jobSeeker.getRole());
+        jobSeeker1.setRole(Role.JOB_SEEKER);
 
         jobSeekerRepository.save(jobSeeker1);
 
@@ -148,7 +149,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
                 jobSeeker1.getInstitution(),
                 jobSeeker1.getMonth(),
                 jobSeeker1.getYear(),
-                jobSeeker1.getPosition(),
+                jobSeeker1.getPosition().getName(),
                 jobSeeker1.getWorking_place(),
                 jobSeeker1.getResume(), jobSeeker1.getBirthday(), jobSeeker1.getCountry(),
                 jobSeeker1.getCity(),
@@ -195,5 +196,37 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         }
 
         return null;
+    }
+    @Override
+    public List<JobSeeker> filterJobSeekers(
+            Position position,
+            Education education,
+            String country,
+            String city,
+            Experience experience
+    ) {
+        if(position.getName()==""&&education==null&&country==""&&
+        city==""&&experience.getName()==""){
+            return jobSeekerRepository.findAll();
+        }
+        // Call the custom query method defined in the repository
+        return jobSeekerRepository.filterJobSeekers(
+                position != null ? position : null,
+                education,
+                country != null && !country.isEmpty() ? country : null,
+                city != null && !city.isEmpty() ? city : null,
+                experience
+        );
+    }
+
+    @Override
+    public List<JobSeeker> searchByFirstAndLastName(String firstname, String lastname) {
+
+
+        return jobSeekerRepository.searchJobSeekers(
+                firstname != null && !firstname.isEmpty() ? firstname : null,
+                lastname != null && !lastname.isEmpty() ? lastname : null
+
+                );
     }
 }

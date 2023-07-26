@@ -1,7 +1,7 @@
 package com.example.hr_system.mapper.impl;
 
 import com.example.hr_system.dto.JobSeekerVacanciesResponses;
-import com.example.hr_system.dto.jobSeeker.JobSeekerResponse;
+import com.example.hr_system.dto.jobSeeker.CandidateResponses;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
@@ -10,6 +10,7 @@ import com.example.hr_system.mapper.JobSeekerMapper;
 import com.example.hr_system.mapper.VacancyMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.webjars.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         response.setInstitution(jobSeeker.getInstitution());
         response.setMonth(jobSeeker.getMonth());
         response.setYear(jobSeeker.getYear());
-        response.setPosition(jobSeeker.getPosition());
+        response.setPosition(jobSeeker.getPosition().getName());
         response.setWorking_place(jobSeeker.getWorking_place());
         response.setResume(jobSeeker.getResume());
         response.setBirthday(jobSeeker.getBirthday());
@@ -79,5 +80,27 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
             jobSeekerVacanciesResponses.add(convertToVacancyJobSeekerResponse(vacancy));
         }
         return jobSeekerVacanciesResponses;
+    }
+
+    @Override
+    public List<CandidateResponses> listConvertToCandidateResponse(List<JobSeeker> jobSeekers) {
+        List<CandidateResponses> candidateResponses = new ArrayList<>();
+        for(JobSeeker jobSeeker: jobSeekers){
+            candidateResponses.add(convertToCandidateResponse(jobSeeker));
+        }
+        return candidateResponses;
+    }
+    @Override
+    public CandidateResponses convertToCandidateResponse(JobSeeker jobSeeker) {
+        CandidateResponses candidateResponses = new CandidateResponses();
+        candidateResponses.setIsFavorite(jobSeeker.getIsFavorite());
+        candidateResponses.setImageId(jobSeeker.getImage().getId());
+        candidateResponses.setFirstname(jobSeeker.getFirstname());
+        candidateResponses.setLastname(jobSeeker.getLastname());
+        candidateResponses.setPosition(jobSeeker.getPosition().getName());
+        candidateResponses.setExperience(jobSeeker.getExperience().getName());
+        candidateResponses.setCity(jobSeeker.getCity());
+        candidateResponses.setCountry(jobSeeker.getCountry());
+        return candidateResponses;
     }
 }

@@ -27,7 +27,6 @@ public class JobSeekerResponses {
     private Long imageId;
     private String firstname;
     private String lastname;
-    @Column(name = "about")
     private String about;
     private Education education;
     private String institution;

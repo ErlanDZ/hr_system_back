@@ -35,15 +35,6 @@ public class AdminInAController {
 //        return employerService.save(employerRequest);
 //    }
 
-    @GetMapping("employer/{id}")
-    public EmployerResponses getEmployerById(@PathVariable Long id){
-        return employerService.getById(id);
-    }
-
-    @GetMapping("employers")
-    public List<EmployerResponses> getAllEmployers(){
-        return employerService.getAll();
-    }
 
     @DeleteMapping("delete/{id}")
     public SimpleResponse deleteEmployerById(@PathVariable Long id){

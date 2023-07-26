@@ -49,9 +49,6 @@ public class AuthenticationController {
                 1L,authorizationHeader, TokenType.BEARER,true,true, new User());
         System.out.println(jwtUtils.extractUsername(authorizationHeader));
 
-//        Authentication authentication = new Authentication(token);
-//        String token = authorizationHeader.replace("Bearer ", "");
-//        String email = jwtUtils.extractEmail(token);
         return null;
     }
 

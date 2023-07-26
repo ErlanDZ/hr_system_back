@@ -12,6 +12,5 @@ public class JobSeekerRequest {
     private String lastname;
     private String email;
     private String password;
-    private Role role;
 
 }

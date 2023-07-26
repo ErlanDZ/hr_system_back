@@ -27,16 +27,14 @@ public class JobSeekerRequests {
     private String city;
     private String address;
     private String phoneNumber;
-    private String email;
     private String about;
     private Education education;
     private String institution;
     private Month month;
     private LocalDate year;
     private String position;
+    private String experience;
     private String working_place;
-    private String opyt;
-
 
     private LocalDate graduationDate;
 
@@ -45,7 +43,6 @@ public class JobSeekerRequests {
 
 
     private String resume;
-    private Role role;
 
 
 }
