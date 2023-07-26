@@ -19,6 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -137,7 +138,7 @@ public class AuthenticationService {
             );
         } catch (AuthenticationException e) {
             // Обработка ошибки аутентификации, например, неверный email или пароль
-            throw new RuntimeException("Authentication failed: " + e.getMessage());
+            throw new BadCredentialsException("Authentication failed: " + e.getMessage()+request.getEmail());
         }
         System.out.println("2here\n\n\n");
         User user = repository.findByEmail(request.getEmail()).orElseThrow(() -> new NotFoundException("User not found"));
