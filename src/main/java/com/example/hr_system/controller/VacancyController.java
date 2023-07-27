@@ -70,6 +70,17 @@ public class VacancyController {
 
         return vacancyService.filter(category, position, country, city, experience);
     }
+    @PutMapping("/newStatusForVacancy/{vacancyId}")
+    public void newStatus(@PathVariable Long vacancyId,@RequestParam(required = false) String status){
+        vacancyService.setStatusOfVacancy(vacancyId,status);
+    }
+
+    @PutMapping("/setStatusForJobSeeker/{vacancyId}/{jobSeekerId}")
+    public void setStatusForJobSeeker(@PathVariable Long vacancyId,@PathVariable Long jobSeekerId,@RequestParam(required = false) String status){
+        vacancyService.setStatusOfJobSeeker(vacancyId,jobSeekerId,status);
+    }
+
+
 }
 
 

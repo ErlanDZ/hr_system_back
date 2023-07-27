@@ -60,5 +60,19 @@ public class StorageServiceImp implements StorageService {
             return ResponseEntity.notFound().build();
         }
     }
+    @Override
+    public ResponseEntity<?> downloadFile(Long id) {
+        Optional<ImageData> dbImageData = repository.findById(id);
+        if (dbImageData.isPresent()) {
+            byte[] imageData = dbImageData.get().getImageData();
+            String contentType = dbImageData.get().getType();
+
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType(contentType))
+                    .body(imageData);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

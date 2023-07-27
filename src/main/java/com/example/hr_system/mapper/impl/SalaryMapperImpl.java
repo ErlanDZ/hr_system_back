@@ -1,6 +1,7 @@
 package com.example.hr_system.mapper.impl;
 
 
+import com.example.hr_system.dto.salary.SalaryRequest;
 import com.example.hr_system.dto.salary.SalaryResponse;
 import com.example.hr_system.entities.Salary;
 import com.example.hr_system.mapper.SalaryMapper;
@@ -34,5 +35,14 @@ public class SalaryMapperImpl implements SalaryMapper {
             salaryResponses.add(toDto(salary));
         }
         return salaryResponses;
+    }
+
+    @Override
+    public Salary toEntity(SalaryRequest salaryRequest) {
+        Salary salary = new Salary();
+        salary.setSalary(salaryRequest.getSalary());
+        salary.setValute(salaryRequest.getValute());
+        salary.setTypeOfEmployment(salaryRequest.getTypeOfEmployment());
+        return salary;
     }
 }

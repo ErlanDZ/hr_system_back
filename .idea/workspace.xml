@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="" />
+    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/JobSeekerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/JobSeekerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerRequests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerResponses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerResponses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/ImageData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/ImageData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/JobSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/JobSeeker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/JobSeekerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/JobSeekerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/StorageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/StorageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/JobSeekerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/JobSeekerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/StorageServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/StorageServiceImp.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1690281028560</updated>
       <workItem from="1690281031336" duration="2592000" />
-      <workItem from="1690350981979" duration="843000" />
+      <workItem from="1690350981979" duration="3259000" />
     </task>
     <servers />
   </component>

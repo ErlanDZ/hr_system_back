@@ -42,7 +42,7 @@ public class JobSeekerRequests {
     private String skills;
 
 
-    private String resume;
+    private Long resumeId;
 
 
 }

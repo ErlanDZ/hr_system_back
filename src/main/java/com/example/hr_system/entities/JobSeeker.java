@@ -4,10 +4,12 @@ package com.example.hr_system.entities;
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.enums.Month;
 import com.example.hr_system.enums.Role;
+import com.example.hr_system.enums.StatusOfJobSeeker;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.engine.internal.Cascade;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,6 +31,9 @@ public class JobSeeker {
     private String country;
     private String city;
     private String address;
+    @Enumerated(EnumType.STRING)
+    private StatusOfJobSeeker statusOfJobSeeker;
+
     private String phoneNumber;
 
     @Column(name = "about")
@@ -54,8 +59,8 @@ public class JobSeeker {
     private boolean untilNow;
     private String skills;
 
-
-    private String resume;
+    @OneToOne(cascade = CascadeType.ALL)
+    private FileData resume;
     @Enumerated(EnumType.STRING)
     @Column(name="rol")
     private Role role;

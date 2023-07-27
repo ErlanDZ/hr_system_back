@@ -1,12 +1,11 @@
 package com.example.hr_system.controller;
 
-import com.example.hr_system.dto.jobSeeker.JobSeekerRequest;
-import com.example.hr_system.dto.jobSeeker.JobSeekerRequests;
-import com.example.hr_system.dto.jobSeeker.JobSeekerResponse;
-import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
+import com.example.hr_system.dto.jobSeeker.*;
 import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
+import com.example.hr_system.mapper.FileMapper;
+import com.example.hr_system.repository.FileRepository;
 import com.example.hr_system.repository.StorageRepository;
 import com.example.hr_system.service.JobSeekerService;
 import com.example.hr_system.service.StorageService;
@@ -35,6 +34,22 @@ public class JobSeekerController {
     private final StorageService service;
     private final VacancyService vacancyService;
     private final StorageRepository storageRepository;
+    private final FileMapper fileMapper;
+    private final FileRepository fileRepository;
+
+
+    @PostMapping("resume/upload/{id}")
+    public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file,@PathVariable Long id) throws IOException {
+
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(jobSeekerService.uploadResume(file,id));
+    }
+    @GetMapping("/resume/{id}")
+    public ResponseEntity<?> downloadFile(@PathVariable Long id){
+        System.out.println("asghjd");
+        return service.downloadFile(id);
+    }
 
     @PostMapping("image/upload/{id}")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile file,@PathVariable Long id) throws IOException {
@@ -70,6 +85,16 @@ public class JobSeekerController {
     @GetMapping("/vacancies")
     public List<Vacancy> getVacancies(){
         return vacancyService.getAll();
+    }
+
+    @GetMapping("/list/responded/{vacancyId}")
+    public List<RespondedResponse> responded(@PathVariable Long vacancyId) {
+        return vacancyService.listForResponded(vacancyId);
+    }
+
+    @PutMapping("/responded/{vacancyId}/{jobSeekerId}")
+    public void respondedForVacancy(@PathVariable Long vacancyId, @PathVariable Long jobSeekerId) {
+        vacancyService.responded(vacancyId, jobSeekerId);
     }
 
 

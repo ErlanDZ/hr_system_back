@@ -2,6 +2,7 @@ package com.example.hr_system.service;
 
 import com.example.hr_system.dto.JobSeekerVacanciesResponses;
 import com.example.hr_system.dto.image.Response;
+import com.example.hr_system.dto.jobSeeker.RespondedResponse;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.Experience;
@@ -45,5 +46,13 @@ public interface VacancyService {
     VacancyResponse updateEmployerVacancyByIds(Long employerId, Long vacancyId, VacancyRequest vacancyRequest);
 
     Response uploadImage(MultipartFile file, Long id) throws IOException;
+
+    void responded(Long vacancyId, Long jobSeekerId);
+
+    void setStatusOfJobSeeker(Long vacancyId, Long jobSeekerId, String status);
+
+    void setStatusOfVacancy(Long id, String statusOfVacancy);
+
+    List<RespondedResponse> listForResponded(Long vacancyId);
 }
 

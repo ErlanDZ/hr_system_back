@@ -18,8 +18,10 @@ public class VacancyRequest {
     private String description;
     private String skills;
     private String contactInfo;
-    private PositionRequest positionRequest;
+    private String positionRequest;
+    private String statusOfVacancy;
     private SalaryRequest salaryRequest;
+    private String experience;
     private Date date;
     private ContactInformationRequest contactInformationRequest;
 }

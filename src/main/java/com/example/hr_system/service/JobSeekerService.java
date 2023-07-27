@@ -18,6 +18,8 @@ import java.util.List;
 
 public interface JobSeekerService {
 
+    Response uploadResume(MultipartFile file, Long id) throws IOException;
+
     List<JobSeeker> getAll();
 
     List<JobSeekerResponses> getAllJobSeekers();

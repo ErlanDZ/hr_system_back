@@ -11,4 +11,6 @@ public interface StorageService {
     ImageData uploadImage(MultipartFile file, ImageData image) throws IOException;
     ImageData uploadImage(MultipartFile file) throws IOException;
     ResponseEntity<?> downloadImage(Long id);
+
+    ResponseEntity<?> downloadFile(Long id);
 }

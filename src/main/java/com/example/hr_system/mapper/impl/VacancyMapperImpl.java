@@ -4,6 +4,7 @@ import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.Vacancy;
 import com.example.hr_system.mapper.*;
+import com.example.hr_system.repository.PositionRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ public class VacancyMapperImpl implements VacancyMapper {
     private PositionMapper positionMapper;
     private SalaryMapper salaryMapper;
     private ContactInformationMapper contactInformationMapper;
+    private final PositionRepository positionRepository;
 
     @Override
     public VacancyResponse toDto(Vacancy vacancy) {
@@ -25,12 +27,13 @@ public class VacancyMapperImpl implements VacancyMapper {
         vacancyResponse.setSkills(vacancy.getSkills());
         vacancyResponse.setDescription(vacancy.getDescription());
         vacancyResponse.setContactInfo(vacancy.getContactInfo());
+        vacancyResponse.setStatusOfVacancy(String.valueOf(vacancy.getStatusOfVacancy()));
 
         if (vacancy.getPosition() != null) {
-            vacancyResponse.setPositionResponse(positionMapper.toDto(vacancy.getPosition()));
+            vacancyResponse.setPositionResponse(vacancy.getPosition().getName());
         }
         if (vacancy.getSalary() != null) {
-            vacancyResponse.setSalaryResponse(salaryMapper.toDto(vacancy.getSalary()));
+            vacancyResponse.setSalaryId(vacancy.getSalary().getId());
         }
         if (vacancy.getContactInformation() != null) {
             vacancyResponse.setContactInformationResponse(contactInformationMapper.toDto(vacancy.getContactInformation()));
@@ -51,9 +54,10 @@ public class VacancyMapperImpl implements VacancyMapper {
     @Override
     public VacancyResponse requestToResponse(VacancyRequest vacancyRequest) {
         VacancyResponse vacancyResponse = new VacancyResponse();
-        vacancyResponse.setPositionResponse(positionMapper.requestToResponse(vacancyRequest.getPositionRequest()));
-        vacancyResponse.setSalaryResponse(vacancyResponse.getSalaryResponse());
+        vacancyResponse.setPositionResponse(vacancyRequest.getPositionRequest());
+        vacancyResponse.setSalaryId(vacancyResponse.getSalaryId());
         vacancyResponse.setSkills(vacancyRequest.getSkills());
+        vacancyResponse.setStatusOfVacancy(vacancyRequest.getStatusOfVacancy());
         vacancyResponse.setContactInformationResponse(contactInformationMapper.requestToresponse(vacancyRequest.getContactInformationRequest()));
         vacancyResponse.setName(vacancyRequest.getName());
         vacancyResponse.setDescription(vacancyRequest.getDescription());

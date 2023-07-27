@@ -14,22 +14,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ImageData {
+public class FileData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String type;
-//    @Lob
+    //    @Lob
     @Column(name = "image_data")
-    private byte[] imageData;
+    private byte[] fileData;
 
-    @OneToOne(mappedBy = "image")
+    @OneToOne(mappedBy = "resume")
     private JobSeeker jobSeeker;
 
-    @OneToOne(mappedBy = "image")
-    private Employer employer;
-    @OneToOne(mappedBy = "image")
-    private Vacancy vacancy;
 }

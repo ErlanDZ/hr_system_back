@@ -2,6 +2,7 @@ package com.example.hr_system.dto.jobSeeker;
 
 
 import com.example.hr_system.enums.Role;
+import com.example.hr_system.enums.StatusOfJobSeeker;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +13,7 @@ public class JobSeekerRequest {
     private String lastname;
     private String email;
     private String password;
+    private StatusOfJobSeeker statusOfJobSeeker;
+
 
 }

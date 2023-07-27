@@ -19,8 +19,9 @@ public class VacancyResponse {
     private String description;
     private String skills;
     private String contactInfo;
-    private PositionResponse positionResponse;
-    private SalaryResponse salaryResponse;
+    private String statusOfVacancy;
+    private String positionResponse;
+    private Long salaryId;
     private ContactInformationResponse contactInformationResponse;
 
 

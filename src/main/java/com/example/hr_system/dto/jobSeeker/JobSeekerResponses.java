@@ -34,7 +34,7 @@ public class JobSeekerResponses {
     private LocalDate year;
     private String position;
     private String working_place;
-    private String resume;
+    private Long resumeId;
     private LocalDate birthday;
     private String country;
     private String city;

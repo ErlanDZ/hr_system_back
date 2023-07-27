@@ -3,6 +3,7 @@ package com.example.hr_system.mapper.impl;
 import com.example.hr_system.dto.JobSeekerVacanciesResponses;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
+import com.example.hr_system.dto.jobSeeker.RespondedResponse;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
 import com.example.hr_system.mapper.ImageMapper;
@@ -10,7 +11,6 @@ import com.example.hr_system.mapper.JobSeekerMapper;
 import com.example.hr_system.mapper.VacancyMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.webjars.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         response.setYear(jobSeeker.getYear());
         response.setPosition(jobSeeker.getPosition().getName());
         response.setWorking_place(jobSeeker.getWorking_place());
-        response.setResume(jobSeeker.getResume());
+        response.setResumeId(jobSeeker.getResume().getId());
         response.setBirthday(jobSeeker.getBirthday());
         response.setCountry(jobSeeker.getCountry());
         response.setCity(jobSeeker.getCity());
@@ -102,5 +102,33 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         candidateResponses.setCity(jobSeeker.getCity());
         candidateResponses.setCountry(jobSeeker.getCountry());
         return candidateResponses;
+    }
+
+    @Override
+    public List<RespondedResponse> toDtosForListResponded(List<JobSeeker> jobSeekers) {
+        List<RespondedResponse> respondedResponses = new ArrayList<>();
+        for (JobSeeker jobSeeker: jobSeekers){
+            respondedResponses.add(toDtoForResponded(jobSeeker));
+        }
+        return respondedResponses;
+    }
+
+    @Override
+    public RespondedResponse toDtoForResponded(JobSeeker jobSeeker) {
+        if (jobSeeker == null) {
+            return null;
+        }
+        RespondedResponse respondedResponses = new RespondedResponse();
+        respondedResponses.setId(jobSeeker.getId());
+        respondedResponses.setFirstname(jobSeeker.getFirstname());
+        respondedResponses.setLastname(jobSeeker.getLastname());
+        respondedResponses.setPosition(jobSeeker.getPosition().getName());
+        respondedResponses.setCategory(jobSeeker.getPosition().getCategory().getName());
+        respondedResponses.setExperience(jobSeeker.getExperience().getName());
+        respondedResponses.setCountry(jobSeeker.getCountry());
+        respondedResponses.setCity(jobSeeker.getCity());
+        respondedResponses.setStatusOfJobSeeker(jobSeeker.getStatusOfJobSeeker());
+
+        return respondedResponses;
     }
 }

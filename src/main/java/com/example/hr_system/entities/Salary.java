@@ -23,6 +23,6 @@ public class Salary {
 
     private Valute valute;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "salary")
+    @OneToOne(mappedBy = "salary")
     private Vacancy vacancy;
 }
