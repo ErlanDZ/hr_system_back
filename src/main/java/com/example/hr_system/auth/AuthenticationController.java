@@ -1,6 +1,11 @@
 package com.example.hr_system.auth;
 
+import com.example.hr_system.auth.responses.AuthenticationEmployerResponse;
+import com.example.hr_system.auth.responses.AuthenticationJobSeekerResponse;
+import com.example.hr_system.auth.responses.UserWrapper;
 import com.example.hr_system.config.JwtService;
+import com.example.hr_system.dto.employer.EmployerResponse;
+import com.example.hr_system.entities.Employer;
 import com.example.hr_system.entities.User;
 import com.example.hr_system.repository.UserRepository;
 import com.example.hr_system.service.emailSender.EmailSenderService;
@@ -65,8 +70,10 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.employerRegister(request));
     }
 
+
+
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(
+    public ResponseEntity<?> authenticate(
             @RequestBody AuthenticationRequest request
     ) {
         //User user  = userRepository.findByEmail(request.getEmail()).orElseThrow();

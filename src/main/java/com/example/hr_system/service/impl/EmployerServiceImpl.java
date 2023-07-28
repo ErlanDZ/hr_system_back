@@ -77,15 +77,26 @@ public class EmployerServiceImpl implements EmployerService {
 
     public CandidateResponses convertEntityToCandidateResponse(JobSeeker jobSeeker){
         if (jobSeeker == null){
+            System.out.println("its null\n\n\n");
             return null;
         }
         CandidateResponses candidateResponses = new CandidateResponses();
+        candidateResponses.setCandidateId(jobSeeker.getId());
         candidateResponses.setIsFavorite(jobSeeker.getIsFavorite());
-        candidateResponses.setImageId(jobSeeker.getImage().getId());
+        if (jobSeeker.getImage()==(null)){
+        }
+        else {
+            candidateResponses.setImageId(jobSeeker.getImage().getId());
+
+        }
         candidateResponses.setFirstname(jobSeeker.getFirstname());
         candidateResponses.setLastname(jobSeeker.getLastname());
-        candidateResponses.setPosition(jobSeeker.getPosition().getName());
-        candidateResponses.setExperience(jobSeeker.getExperience().getName());
+
+        candidateResponses.setPosition(
+                jobSeeker.getPosition()==null? null:
+                jobSeeker.getPosition().getName());
+        candidateResponses.setExperience(jobSeeker.getExperience()==null?null:
+                jobSeeker.getExperience().getName());
         candidateResponses.setCity(jobSeeker.getCity());
         candidateResponses.setCountry(jobSeeker.getCountry());
 

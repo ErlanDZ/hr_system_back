@@ -2,10 +2,7 @@ package com.example.hr_system.mapper;
 
 import com.example.hr_system.dto.JobSeekerVacanciesResponses;
 import com.example.hr_system.dto.image.Response;
-import com.example.hr_system.dto.jobSeeker.CandidateResponses;
-import com.example.hr_system.dto.jobSeeker.JobSeekerResponse;
-import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
-import com.example.hr_system.dto.jobSeeker.RespondedResponse;
+import com.example.hr_system.dto.jobSeeker.*;
 import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
@@ -28,6 +25,8 @@ public interface JobSeekerMapper {
     List<RespondedResponse> toDtosForListResponded(List<JobSeeker> jobSeekers);
 
     RespondedResponse toDtoForResponded(JobSeeker jobSeeker);
+
+    JobSeeker toEntity(JobSeekerRequest jobSeekerRequest);
 
     //  ImageData responseToImage(Response image);
 }

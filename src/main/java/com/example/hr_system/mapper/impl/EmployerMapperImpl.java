@@ -4,6 +4,7 @@ import com.example.hr_system.dto.employer.EmployerResponses;
 import com.example.hr_system.entities.Employer;
 import com.example.hr_system.mapper.EmployerMapper;
 import org.springframework.stereotype.Component;
+import org.webjars.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public class EmployerMapperImpl implements EmployerMapper {
     @Override
     public EmployerResponses toDto(Employer employer) {
         if (employer == null) {
-            return null;
+            new NotFoundException("employer is null!");
         }
         EmployerResponses employerResponses = new EmployerResponses();
         if (employer.getId() != null) {

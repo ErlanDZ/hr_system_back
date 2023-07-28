@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class CandidateResponses {
-
+    Long candidateId;
     Long isFavorite;
     Long imageId;
     String firstname;

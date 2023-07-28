@@ -4,6 +4,6 @@ public enum StatusOfVacancy {
     OPEN,
     ARCHIVE,
     CLOSED,
-    
+
 
 }

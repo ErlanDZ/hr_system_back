@@ -49,36 +49,7 @@ public class VacancyController {
 //        return vacancyService.saveVacancy(employeeId,vacancyRequest);
 //    }
 
-    @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable("id") Long id){
-        vacancyService.delete(id);
-    }
 
-    @PutMapping("/{id}")
-    public VacancyResponse update(@PathVariable Long id,@RequestBody VacancyRequest vacancy){
-        return vacancyService.update(id,vacancy);
-    }
-
-    @GetMapping("/search")
-    public List<JobSeekerVacanciesResponses> search(@RequestParam(required = false) String search){
-        return vacancyService.searchVacancy(search);
-    }
-
-    @GetMapping("/filter")
-    public List<JobSeekerVacanciesResponses> filter(@RequestParam(required = false) String category, @RequestParam(required = false) String position, @RequestParam(required = false)String country,
-                                                    @RequestParam(required = false)String city, @RequestParam(required = false) Experience experience){
-
-        return vacancyService.filter(category, position, country, city, experience);
-    }
-    @PutMapping("/newStatusForVacancy/{vacancyId}")
-    public void newStatus(@PathVariable Long vacancyId,@RequestParam(required = false) String status){
-        vacancyService.setStatusOfVacancy(vacancyId,status);
-    }
-
-    @PutMapping("/setStatusForJobSeeker/{vacancyId}/{jobSeekerId}")
-    public void setStatusForJobSeeker(@PathVariable Long vacancyId,@PathVariable Long jobSeekerId,@RequestParam(required = false) String status){
-        vacancyService.setStatusOfJobSeeker(vacancyId,jobSeekerId,status);
-    }
 
 
 }

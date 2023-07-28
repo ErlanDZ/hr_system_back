@@ -37,10 +37,13 @@ public class JobSeekerServiceImpl implements JobSeekerService {
     private final PositionRepository positionRepository;
     private final FileDataService fileDataService;
     private final FileRepository fileRepository;
+    private final UserRepository userRepository;
 
     @Override
     public Response uploadResume(MultipartFile file, Long id) throws IOException {
-        JobSeeker jobSeeker = getById(id);
+        User user = userRepository.findById(id).orElseThrow(()->
+                new NotFoundException("user not found!"+id));
+        JobSeeker jobSeeker = user.getJobSeeker();
         if (jobSeeker.getResume() != null) {
             FileData fileData = jobSeeker.getResume();
             System.out.println(jobSeeker.getResume().getId()+"1q1\n\n\n");
@@ -229,8 +232,8 @@ public class JobSeekerServiceImpl implements JobSeekerService {
             String city,
             Experience experience
     ) {
-        if(position.getName()==""&&education==null&&country==""&&
-        city==""&&experience.getName()==""){
+        if(position==null&&education==null&&country==""&&
+        city==""&&experience==null){
             return jobSeekerRepository.findAll();
         }
         // Call the custom query method defined in the repository

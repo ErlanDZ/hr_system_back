@@ -3,10 +3,12 @@ package com.example.hr_system.controller;
 import com.example.hr_system.dto.jobSeeker.*;
 import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.entities.JobSeeker;
+import com.example.hr_system.entities.User;
 import com.example.hr_system.entities.Vacancy;
 import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.repository.FileRepository;
 import com.example.hr_system.repository.StorageRepository;
+import com.example.hr_system.repository.UserRepository;
 import com.example.hr_system.service.JobSeekerService;
 import com.example.hr_system.service.StorageService;
 import com.example.hr_system.service.VacancyService;
@@ -36,12 +38,13 @@ public class JobSeekerController {
     private final StorageRepository storageRepository;
     private final FileMapper fileMapper;
     private final FileRepository fileRepository;
+    private final UserRepository userRepository;
 
 
     @PostMapping("resume/upload/{id}")
     public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file,@PathVariable Long id) throws IOException {
 
-
+       // User user = userRepository.findById(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(jobSeekerService.uploadResume(file,id));
     }

@@ -6,7 +6,9 @@ import com.example.hr_system.enums.Month;
 import com.example.hr_system.enums.Role;
 import com.example.hr_system.enums.StatusOfJobSeeker;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.engine.internal.Cascade;
 
 import java.io.File;
@@ -16,6 +18,8 @@ import java.util.List;
 @Entity
 @Table(name = "job_seeker_table")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobSeeker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,6 +78,8 @@ public class JobSeeker {
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.DETACH})
     private Experience experience;
+
+
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobSeeker")
 //    private List<Resume> resumeList;

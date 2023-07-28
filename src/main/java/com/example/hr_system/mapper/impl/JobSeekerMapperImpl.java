@@ -2,6 +2,7 @@ package com.example.hr_system.mapper.impl;
 
 import com.example.hr_system.dto.JobSeekerVacanciesResponses;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
+import com.example.hr_system.dto.jobSeeker.JobSeekerRequest;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
 import com.example.hr_system.dto.jobSeeker.RespondedResponse;
 import com.example.hr_system.entities.JobSeeker;
@@ -39,9 +40,13 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         response.setInstitution(jobSeeker.getInstitution());
         response.setMonth(jobSeeker.getMonth());
         response.setYear(jobSeeker.getYear());
-        response.setPosition(jobSeeker.getPosition().getName());
+        response.setPosition(
+                jobSeeker.getPosition()==null?null:
+                jobSeeker.getPosition().getName());
         response.setWorking_place(jobSeeker.getWorking_place());
-        response.setResumeId(jobSeeker.getResume().getId());
+        response.setResumeId(
+                jobSeeker.getResume()==null?null:
+                jobSeeker.getResume().getId());
         response.setBirthday(jobSeeker.getBirthday());
         response.setCountry(jobSeeker.getCountry());
         response.setCity(jobSeeker.getCity());
@@ -94,11 +99,18 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
     public CandidateResponses convertToCandidateResponse(JobSeeker jobSeeker) {
         CandidateResponses candidateResponses = new CandidateResponses();
         candidateResponses.setIsFavorite(jobSeeker.getIsFavorite());
-        candidateResponses.setImageId(jobSeeker.getImage().getId());
+        if (jobSeeker.getImage()==(null)){
+
+        }else {
+            candidateResponses.setImageId(jobSeeker.getImage().getId());
+
+        }
         candidateResponses.setFirstname(jobSeeker.getFirstname());
         candidateResponses.setLastname(jobSeeker.getLastname());
-        candidateResponses.setPosition(jobSeeker.getPosition().getName());
-        candidateResponses.setExperience(jobSeeker.getExperience().getName());
+        candidateResponses.setPosition(jobSeeker.getPosition()==null?null:
+                jobSeeker.getPosition().getName());
+        candidateResponses.setExperience(jobSeeker.getExperience()==null?null:
+                jobSeeker.getExperience().getName());
         candidateResponses.setCity(jobSeeker.getCity());
         candidateResponses.setCountry(jobSeeker.getCountry());
         return candidateResponses;
@@ -130,5 +142,15 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         respondedResponses.setStatusOfJobSeeker(jobSeeker.getStatusOfJobSeeker());
 
         return respondedResponses;
+    }
+
+    @Override
+    public JobSeeker toEntity(JobSeekerRequest jobSeekerRequest) {
+        JobSeeker jobSeeker = new JobSeeker();
+        jobSeekerRequest.setFirstname(jobSeekerRequest.getFirstname());
+        jobSeekerRequest.setLastname(jobSeekerRequest.getLastname());
+        jobSeekerRequest.setEmail(jobSeekerRequest.getEmail());
+        jobSeekerRequest.setPassword(jobSeekerRequest.getPassword());
+        return jobSeeker;
     }
 }

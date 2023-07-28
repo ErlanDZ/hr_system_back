@@ -1,10 +1,15 @@
 package com.example.hr_system.auth;
 
+import com.example.hr_system.auth.responses.AuthenticationEmployerResponse;
+import com.example.hr_system.auth.responses.AuthenticationJobSeekerResponse;
+import com.example.hr_system.auth.responses.UserWrapper;
 import com.example.hr_system.config.JwtService;
 import com.example.hr_system.dto.jobSeeker.JobSeekerRequest;
 import com.example.hr_system.entities.Employer;
 import com.example.hr_system.dto.UserResponse;
+import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.enums.Role;
+import com.example.hr_system.mapper.JobSeekerMapper;
 import com.example.hr_system.repository.EmployerRepository;
 import com.example.hr_system.service.EmployerService;
 import com.example.hr_system.service.JobSeekerService;
@@ -18,6 +23,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -35,6 +42,7 @@ public class AuthenticationService {
     private final TokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final JobSeekerMapper jobSeekerMapper;
     private final AuthenticationManager authenticationManager;
     private final JobSeekerService jobSeekerService;
     private final EmployerService employerService;
@@ -93,27 +101,29 @@ public class AuthenticationService {
         String jwtToken = jwtService.generateToken(user);
         String refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(user, jwtToken);
-        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
+        return AuthenticationResponse.builder().build();
     }
 
     public AuthenticationResponse jobSeekerRegister(RegisterJobSeekerRequest request) {
         if (repository.findByEmail(request.getEmail()).stream().count()>0) {
             throw new RuntimeException(request.getEmail() + " is already exists");
         }
+
+//    JobSeeker jobSeeker=new JobSeeker();
+        JobSeekerRequest jobSeekerRequest = new JobSeekerRequest();
+        jobSeekerRequest.setEmail(request.getEmail());
+        jobSeekerRequest.setFirstname(request.getFirstname());
+        jobSeekerRequest.setLastname(request.getLastname());
+        jobSeekerRequest.setPassword(passwordEncoder.encode(request.getPassword()));
+        jobSeekerService.save(jobSeekerRequest);
         var user = User.builder()
+                .jobSeeker(jobSeekerMapper.toEntity(jobSeekerRequest))
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.JOB_SEEKER)
                 .build();
-//    JobSeeker jobSeeker=new JobSeeker();
-        JobSeekerRequest jobSeekerRequest = new JobSeekerRequest();
-        jobSeekerRequest.setEmail(user.getEmail());
-        jobSeekerRequest.setFirstname(user.getFirstname());
-        jobSeekerRequest.setLastname(user.getLastname());
-        jobSeekerRequest.setPassword(user.getPassword());
-        jobSeekerService.save(jobSeekerRequest);
 
 //    user.setJobSeeker(jobSeeker);
 
@@ -122,7 +132,7 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(savedUser, jwtToken);
-        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
+        return AuthenticationResponse.builder().build();
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
@@ -137,23 +147,23 @@ public class AuthenticationService {
             );
         } catch (AuthenticationException e) {
             // Обработка ошибки аутентификации, например, неверный email или пароль
-            throw new BadCredentialsException("Authentication failed: " + e.getMessage()+request.getEmail());
+            throw new BadCredentialsException("Authentication failed: " + e.getMessage() + request.getEmail());
         }
         System.out.println("2here\n\n\n");
         User user = repository.findByEmail(request.getEmail()).orElseThrow(() -> new NotFoundException("User not found"));
 
         String jwtToken = jwtService.generateToken(user);
         String refreshToken = jwtService.generateRefreshToken(user);
-        System.out.println("3here\n\n\n"+user.toString()+jwtToken+" ---- "+ refreshToken);
+        System.out.println("3here\n\n\n" + user.toString() + jwtToken + " ---- " + refreshToken);
+//        UserWrapper userWrapper = (
+//                user.getRole().equals(Role.ADMIN)?new UserWrapper(user):
+//                        user.getRole().equals(Role.EMPLOYER)?new UserWrapper(user.getEmployer()):
+//                                new UserWrapper(user.getJobSeeker()));
 
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         System.out.println("4here\n\n\n");
-//        System.out.println((AuthenticationResponse.builder()
-//                .user(user)
-//                .accessToken(jwtToken)
-//                .refreshToken(refreshToken)
-//                .build()));
+
 
         return AuthenticationResponse.builder()
                 .user(convertToresponse(user))
@@ -164,6 +174,7 @@ public class AuthenticationService {
 
     private UserResponse convertToresponse(User user) {
             UserResponse userResponse = new UserResponse();
+            userResponse.setId(user.getId());
             userResponse.setFirstname(user.getFirstname());
             userResponse.setLastname(user.getLastname());
             userResponse.setEmail(user.getEmail());
