@@ -10,10 +10,7 @@ import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
 import com.example.hr_system.dto.position.CandidateResponse;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
-import com.example.hr_system.entities.Employer;
-import com.example.hr_system.entities.Experience;
-import com.example.hr_system.entities.JobSeeker;
-import com.example.hr_system.entities.User;
+import com.example.hr_system.entities.*;
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.mapper.ExperienceMapper;
 import com.example.hr_system.mapper.JobSeekerMapper;
@@ -24,6 +21,8 @@ import com.example.hr_system.service.EmployerService;
 import com.example.hr_system.service.JobSeekerService;
 import com.example.hr_system.service.StorageService;
 import com.example.hr_system.service.VacancyService;
+import com.example.hr_system.service.emailSender.EmailSenderService;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,6 +44,7 @@ public class EmployerController {
     private final EmployerService employerService;
     private final VacancyService vacancyService;
     private final JobSeekerService jobSeekerService;
+    private final FileRepository fileRepository;
     private final StorageService service;
     private final PositionRepository positionRepository;
     private final PositionMapper positionMapper;
@@ -55,6 +55,7 @@ public class EmployerController {
     private final UserRepository userRepository;
     private final VacancyMapper vacancyMapper;
     private  final VacancyRepository vacancyRepository;
+    private final EmailSenderService emailSenderService;
 
 
     @GetMapping("profile/{id}")
@@ -65,6 +66,33 @@ public class EmployerController {
         Long employerId = user.getEmployer().getId();
         return employerService.getById(employerId);
     }
+    @GetMapping("/invite/{jobSeekerId}/{employerId}/{fileId}")
+    public boolean inviteJobSeekerWithFile(@PathVariable Long jobSeekerId,
+                                           @PathVariable Long employerId ,
+                                           @PathVariable Long fileId ,
+                                           @RequestParam String message) throws MessagingException {
+        String userEmail = userRepository.findById(employerId).orElseThrow(()->
+                new NotFoundException("userId not found!")).getEmail();
+        String jobSeekerEmail = userRepository.findById(jobSeekerId).orElseThrow(()->
+                new NotFoundException("userId not found!")).getEmail();
+        FileData fileData = fileRepository.findById(fileId).orElseThrow(()->
+                new NotFoundException("userId not found!"));
+
+
+        emailSenderService.inviteJobSeeker(userEmail,jobSeekerEmail, message, fileData);
+
+        return true;
+    }    @GetMapping("/invite/{jobSeekerId}/{employerId}")
+    public boolean inviteJobSeeker(@PathVariable Long jobSeekerId,
+            @PathVariable Long employerId , @RequestParam String message){
+        String userEmail = userRepository.findById(employerId).orElseThrow(()->
+                new NotFoundException("userId not found!")).getEmail();
+        String jobSeekerEmail = userRepository.findById(jobSeekerId).orElseThrow(()->
+                new NotFoundException("userId not found!")).getEmail();
+        emailSenderService.inviteJobSeeker(userEmail,jobSeekerEmail, message);
+
+        return true;
+    }
 
     @PutMapping("update/employer/{id}")
     public EmployerResponses updateEmployer(@PathVariable Long id, @RequestBody EmployerRequests employerRequests) {
@@ -73,6 +101,18 @@ public class EmployerController {
         Long employerId = user.getEmployer().getId();
         return employerService.update(employerId, employerRequests);
     }
+// todo   @PostMapping("resume/upload/{id}")
+//    public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file,@PathVariable Long id) throws IOException {
+//
+//        // User user = userRepository.findById(id);
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(employerService.uploadResume(file,id));
+//    }
+//    @GetMapping("/resume/{id}")
+//    public ResponseEntity<?> downloadFile(@PathVariable Long id){
+//        System.out.println("asghjd");
+//        return fileRepository.downloadFile(id);
+//    }
     @GetMapping("/positions")
     public List<CandidateResponse> positions(){
         return positionMapper.listCandidatePositionToDto(positionRepository.findAll());
@@ -97,6 +137,8 @@ public class EmployerController {
         return jobSeekerMapper.listConvertToCandidateResponse(
                 jobSeekerRepository.searchByName(name));
     }
+
+
 
     @GetMapping("/experience")
     public List<ExperienceResponse> experienceResponses(){

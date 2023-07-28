@@ -72,7 +72,6 @@ public class SecurityConfiguration {
             .authenticated()
             .and()
 
-
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()

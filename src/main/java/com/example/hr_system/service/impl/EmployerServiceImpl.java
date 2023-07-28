@@ -40,15 +40,28 @@ public class EmployerServiceImpl implements EmployerService {
 
     @Override
     public boolean selectToFavorites(Long jobSeekerId, Long employerId)throws NotFoundException{
-        JobSeeker jobSeeker = jobSeekerRepository.findById(jobSeekerId).orElseThrow();
+        boolean add = true;
             List<JobSeeker> jobSeekers =
                     employerRepository.findById(employerId).get().getFavorites();
-            jobSeeker.setIsFavorite(employerId);
-        System.out.println(jobSeeker.getIsFavorite()+"\n\n\n");
-        jobSeekers.add(jobSeeker);
+            for(JobSeeker jobSeeker: jobSeekers){
+                if(jobSeeker.getId()==jobSeekerId)
+                    add=false;
+            }
+            if(add){
+                jobSeekers.add(jobSeekerRepository.findById(jobSeekerId).orElseThrow(()->
+                        new NotFoundException("not found jobseeker with id:"+jobSeekerId)));
+            }
+            else {
+                jobSeekers.remove(jobSeekerRepository.findById(jobSeekerId).orElseThrow(()->
+                        new NotFoundException("not found jobseeker with id:"+jobSeekerId)));
+            }
+//            jobSeeker.setIsFavorite(employerId);
 
-            Employer employer= employerRepository.findById(employerId).get();
+
+            Employer employer= employerRepository.findById(employerId).orElseThrow(()->
+                    new NotFoundException("not found employer with id:"+employerId));
             employer.setFavorites(jobSeekers);
+
             employerRepository.save(employer);
 
         return true;
@@ -232,6 +245,11 @@ public class EmployerServiceImpl implements EmployerService {
     @Override
     public List<CandidateResponses> filter(String position, String education, String country, String city, String experience) {
 
+        return null;
+    }
+
+    @Override
+    public Object uploadResume(MultipartFile file, Long id) {
         return null;
     }
 }

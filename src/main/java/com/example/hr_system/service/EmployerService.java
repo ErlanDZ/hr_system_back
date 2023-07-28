@@ -48,4 +48,6 @@ public interface EmployerService {
     Response uploadImage(MultipartFile file, Long id) throws IOException;
 
     List<CandidateResponses> filter(String position, String education, String country, String city, String experience);
+
+    Object uploadResume(MultipartFile file, Long id);
 }

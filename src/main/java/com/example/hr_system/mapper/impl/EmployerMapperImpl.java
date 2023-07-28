@@ -23,6 +23,7 @@ public class EmployerMapperImpl implements EmployerMapper {
         employerResponses.setId(employer.getId());
         if (employer.getImage()!=null)
             employerResponses.setImageId(employer.getImage().getId());
+        employerResponses.setCompanyName(employer.getCompanyName());
         employerResponses.setAboutCompany(employer.getAboutCompany());
         employerResponses.setCountry(employer.getCountry());
         employerResponses.setCity(employer.getCity());
