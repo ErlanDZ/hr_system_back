@@ -71,7 +71,6 @@ public class SecurityConfiguration {
 
             .anyRequest()
             .authenticated()
-            .and().oauth2Login()
             .and()
 
 
