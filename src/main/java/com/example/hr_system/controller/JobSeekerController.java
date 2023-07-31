@@ -13,6 +13,9 @@ import com.example.hr_system.service.JobSeekerService;
 import com.example.hr_system.service.StorageService;
 import com.example.hr_system.service.VacancyService;
 import com.example.hr_system.service.impl.JobSeekerServiceImpl;
+import com.google.api.services.storage.Storage;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,6 +42,23 @@ public class JobSeekerController {
     private final FileMapper fileMapper;
     private final FileRepository fileRepository;
     private final UserRepository userRepository;
+
+//    @Autowired
+//    private  Storage storage;
+//
+//    @PostMapping("/uploadImage")
+//    public String uploadImage(@RequestParam("imageFile")MultipartFile multipartFile){
+//        BlobId id = BlobId.of("java",multipartFile.getOriginalFilename());
+//        BlobInfo info = BlobInfo.newBuilder(id).build();
+//        try {
+//            jobSeekerService.saveImage(multipartFile);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return String.valueOf(new NotFoundException("an error, new image class"));
+//        }
+//        return "ok";
+//
+//    }
 
 
     @PostMapping("resume/upload/{id}")

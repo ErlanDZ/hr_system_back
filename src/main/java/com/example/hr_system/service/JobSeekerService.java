@@ -43,4 +43,6 @@ public interface JobSeekerService {
             String firstname,
             String lastname
     );
+
+    void saveImage(MultipartFile multipartFile) throws IOException;
 }

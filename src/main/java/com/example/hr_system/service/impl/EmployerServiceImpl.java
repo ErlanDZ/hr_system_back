@@ -41,13 +41,28 @@ public class EmployerServiceImpl implements EmployerService {
 
     @Override
     public boolean selectToFavorites(Long jobSeekerId, Long employerId)throws NotFoundException{
+
         boolean add = true;
+        boolean refresh = false;
             List<JobSeeker> jobSeekers =
                     employerRepository.findById(employerId).get().getFavorites();
             for(JobSeeker jobSeeker: jobSeekers){
-                if(jobSeeker.getId()==jobSeekerId)
+                if(jobSeeker.getId()==jobSeekerId){
                     add=false;
+                    if (
+                    jobSeeker.getIsFavorite()!=null
+                    ){
+                        refresh = true;
+                        break;
+                    }
+                }
             }
+            if (refresh){
+                for(JobSeeker jobSeeker: jobSeekers){
+                    jobSeeker.setIsFavorite(null);
+                }
+            }
+
             if(add){
                 JobSeeker jobSeeker =
                         jobSeekerRepository.findById(jobSeekerId).orElseThrow(() ->

@@ -52,7 +52,9 @@ public class AuthenticationService {
    // public AuthenticationResponse googleAccess(GoogleAccess request) {}
 
         public AuthenticationResponse adminRegister(RegisterJobSeekerRequest request) {
-        if (repository.findByEmail(request.getEmail()).stream().count()>0) {
+            checkCredentials(request.getEmail(), request.getPassword());
+
+            if (repository.findByEmail(request.getEmail()).stream().count()>0) {
              throw new RuntimeException(request.getEmail() + " is already exists");
         }
         User user = new User();
@@ -80,6 +82,8 @@ public class AuthenticationService {
  //   private OAuth2AuthorizedClientService clientService;
 
     public AuthenticationResponse employerRegister(RegisterEmployerRequest request) {
+        checkCredentials(request.getEmail(), request.getPassword());
+
         if (repository.findByEmail(request.getEmail()).stream().count()>0) {
             throw new RuntimeException(request.getEmail() + " is already exists");
         }
@@ -103,8 +107,18 @@ public class AuthenticationService {
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder().build();
     }
+    public void validationRegister(String email, String password){
+            if (!email.contains("@")){
+                throw new BadCredentialsException("invalid email!");
+            }
+            if (password.length()<8){
+                throw new BadCredentialsException("invalid password!");
+            }
+    }
 
     public AuthenticationResponse jobSeekerRegister(RegisterJobSeekerRequest request) {
+            checkCredentials(request.getEmail(), request.getPassword());
+
         if (repository.findByEmail(request.getEmail()).stream().count()>0) {
             throw new RuntimeException(request.getEmail() + " is already exists");
         }
@@ -137,6 +151,16 @@ public class AuthenticationService {
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         System.out.println("1here\n\n\n");
+        checkCredentials(request.getEmail(), request.getPassword());
+        if (repository.findByEmail(request.getEmail()) == null){
+            new NotFoundException("Email ne naiden "+request.getEmail());
+        }
+        else if (request.getPassword() == null){
+            new BadCredentialsException("Parol pustoi!");
+        }
+        else if (repository.findByEmail(request.getEmail()).get().getPassword() != request.getPassword()){
+            new BadCredentialsException("Nepravilniy parol");
+        }
 
         try {
             authenticationManager.authenticate(
@@ -230,5 +254,14 @@ public class AuthenticationService {
                 new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
         }
+    }
+    void checkCredentials(String email, String password){
+            if (!email.contains("@") && email.length()<6){
+                new BadCredentialsException("Razmer email should me larger than 6 simbols and contain '@'");
+            }
+            if (password.length()<8){
+                new BadCredentialsException("Razmer password should me larger than 8");
+
+            }
     }
 }

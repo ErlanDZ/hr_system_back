@@ -108,6 +108,7 @@ public class AuthenticationController {
 
     @PostMapping("/email_sender/check")
     public boolean checking_code(@RequestParam int code){
+
         return randomNumber==code;
     }
 

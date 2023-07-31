@@ -22,6 +22,9 @@ import org.webjars.NotFoundException;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 
@@ -148,7 +151,9 @@ public class JobSeekerServiceImpl implements JobSeekerService {
 
         JobSeeker jobSeeker1 = jobSeekerRepository.findById(id).orElseThrow(() -> new RuntimeException("user can be null"));
         System.out.println(jobSeeker.toString());
-        jobSeeker1.setImage(storageRepository.findById(jobSeeker.getImageId()).orElseThrow());
+        jobSeeker1.setImage(
+                jobSeeker.getImageId()==null?null:
+                storageRepository.findById(jobSeeker.getImageId()).orElseThrow());
         jobSeeker1.setFirstname(jobSeeker.getFirstname());
         jobSeeker1.setLastname(jobSeeker.getLastname());
         jobSeeker1.setBirthday(jobSeeker.getBirthday());
@@ -165,12 +170,15 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         jobSeeker1.setPosition(positionRepository.findByName(jobSeeker.getPosition()));
         jobSeeker1.setWorking_place(jobSeeker.getWorking_place());
         jobSeeker1.setSkills(jobSeeker.getSkills());
-        jobSeeker1.setResume(fileRepository.findById(jobSeeker.getResumeId()).orElseThrow());
+//        if (jobSeeker.getResumeId() != null){
+//            jobSeeker1.setResume(fileRepository.findById(jobSeeker.getResumeId()).orElseThrow());
+//        }
         jobSeeker1.setRole(Role.JOB_SEEKER);
 
         jobSeekerRepository.save(jobSeeker1);
 
         return new JobSeekerResponses(jobSeeker1.getId(),
+                jobSeeker1.getImage()==null?null:
                 jobSeeker1.getImage().getId(),
                 jobSeeker1.getFirstname(),
                 jobSeeker1.getLastname(),
@@ -181,6 +189,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
                 jobSeeker1.getYear(),
                 jobSeeker1.getPosition().getName(),
                 jobSeeker1.getWorking_place(),
+                jobSeeker1.getResume()==null?null:
                 jobSeeker1.getResume().getId(), jobSeeker1.getBirthday(), jobSeeker1.getCountry(),
                 jobSeeker1.getCity(),
                 jobSeeker1.getAddress(), jobSeeker1.getEmail(), jobSeeker1.getPhoneNumber(), jobSeeker1.getRole());
@@ -258,5 +267,14 @@ public class JobSeekerServiceImpl implements JobSeekerService {
                 lastname != null && !lastname.isEmpty() ? lastname : null
 
                 );
+    }
+
+    @Override
+    public void saveImage(MultipartFile multipartFile) throws IOException {
+        String folder = "/Users/bambook/Desktop/hr_system_back/src/main/resources/templates/folder/";
+        byte[] bytes =  multipartFile.getBytes();
+        Path path = Paths.get(folder + multipartFile.getOriginalFilename());
+        Files.write(path, bytes);
+
     }
 }
