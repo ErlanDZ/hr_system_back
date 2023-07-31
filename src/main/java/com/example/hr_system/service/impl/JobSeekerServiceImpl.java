@@ -44,15 +44,18 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         User user = userRepository.findById(id).orElseThrow(()->
                 new NotFoundException("user not found!"+id));
         JobSeeker jobSeeker = user.getJobSeeker();
-        if (jobSeeker.getResume() != null) {
-            FileData fileData = jobSeeker.getResume();
-            System.out.println(jobSeeker.getResume().getId()+"1q1\n\n\n");
-            jobSeeker.setResume(null);
-            FileData save = fileDataService.uploadFile(file, fileData);
-            jobSeeker.setResume(save);
-            System.out.println(jobSeeker.getResume().getId()+"2q2\n\n\n");
+        if (jobSeeker != null) {
+            if (jobSeeker.getResume() != null){
+                FileData fileData = jobSeeker.getResume();
+                System.out.println(jobSeeker.getResume().getId()+"1q1\n\n\n");
+                jobSeeker.setResume(null);
+                FileData save = fileDataService.uploadFile(file, fileData);
+                jobSeeker.setResume(save);
+                System.out.println(jobSeeker.getResume().getId()+"2q2\n\n\n");
 
-            jobSeekerRepository.save(jobSeeker);
+                jobSeekerRepository.save(jobSeeker);
+            }
+
         } else {
             FileData image = fileDataService.uploadFile(file);
             jobSeeker.setResume(image);

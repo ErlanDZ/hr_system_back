@@ -5,6 +5,7 @@ import com.example.hr_system.dto.employer.EmployerRequest;
 import com.example.hr_system.dto.employer.EmployerRequests;
 import com.example.hr_system.dto.employer.EmployerResponse;
 import com.example.hr_system.dto.employer.EmployerResponses;
+import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.image.Response;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
@@ -21,7 +22,7 @@ import java.util.List;
 public interface EmployerService {
     boolean selectToFavorites(Long jobSeekerId, Long employerId)throws NotFoundException;
 
-    List<CandidateResponses> favoriteCandidateResponses(Long employerId);
+    List<CandidateResponses> favoriteCandidateResponses(Employer employer);
 
     List<CandidateResponses> getAllCandidates();
 
@@ -49,5 +50,5 @@ public interface EmployerService {
 
     List<CandidateResponses> filter(String position, String education, String country, String city, String experience);
 
-    Object uploadResume(MultipartFile file, Long id);
+   // FileResponse uploadResume(MultipartFile file, Long id);
 }

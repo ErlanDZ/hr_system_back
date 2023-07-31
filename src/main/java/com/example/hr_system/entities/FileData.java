@@ -28,4 +28,7 @@ public class FileData {
     @OneToOne(mappedBy = "resume")
     private JobSeeker jobSeeker;
 
+    @Column(name = "path")
+    private String path;
+
 }

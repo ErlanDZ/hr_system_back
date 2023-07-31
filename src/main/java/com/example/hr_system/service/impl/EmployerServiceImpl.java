@@ -5,6 +5,7 @@ import com.example.hr_system.dto.employer.EmployerRequests;
 import com.example.hr_system.dto.employer.EmployerResponse;
 import com.example.hr_system.dto.employer.EmployerResponses;
 import com.example.hr_system.dto.SimpleResponse;
+import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.image.Response;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
 import com.example.hr_system.entities.Employer;
@@ -48,8 +49,11 @@ public class EmployerServiceImpl implements EmployerService {
                     add=false;
             }
             if(add){
-                jobSeekers.add(jobSeekerRepository.findById(jobSeekerId).orElseThrow(()->
-                        new NotFoundException("not found jobseeker with id:"+jobSeekerId)));
+                JobSeeker jobSeeker =
+                        jobSeekerRepository.findById(jobSeekerId).orElseThrow(() ->
+                                new NotFoundException("not found jobSeeker"+jobSeekerId));
+                jobSeeker.setIsFavorite(employerId);
+                jobSeekers.add(jobSeeker);
             }
             else {
                 jobSeekers.remove(jobSeekerRepository.findById(jobSeekerId).orElseThrow(()->
@@ -68,8 +72,8 @@ public class EmployerServiceImpl implements EmployerService {
     }
 
     @Override
-    public List<CandidateResponses> favoriteCandidateResponses(Long employerId){
-        return candidateToDTOs(employerRepository.findById(employerId).get().getFavorites(), employerId);
+    public List<CandidateResponses> favoriteCandidateResponses(Employer employer){
+        return candidateToDTOs(employer.getFavorites());
     }
 
 
@@ -248,8 +252,5 @@ public class EmployerServiceImpl implements EmployerService {
         return null;
     }
 
-    @Override
-    public Object uploadResume(MultipartFile file, Long id) {
-        return null;
-    }
+
 }

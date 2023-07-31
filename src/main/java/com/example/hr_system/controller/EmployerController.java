@@ -46,6 +46,7 @@ public class EmployerController {
     private final JobSeekerService jobSeekerService;
     private final FileRepository fileRepository;
     private final StorageService service;
+    private final StorageRepository storageRepository;
     private final PositionRepository positionRepository;
     private final PositionMapper positionMapper;
     private final JobSeekerRepository jobSeekerRepository;
@@ -101,18 +102,18 @@ public class EmployerController {
         Long employerId = user.getEmployer().getId();
         return employerService.update(employerId, employerRequests);
     }
-// todo   @PostMapping("resume/upload/{id}")
-//    public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file,@PathVariable Long id) throws IOException {
-//
-//        // User user = userRepository.findById(id);
-//        return ResponseEntity.status(HttpStatus.OK)
-//                .body(employerService.uploadResume(file,id));
-//    }
-//    @GetMapping("/resume/{id}")
-//    public ResponseEntity<?> downloadFile(@PathVariable Long id){
-//        System.out.println("asghjd");
-//        return fileRepository.downloadFile(id);
-//    }
+    @PostMapping("resume/upload/{id}")
+    public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file,@PathVariable Long id) throws IOException {
+
+        // User user = userRepository.findById(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(jobSeekerService.uploadResume(file,id));
+    }
+    @GetMapping("/resume/{id}")
+    public ResponseEntity<?> downloadFile(@PathVariable Long id){
+        System.out.println("asghjd");
+        return service.downloadFile(id);
+    }
     @GetMapping("/positions")
     public List<CandidateResponse> positions(){
         return positionMapper.listCandidatePositionToDto(positionRepository.findAll());
@@ -160,9 +161,9 @@ public class EmployerController {
     public List<CandidateResponses> getEmployerFavorites(@PathVariable Long userId){
         User user = userRepository.findById(userId).orElseThrow(()->
                 new NotFoundException("User not found!"+userId));
-        Long employerId = user.getEmployer().getId();
+        Employer employer = user.getEmployer();
 
-        return employerService.favoriteCandidateResponses(employerId);
+        return employerService.favoriteCandidateResponses(employer);
     }
 //eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlZHNlQGdtYWlsLmNvbSIsImlhdCI6MTY4OTkyOTE0NSwiZXhwIjoxNjkwMDE1NTQ1fQ.C71FQIBPZOgADqjvYqY1Ddy0jbCh-c36ADQCFMw8SMc
     @GetMapping("employers")
@@ -232,7 +233,13 @@ public class EmployerController {
         System.out.println("asghjd");
         return service.downloadImage(imageId);
     }
+    @GetMapping("/image/get/{imageId}")
+    public byte[] jj (@PathVariable Long imageId){
+        System.out.println("asghjd");
+        return storageRepository.findById(imageId).get().getImageData();
 
+
+    }
     /// FROM VACANCY CONTROLLER
 
 

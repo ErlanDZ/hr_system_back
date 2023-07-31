@@ -49,7 +49,8 @@ public class SecurityConfiguration {
                     "/job_seeker/**",
                     "/employer/**",
                     "/vacancy/**",
-                    "/api/v1/management/**"
+                    "/api/v1/management/**",
+                    "/chatting/**"
             )
             .permitAll()
 
@@ -70,7 +71,9 @@ public class SecurityConfiguration {
 
             .anyRequest()
             .authenticated()
+            .and().oauth2Login()
             .and()
+
 
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

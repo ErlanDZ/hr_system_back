@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin")
 @AllArgsConstructor
-@PreAuthorize("hasAnyAuthority('ADMIN')")
+//@PreAuthorize("hasAnyAuthority('ADMIN')")
 @CrossOrigin(origins = "*")
 public class AdminInAController {
 
@@ -59,9 +59,5 @@ public class AdminInAController {
     public void responseForVacancy(@PathVariable Long vacancyId) {
         jobSeekerService.responseForVacancy(vacancyId);
     }
-
-
-
-
 
 }
