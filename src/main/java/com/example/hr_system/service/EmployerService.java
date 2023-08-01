@@ -24,7 +24,7 @@ public interface EmployerService {
 
     List<CandidateResponses> favoriteCandidateResponses(Employer employer);
 
-    List<CandidateResponses> getAllCandidates();
+    List<CandidateResponses> getAllCandidates(Long employerId);
 
     List<EmployerResponses> getAll();
 

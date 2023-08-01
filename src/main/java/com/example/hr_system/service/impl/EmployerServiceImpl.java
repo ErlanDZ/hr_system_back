@@ -42,40 +42,22 @@ public class EmployerServiceImpl implements EmployerService {
     @Override
     public boolean selectToFavorites(Long jobSeekerId, Long employerId)throws NotFoundException{
 
-        boolean add = true;
-        boolean refresh = false;
             List<JobSeeker> jobSeekers =
                     employerRepository.findById(employerId).get().getFavorites();
-            for(JobSeeker jobSeeker: jobSeekers){
-                if(jobSeeker.getId()==jobSeekerId){
-                    add=false;
-                    if (
-                    jobSeeker.getIsFavorite()!=null
-                    ){
-                        refresh = true;
-                        break;
-                    }
+            JobSeeker jobSeeker = jobSeekerRepository.findById(jobSeekerId).get();
+           // for (JobSeeker jobSeeker: jobSeekers){
+                if (!jobSeekers.contains(jobSeeker)){
+                    jobSeekers.add(jobSeeker);
+                    System.out.println("adding to favorites\n\n\n");
                 }
-            }
-            if (refresh){
-                for(JobSeeker jobSeeker: jobSeekers){
-                    jobSeeker.setIsFavorite(null);
+                else if (jobSeekers.contains(jobSeeker)){
+                    jobSeekers.remove(jobSeeker);
+                    System.out.println("!adding to favorites\n\n\n");
                 }
-            }
-
-            if(add){
-                JobSeeker jobSeeker =
-                        jobSeekerRepository.findById(jobSeekerId).orElseThrow(() ->
-                                new NotFoundException("not found jobSeeker"+jobSeekerId));
-                jobSeeker.setIsFavorite(employerId);
-                jobSeekers.add(jobSeeker);
-            }
-            else {
-                jobSeekers.remove(jobSeekerRepository.findById(jobSeekerId).orElseThrow(()->
-                        new NotFoundException("not found jobseeker with id:"+jobSeekerId)));
-            }
-//            jobSeeker.setIsFavorite(employerId);
-
+          //  }
+//            if (jobSeekers.size()==0){
+//                jobSeekers.add(jobSeekerRepository.findById())
+//            }
 
             Employer employer= employerRepository.findById(employerId).orElseThrow(()->
                     new NotFoundException("not found employer with id:"+employerId));
@@ -88,15 +70,15 @@ public class EmployerServiceImpl implements EmployerService {
 
     @Override
     public List<CandidateResponses> favoriteCandidateResponses(Employer employer){
-        return candidateToDTOs(employer.getFavorites());
+        return candidateToDTOs(employer.getFavorites(), employer.getId());
     }
 
 
     @Override
-    public List<CandidateResponses> getAllCandidates(){
+    public List<CandidateResponses> getAllCandidates(Long employerId){
 
 
-        return candidateToDTOs(jobSeekerRepository.findAll());
+        return candidateToDTOs(jobSeekerRepository.findAll(), employerId);
     }
     @Override
 
@@ -113,14 +95,13 @@ public class EmployerServiceImpl implements EmployerService {
             return null;
         }
         CandidateResponses candidateResponses = new CandidateResponses();
-        candidateResponses.setCandidateId(jobSeeker.getId());
-        candidateResponses.setIsFavorite(jobSeeker.getIsFavorite());
         if (jobSeeker.getImage()==(null)){
         }
         else {
             candidateResponses.setImageId(jobSeeker.getImage().getId());
 
         }
+        candidateResponses.setCandidateId(jobSeeker.getId());
         candidateResponses.setFirstname(jobSeeker.getFirstname());
         candidateResponses.setLastname(jobSeeker.getLastname());
 
@@ -147,24 +128,20 @@ public class EmployerServiceImpl implements EmployerService {
         return response;
     }
 
-    public List<CandidateResponses> candidateToDTOs(List<JobSeeker>jobSeekers){
-        List<CandidateResponses>candidateResponses=new ArrayList<>();
-        for (JobSeeker jobSeeker:jobSeekers) {
-            candidateResponses.add(convertEntityToCandidateResponse(jobSeeker));
-        }
-
-        return candidateResponses;
-    }
     public List<CandidateResponses> candidateToDTOs(List<JobSeeker>jobSeekers, Long employerId){
+        Employer employer = employerRepository.findById(employerId).orElseThrow(()-> new NotFoundException("njsd"));
         List<CandidateResponses>candidateResponses=new ArrayList<>();
         for (JobSeeker jobSeeker:jobSeekers) {
-            if (jobSeeker.getIsFavorite()==employerId){
-                candidateResponses.add(convertEntityToCandidateResponse(jobSeeker));
+            CandidateResponses responses = convertEntityToCandidateResponse(jobSeeker);
+            if(employer.getFavorites().contains(jobSeeker)) {
+                responses.setRed(true);
             }
+            candidateResponses.add(responses);
         }
 
         return candidateResponses;
     }
+
     @Override
     public EmployerResponse save(EmployerRequest employerRequest) {
         Employer employer = new Employer();
@@ -213,9 +190,7 @@ public class EmployerServiceImpl implements EmployerService {
             return null;
         }
         Employer employer = employerRepository.findById(id).get();
-        if(employerRequests.getImageId()!=null){
-            employer.setImage(storageRepository.findById(employerRequests.getImageId()).get());
-        }
+
         employer.setAboutCompany(employerRequests.getAboutCompany());
         employer.setCountry(employerRequests.getCountry());
         employer.setCity(employerRequests.getCity());

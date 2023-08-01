@@ -98,7 +98,6 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
     @Override
     public CandidateResponses convertToCandidateResponse(JobSeeker jobSeeker) {
         CandidateResponses candidateResponses = new CandidateResponses();
-        candidateResponses.setIsFavorite(jobSeeker.getIsFavorite());
         if (jobSeeker.getImage()==(null)){
 
         }else {

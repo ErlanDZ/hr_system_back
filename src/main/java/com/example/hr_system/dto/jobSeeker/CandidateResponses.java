@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class CandidateResponses {
     Long candidateId;
-    Long isFavorite;
+    boolean red = false;
     Long imageId;
     String firstname;
     String lastname;

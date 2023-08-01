@@ -1,5 +1,6 @@
 package com.example.hr_system.service;
 
+import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.image.Response;
 import com.example.hr_system.dto.jobSeeker.JobSeekerRequest;
 import com.example.hr_system.dto.jobSeeker.JobSeekerRequests;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public interface JobSeekerService {
 
-    Response uploadResume(MultipartFile file, Long id) throws IOException;
+    FileResponse uploadResume(MultipartFile file, Long id) throws IOException;
 
     List<JobSeeker> getAll();
 

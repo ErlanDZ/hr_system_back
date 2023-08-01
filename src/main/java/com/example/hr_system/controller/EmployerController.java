@@ -95,7 +95,7 @@ public class EmployerController {
         return true;
     }
 
-    @PutMapping("update/employer/{id}")
+    @PostMapping("update/employer/{id}")
     public EmployerResponses updateEmployer(@PathVariable Long id, @RequestBody EmployerRequests employerRequests) {
         User user = userRepository.findById(id).orElseThrow(()->
                 new NotFoundException("User not found!"+id));
@@ -145,12 +145,14 @@ public class EmployerController {
     public List<ExperienceResponse> experienceResponses(){
         return experienceMapper.listExperienceResponseToDto(experienceRepository.findAll());
     }
-    @GetMapping("/candidate")
-    public List<CandidateResponses> candidateResponses(){
-        return employerService.getAllCandidates();
+    @GetMapping("/candidate/{employerId}")
+    public List<CandidateResponses> candidateResponses(@PathVariable Long employerId){
+        User user = userRepository.findById(employerId).orElseThrow(()-> new NotFoundException("not found user"));
+        return employerService.getAllCandidates(user.getEmployer().getId());
     }
     @PostMapping("/candidate/favorite/{userId}")
     public boolean setFavorite(@PathVariable Long userId,@RequestParam Long jobSeekerId){
+        System.out.println("function is working\n\n\n");
         User user = userRepository.findById(userId).orElseThrow(()->
                 new NotFoundException("User not found!"+userId));
         Long employerId = user.getEmployer().getId();

@@ -1,5 +1,6 @@
 package com.example.hr_system.controller;
 
+import com.amazonaws.HttpMethod;
 import com.example.hr_system.dto.jobSeeker.*;
 import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.entities.JobSeeker;
@@ -9,13 +10,13 @@ import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.repository.FileRepository;
 import com.example.hr_system.repository.StorageRepository;
 import com.example.hr_system.repository.UserRepository;
+import com.example.hr_system.service.FileDataService;
 import com.example.hr_system.service.JobSeekerService;
 import com.example.hr_system.service.StorageService;
 import com.example.hr_system.service.VacancyService;
+import com.example.hr_system.service.impl.FileDataServiceImpl;
 import com.example.hr_system.service.impl.JobSeekerServiceImpl;
-import com.google.api.services.storage.Storage;
-import com.google.cloud.storage.BlobId;
-import com.google.cloud.storage.BlobInfo;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,72 +28,56 @@ import org.webjars.NotFoundException;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("job_seeker/")
 //@PreAuthorize("hasAnyAuthority('JOB_SEEKER')")
 @AllArgsConstructor
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class JobSeekerController {
     private final JobSeekerService jobSeekerService;
     private final JobSeekerServiceImpl jobSeekerServiceImpl;
-    private final StorageService service;
+    private final FileDataService service;
     private final VacancyService vacancyService;
     private final StorageRepository storageRepository;
     private final FileMapper fileMapper;
     private final FileRepository fileRepository;
     private final UserRepository userRepository;
+    private final FileDataServiceImpl fileDataService;
 
-//    @Autowired
-//    private  Storage storage;
 //
-//    @PostMapping("/uploadImage")
-//    public String uploadImage(@RequestParam("imageFile")MultipartFile multipartFile){
-//        BlobId id = BlobId.of("java",multipartFile.getOriginalFilename());
-//        BlobInfo info = BlobInfo.newBuilder(id).build();
-//        try {
-//            jobSeekerService.saveImage(multipartFile);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return String.valueOf(new NotFoundException("an error, new image class"));
-//        }
-//        return "ok";
-//
+//    @PostMapping("resume/downloadUrl")
+//    public ResponseEntity<String> fileuploadUrl(@RequestParam String extension){
+//        return ResponseEntity.ok(fileDataService.generateUrl(UUID.randomUUID()+"."+extension, HttpMethod.PUT));
+//    }
+//    @GetMapping("resume/getDownloadUrl")
+//    public ResponseEntity<String> getFileuploadUrl(@RequestParam String filename){
+//        return ResponseEntity.ok(fileDataService.generateUrl(filename, HttpMethod.GET));
 //    }
 
-
     @PostMapping("resume/upload/{id}")
-    public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file,@PathVariable Long id) throws IOException {
+    public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file, @PathVariable Long id) throws IOException {
 
-       // User user = userRepository.findById(id);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(jobSeekerService.uploadResume(file,id));
+                .body(jobSeekerService.uploadResume(file, id));
     }
+
     @GetMapping("/resume/{id}")
-    public ResponseEntity<?> downloadFile(@PathVariable Long id){
-        System.out.println("asghjd");
-        return service.downloadFile(id);
+    public String downloadFile(@PathVariable Long id, HttpServletResponse http) throws IOException {
+        service.downloadFile(id, http);
+        http.getOutputStream();
+        http.flushBuffer();
+        return fileRepository.findById(id).get().getPath();
+
+
     }
 
-    @PostMapping("image/upload/{id}")
-    public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile file,@PathVariable Long id) throws IOException {
-
-
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(jobSeekerService.uploadImage(file,id));
-    }
-
-    @GetMapping("image/{id}")
-    public ResponseEntity<?> downloadImage(@PathVariable Long id){
-        System.out.println("asghjd");
-        return service.downloadImage(id);
-    }
 
     @PostMapping("/create")
-    public JobSeekerResponse save(@RequestBody JobSeekerRequest jobSeeker){
+    public JobSeekerResponse save(@RequestBody JobSeekerRequest jobSeeker) {
         return jobSeekerService.save(jobSeeker);
     }
-
 
 
     @PostMapping("/update/jobseeker/{id}")
@@ -106,7 +91,7 @@ public class JobSeekerController {
     }
 
     @GetMapping("/vacancies")
-    public List<Vacancy> getVacancies(){
+    public List<Vacancy> getVacancies() {
         return vacancyService.getAll();
     }
 
@@ -119,9 +104,6 @@ public class JobSeekerController {
     public void respondedForVacancy(@PathVariable Long vacancyId, @PathVariable Long jobSeekerId) {
         vacancyService.responded(vacancyId, jobSeekerId);
     }
-
-
-
 
 
 }

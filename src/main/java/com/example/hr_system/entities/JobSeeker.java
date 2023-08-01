@@ -31,7 +31,6 @@ public class JobSeeker {
 
 
     private LocalDate birthday;
-
     private String country;
     private String city;
     private String address;

@@ -1,0 +1,1 @@
+ALTER TABLE job_seeker_table DROP COLUMN notification;
