@@ -14,6 +14,7 @@ import java.time.LocalDate;
 public class RespondedResponse {
 
     private Long id;
+    private Integer respondedCount;
     private String firstname;
     private String lastname;
     private String position;

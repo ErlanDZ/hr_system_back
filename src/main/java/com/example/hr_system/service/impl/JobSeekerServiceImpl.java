@@ -12,17 +12,14 @@ import com.example.hr_system.enums.Role;
 import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.mapper.JobSeekerMapper;
 import com.example.hr_system.repository.*;
-import com.example.hr_system.service.EmployerService;
 import com.example.hr_system.service.FileDataService;
 import com.example.hr_system.service.JobSeekerService;
-import com.example.hr_system.service.StorageService;
 import lombok.AllArgsConstructor;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,14 +30,13 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class JobSeekerServiceImpl implements JobSeekerService {
-    private final StorageRepository storageRepository;
     private final JobSeekerMapper jobSeekerMapper;
     private final JobSeekerRepository jobSeekerRepository;
     private final VacancyRepository vacancyRepository;
-    private final StorageService storageService;
     private final PositionRepository positionRepository;
     private final FileDataService fileDataService;
     private final UserRepository userRepository;
+    private final FileRepository fileRepository;
     private final FileMapper fileMapper;
 
     @Override
@@ -51,7 +47,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
 
             if (jobSeeker.getResume() != null) {
                 FileData fileData = jobSeeker.getResume();
-                jobSeeker.setResume(fileData);
+                jobSeeker.setResume(null);
                 FileData save = fileDataService.uploadFile(file, fileData);
                 jobSeeker.setResume(save);
                 jobSeekerRepository.save(jobSeeker);
@@ -87,7 +83,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         jobSeeker1.setEmail(jobSeeker.getEmail());
         jobSeeker1.setPassword(jobSeeker.getPassword());
         jobSeeker1.setRole(Role.JOB_SEEKER);
-        jobSeekerRepository.save(jobSeeker1);
+        //jobSeekerRepository.save(jobSeeker1);
 
         return new JobSeekerResponse(jobSeeker1.getId(), jobSeeker1.getFirstname(), jobSeeker1.getLastname(), jobSeeker1.getRole());
     }
@@ -99,9 +95,9 @@ public class JobSeekerServiceImpl implements JobSeekerService {
 
         JobSeeker jobSeeker1 = jobSeekerRepository.findById(id).orElseThrow(() -> new RuntimeException("user can be null"));
         System.out.println(jobSeeker.toString());
-        jobSeeker1.setImage(
-                jobSeeker.getImageId() == null ? null :
-                        storageRepository.findById(jobSeeker.getImageId()).orElseThrow());
+        jobSeeker1.setResume(
+                jobSeeker.getResumeId() == null ? null :
+                        fileRepository.findById(jobSeeker.getResumeId()).get());
         jobSeeker1.setFirstname(jobSeeker.getFirstname());
         jobSeeker1.setLastname(jobSeeker.getLastname());
         jobSeeker1.setBirthday(jobSeeker.getBirthday());
@@ -126,8 +122,8 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         jobSeekerRepository.save(jobSeeker1);
 
         return new JobSeekerResponses(jobSeeker1.getId(),
-                jobSeeker1.getImage() == null ? null :
-                        jobSeeker1.getImage().getId(),
+                jobSeeker1.getResume() == null ? null :
+                        jobSeeker1.getResume().getId(),
                 jobSeeker1.getFirstname(),
                 jobSeeker1.getLastname(),
                 jobSeeker1.getAbout(),
@@ -164,26 +160,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         vacancyRepository.save(vacancy);
     }
 
-    @Override
-    public Response uploadImage(MultipartFile file, Long id) throws IOException {
-        JobSeeker jobSeeker = getById(id);
-        if (jobSeeker.getImage() != null) {
-            ImageData image = jobSeeker.getImage();
-            System.out.println(jobSeeker.getImage().getId() + "1q1\n\n\n");
-            jobSeeker.setImage(null);
-            ImageData save = storageService.uploadImage(file, image);
-            jobSeeker.setImage(save);
-            System.out.println(jobSeeker.getImage().getId() + "2q2\n\n\n");
 
-            jobSeekerRepository.save(jobSeeker);
-        } else {
-            ImageData image = storageService.uploadImage(file);
-            jobSeeker.setImage(image);
-            jobSeekerRepository.save(jobSeeker);
-        }
-
-        return null;
-    }
 
     @Override
     public List<JobSeeker> filterJobSeekers(
@@ -218,12 +195,5 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         );
     }
 
-    @Override
-    public void saveImage(MultipartFile multipartFile) throws IOException {
-        String folder = "/Users/bambook/Desktop/hr_system_back/src/main/resources/templates/folder/";
-        byte[] bytes = multipartFile.getBytes();
-        Path path = Paths.get(folder + multipartFile.getOriginalFilename());
-        Files.write(path, bytes);
 
-    }
 }

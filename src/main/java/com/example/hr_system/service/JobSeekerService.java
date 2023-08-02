@@ -31,7 +31,6 @@ public interface JobSeekerService {
     JobSeeker getById(Long id);
     void responseForVacancy(Long vacancyId);
 
-    Response uploadImage(MultipartFile file,Long id) throws IOException;
 
     List<JobSeeker> filterJobSeekers(
             Position position,
@@ -45,5 +44,4 @@ public interface JobSeekerService {
             String lastname
     );
 
-    void saveImage(MultipartFile multipartFile) throws IOException;
 }

@@ -6,18 +6,16 @@ import com.example.hr_system.dto.employer.EmployerResponse;
 import com.example.hr_system.dto.employer.EmployerResponses;
 import com.example.hr_system.dto.SimpleResponse;
 import com.example.hr_system.dto.file.FileResponse;
-import com.example.hr_system.dto.image.Response;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
-import com.example.hr_system.entities.Employer;
-import com.example.hr_system.entities.ImageData;
-import com.example.hr_system.entities.JobSeeker;
+import com.example.hr_system.entities.*;
+import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.repository.EmployerRepository;
 import com.example.hr_system.repository.JobSeekerRepository;
-import com.example.hr_system.repository.StorageRepository;
+import com.example.hr_system.repository.UserRepository;
 import com.example.hr_system.service.EmployerService;
 import com.example.hr_system.mapper.EmployerMapper;
 
-import com.example.hr_system.service.StorageService;
+import com.example.hr_system.service.FileDataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,8 +33,9 @@ public class EmployerServiceImpl implements EmployerService {
     private final EmployerRepository employerRepository;
     private final JobSeekerRepository jobSeekerRepository;
     private final EmployerMapper employerMapper;
-    private final StorageService storageService;
-    private final StorageRepository storageRepository;
+    private final UserRepository userRepository;
+    private final FileDataService fileDataService;
+    private final FileMapper fileMapper;
 
 
     @Override
@@ -95,10 +94,10 @@ public class EmployerServiceImpl implements EmployerService {
             return null;
         }
         CandidateResponses candidateResponses = new CandidateResponses();
-        if (jobSeeker.getImage()==(null)){
+        if (jobSeeker.getResume()==(null)){
         }
         else {
-            candidateResponses.setImageId(jobSeeker.getImage().getId());
+            candidateResponses.setImageId(jobSeeker.getResume().getId());
 
         }
         candidateResponses.setCandidateId(jobSeeker.getId());
@@ -116,17 +115,7 @@ public class EmployerServiceImpl implements EmployerService {
         return candidateResponses;
     }
 
-    @Override
-    public Response imageToResponse(ImageData image) {
-        Response response = new Response();
-        response.setId(image.getId());
-        response.setName(image.getName());
-        response.setType(image.getType());
-        response.setImageData(image.getImageData());
-       // response.setJobSeekerId(image.getJobSeeker().getId());
 
-        return response;
-    }
 
     public List<CandidateResponses> candidateToDTOs(List<JobSeeker>jobSeekers, Long employerId){
         Employer employer = employerRepository.findById(employerId).orElseThrow(()-> new NotFoundException("njsd"));
@@ -201,45 +190,34 @@ public class EmployerServiceImpl implements EmployerService {
     }
 
 
-    @Override
-    public ImageData responseToImage(Response image) {
-        ImageData imageData = new ImageData();
-       // image.getId();
-        System.out.println("dd");
-        storageRepository.findById(image.getId());
-        System.out.println("dds");
-//        imageData.setJobSeeker().orElseThrow(()->
-//                new NotFoundException("job seeker not found!")));
-////        imageData.getJobSeeker().setId(image.getJobSeekerId());
-        imageData.setImageData(imageData.getImageData());
-        imageData.setName(image.getName());
-        imageData.setId(image.getId());
-        imageData.setType(image.getType());
-        return imageData;
-    }
 
-    @Override
-    public Response uploadImage(MultipartFile file, Long id) throws IOException {
-        Employer employer = employerRepository.findById(id).orElseThrow(()-> new NotFoundException("employer not found!"));
-        if (employer.getImage() != null) {
-            ImageData image = employer.getImage();
-            employer.setImage(null);
-            ImageData save = storageService.uploadImage(file, image);
-            employer.setImage(save);
-            employerRepository.save(employer);
-        } else {
-            ImageData image = storageService.uploadImage(file);
-            employer.setImage(image);
-            employerRepository.save(employer);
-        }
 
-        return null;
-    }
 
     @Override
     public List<CandidateResponses> filter(String position, String education, String country, String city, String experience) {
 
         return null;
+    }
+
+    @Override
+    public FileResponse uploadResume(MultipartFile file, Long id) throws IOException {
+        User user = userRepository.findById(id).orElseThrow(() ->
+                new NotFoundException("user not found!" + id));
+        Employer employer = user.getEmployer();
+
+        if (employer.getResume() != null) {
+            FileData fileData = employer.getResume();
+            employer.setResume(null);
+            FileData save = fileDataService.uploadFile(file, fileData);
+            employer.setResume(save);
+            employerRepository.save(employer);
+            return fileMapper.toDto(save);
+        } else {
+            FileData fileData=fileDataService.uploadFile(file);
+            employer.setResume(fileData);
+            employerRepository.save(employer);
+            return fileMapper.toDto(fileData);
+        }
     }
 
 

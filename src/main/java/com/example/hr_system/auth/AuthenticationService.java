@@ -118,14 +118,15 @@ public class AuthenticationService {
         }
 
 //    JobSeeker jobSeeker=new JobSeeker();
-        JobSeekerRequest jobSeekerRequest = new JobSeekerRequest();
-        jobSeekerRequest.setEmail(request.getEmail());
-        jobSeekerRequest.setFirstname(request.getFirstname());
-        jobSeekerRequest.setLastname(request.getLastname());
-        jobSeekerRequest.setPassword(passwordEncoder.encode(request.getPassword()));
-        jobSeekerService.save(jobSeekerRequest);
+        JobSeeker jobSeeker = new JobSeeker();
+        jobSeeker.setEmail(request.getEmail());
+        jobSeeker.setFirstname(request.getFirstname());
+        jobSeeker.setLastname(request.getLastname());
+        jobSeeker.setPassword(passwordEncoder.encode(request.getPassword()));
+        jobSeeker.setRole(Role.JOB_SEEKER);
+       // jobSeekerService.save(jobSeekerRequest);
         var user = User.builder()
-                .jobSeeker(jobSeekerMapper.toEntity(jobSeekerRequest))
+                .jobSeeker(jobSeeker)
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())

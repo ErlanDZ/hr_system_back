@@ -52,8 +52,7 @@ public class JobSeeker {
     private String working_place;
     private String firstname;
     private String lastname;
-    @OneToOne(cascade = CascadeType.ALL)
-    private ImageData image;
+
     private String email;
     private String password;
 
@@ -64,6 +63,7 @@ public class JobSeeker {
 
     @OneToOne(cascade = CascadeType.ALL)
     private FileData resume;
+
     @Enumerated(EnumType.STRING)
     @Column(name="rol")
     private Role role;
@@ -78,12 +78,4 @@ public class JobSeeker {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.DETACH})
     private Experience experience;
 
-
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobSeeker")
-//    private List<Resume> resumeList;
-
-//
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobSeeker")
-//    private List<Resume> resumeList;
 }

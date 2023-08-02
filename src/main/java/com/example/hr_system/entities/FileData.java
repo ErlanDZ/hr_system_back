@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 //import javax.persistence.*;
 
 @Entity
-@Table(name = "ImageData")
+@Table(name = "file_data")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,6 +27,11 @@ public class FileData {
 
     @OneToOne(mappedBy = "resume")
     private JobSeeker jobSeeker;
+
+    @OneToOne(mappedBy = "resume")
+    private Employer employer;
+    @OneToOne(mappedBy = "resume")
+    private Vacancy vacancy;
 
     @Column(name = "path")
     private String path;

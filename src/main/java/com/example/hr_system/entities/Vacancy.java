@@ -42,5 +42,5 @@ public class Vacancy {
     private List<JobSeeker> jobSeeker;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private ImageData image;
+    private FileData resume;
 }

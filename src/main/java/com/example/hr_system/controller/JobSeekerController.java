@@ -1,34 +1,25 @@
 package com.example.hr_system.controller;
 
-import com.amazonaws.HttpMethod;
 import com.example.hr_system.dto.jobSeeker.*;
-import com.example.hr_system.entities.ImageData;
-import com.example.hr_system.entities.JobSeeker;
-import com.example.hr_system.entities.User;
 import com.example.hr_system.entities.Vacancy;
 import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.repository.FileRepository;
-import com.example.hr_system.repository.StorageRepository;
 import com.example.hr_system.repository.UserRepository;
 import com.example.hr_system.service.FileDataService;
 import com.example.hr_system.service.JobSeekerService;
-import com.example.hr_system.service.StorageService;
 import com.example.hr_system.service.VacancyService;
 import com.example.hr_system.service.impl.FileDataServiceImpl;
 import com.example.hr_system.service.impl.JobSeekerServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("job_seeker/")
@@ -40,7 +31,6 @@ public class JobSeekerController {
     private final JobSeekerServiceImpl jobSeekerServiceImpl;
     private final FileDataService service;
     private final VacancyService vacancyService;
-    private final StorageRepository storageRepository;
     private final FileMapper fileMapper;
     private final FileRepository fileRepository;
     private final UserRepository userRepository;
@@ -64,13 +54,10 @@ public class JobSeekerController {
     }
 
     @GetMapping("/resume/{id}")
-    public String downloadFile(@PathVariable Long id, HttpServletResponse http) throws IOException {
+    public void downloadFile(@PathVariable Long id, HttpServletResponse http) throws IOException {
         service.downloadFile(id, http);
         http.getOutputStream();
         http.flushBuffer();
-        return fileRepository.findById(id).get().getPath();
-
-
     }
 
 
@@ -95,10 +82,7 @@ public class JobSeekerController {
         return vacancyService.getAll();
     }
 
-    @GetMapping("/list/responded/{vacancyId}")
-    public List<RespondedResponse> responded(@PathVariable Long vacancyId) {
-        return vacancyService.listForResponded(vacancyId);
-    }
+
 
     @PutMapping("/responded/{vacancyId}/{jobSeekerId}")
     public void respondedForVacancy(@PathVariable Long vacancyId, @PathVariable Long jobSeekerId) {

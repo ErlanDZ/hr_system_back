@@ -34,6 +34,8 @@ public class Employer {
 
 
 
+
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "employer")
     private User user;
 
@@ -46,7 +48,7 @@ public class Employer {
     private List<JobSeeker> favorites;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private ImageData image;
+    private FileData resume;
 
     public void addVacancy(Vacancy vacancy) {
         if (vacancyList == null) {

@@ -1,13 +1,8 @@
 package com.example.hr_system.dto.jobSeeker;
 
-import com.example.hr_system.dto.image.Response;
-import com.example.hr_system.entities.ImageData;
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.enums.Month;
 import com.example.hr_system.enums.Role;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

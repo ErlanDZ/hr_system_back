@@ -3,6 +3,8 @@ package com.example.hr_system.mapper.impl;
 import com.example.hr_system.dto.employer.EmployerResponses;
 import com.example.hr_system.entities.Employer;
 import com.example.hr_system.mapper.EmployerMapper;
+import com.example.hr_system.mapper.FileMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.webjars.NotFoundException;
 
@@ -10,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class EmployerMapperImpl implements EmployerMapper {
+
+    private final FileMapper fileMapper;
     @Override
     public EmployerResponses toDto(Employer employer) {
         if (employer == null) {
@@ -20,9 +25,10 @@ public class EmployerMapperImpl implements EmployerMapper {
         if (employer.getId() != null) {
             employerResponses.setId(employer.getId());
         }
+        employerResponses.setFileResponse(
+                fileMapper.toDto(employer.getResume()));
         employerResponses.setId(employer.getId());
-        if (employer.getImage()!=null)
-            employerResponses.setImageId(employer.getImage().getId());
+
         employerResponses.setCompanyName(employer.getCompanyName());
         employerResponses.setAboutCompany(employer.getAboutCompany());
         employerResponses.setCountry(employer.getCountry());

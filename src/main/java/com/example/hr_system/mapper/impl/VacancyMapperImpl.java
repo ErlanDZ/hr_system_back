@@ -1,10 +1,14 @@
 package com.example.hr_system.mapper.impl;
 
+import com.example.hr_system.dto.salary.SalaryRequest;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
+import com.example.hr_system.entities.Salary;
 import com.example.hr_system.entities.Vacancy;
 import com.example.hr_system.mapper.*;
+import com.example.hr_system.repository.EmployerRepository;
 import com.example.hr_system.repository.PositionRepository;
+import com.example.hr_system.repository.VacancyRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,15 +22,17 @@ public class VacancyMapperImpl implements VacancyMapper {
     private SalaryMapper salaryMapper;
     private ContactInformationMapper contactInformationMapper;
     private final PositionRepository positionRepository;
+    private final EmployerRepository employerRepository;
+    private final VacancyRepository vacancyRepository;
 
     @Override
     public VacancyResponse toDto(Vacancy vacancy) {
         VacancyResponse vacancyResponse = new VacancyResponse();
+        //vacancyResponse.setExperience(vacancy.getE);
         vacancyResponse.setId(vacancy.getId());
         vacancyResponse.setName(vacancy.getName());
         vacancyResponse.setSkills(vacancy.getSkills());
         vacancyResponse.setDescription(vacancy.getDescription());
-        vacancyResponse.setContactInfo(vacancy.getContactInfo());
         vacancyResponse.setStatusOfVacancy(String.valueOf(vacancy.getStatusOfVacancy()));
 
         if (vacancy.getPosition() != null) {
@@ -57,12 +63,20 @@ public class VacancyMapperImpl implements VacancyMapper {
         vacancyResponse.setPositionResponse(vacancyRequest.getPositionRequest());
         vacancyResponse.setSalaryId(vacancyResponse.getSalaryId());
         vacancyResponse.setSkills(vacancyRequest.getSkills());
-        vacancyResponse.setStatusOfVacancy(vacancyRequest.getStatusOfVacancy());
         vacancyResponse.setContactInformationResponse(contactInformationMapper.requestToresponse(vacancyRequest.getContactInformationRequest()));
         vacancyResponse.setName(vacancyRequest.getName());
         vacancyResponse.setDescription(vacancyRequest.getDescription());
-        vacancyResponse.setContactInfo(vacancyRequest.getContactInfo());
         return vacancyResponse;
+    }
+
+    @Override
+    public Salary toEntity(SalaryRequest salaryRequest) {
+        Salary salary = new Salary();
+        salary.setSalary(salaryRequest.getSalary());
+        salary.setValute(salaryRequest.getValute());
+        salary.setTypeOfEmployment(salaryRequest.getTypeOfEmployment());
+        //salary.setVacancy(employerRepository.findById(employerId));
+        return null;
     }
 
 

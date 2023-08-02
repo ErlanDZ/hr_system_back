@@ -50,7 +50,9 @@ public class SecurityConfiguration {
                     "/employer/**",
                     "/vacancy/**",
                     "/api/v1/management/**",
-                    "/chatting/**"
+                    "/chatting/**",
+                    "/swagger-ui/**",
+                    "**/**"
             )
             .permitAll()
 
@@ -71,9 +73,7 @@ public class SecurityConfiguration {
 
             .anyRequest()
             .authenticated()
-            .and().oauth2Login()
             .and()
-
 
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

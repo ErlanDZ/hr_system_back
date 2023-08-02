@@ -7,7 +7,7 @@ import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
 import com.example.hr_system.dto.jobSeeker.RespondedResponse;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
-import com.example.hr_system.mapper.ImageMapper;
+import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.mapper.JobSeekerMapper;
 import com.example.hr_system.mapper.VacancyMapper;
 import lombok.AllArgsConstructor;
@@ -19,8 +19,8 @@ import java.util.List;
 @Component
 @AllArgsConstructor
 public class JobSeekerMapperImpl implements JobSeekerMapper {
-    private ImageMapper imageMapper;
     private VacancyMapper vacancyMapper;
+    private final FileMapper fileMapper;
 
     @Override
     public JobSeekerResponses toDto(JobSeeker jobSeeker) {
@@ -30,8 +30,8 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         JobSeekerResponses response = new JobSeekerResponses();
         response.setId(jobSeeker.getId());
 
-        if (jobSeeker.getImage() != null) {
-            response.setImageId(jobSeeker.getImage().getId());
+        if (jobSeeker.getResume() != null) {
+            response.setImageId(jobSeeker.getResume().getId());
         }
         response.setFirstname(jobSeeker.getFirstname());
         response.setLastname(jobSeeker.getLastname());
@@ -98,10 +98,10 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
     @Override
     public CandidateResponses convertToCandidateResponse(JobSeeker jobSeeker) {
         CandidateResponses candidateResponses = new CandidateResponses();
-        if (jobSeeker.getImage()==(null)){
+        if (jobSeeker.getResume()==(null)){
 
         }else {
-            candidateResponses.setImageId(jobSeeker.getImage().getId());
+            candidateResponses.setImageId(jobSeeker.getResume().getId());
 
         }
         candidateResponses.setFirstname(jobSeeker.getFirstname());
@@ -133,9 +133,16 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         respondedResponses.setId(jobSeeker.getId());
         respondedResponses.setFirstname(jobSeeker.getFirstname());
         respondedResponses.setLastname(jobSeeker.getLastname());
-        respondedResponses.setPosition(jobSeeker.getPosition().getName());
-        respondedResponses.setCategory(jobSeeker.getPosition().getCategory().getName());
-        respondedResponses.setExperience(jobSeeker.getExperience().getName());
+        respondedResponses.setPosition(jobSeeker.getPosition()==null?null:
+                jobSeeker.getPosition()
+                .getName());
+        if (jobSeeker.getPosition()!=null){
+            respondedResponses.setCategory(jobSeeker.getPosition().getCategory()==null?null:
+                    jobSeeker.getPosition().getCategory().getName());
+        }
+
+        respondedResponses.setExperience(jobSeeker.getExperience()==null?null:
+                jobSeeker.getExperience().getName());
         respondedResponses.setCountry(jobSeeker.getCountry());
         respondedResponses.setCity(jobSeeker.getCity());
         respondedResponses.setStatusOfJobSeeker(jobSeeker.getStatusOfJobSeeker());

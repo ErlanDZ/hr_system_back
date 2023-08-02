@@ -15,6 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 
 public class SalaryMapperImpl implements SalaryMapper {
+
+
     @Override
     public SalaryResponse toDto(Salary salary) {
         if (salary == null) {

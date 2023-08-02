@@ -52,18 +52,28 @@ public class FileDataServiceImpl implements FileDataService {
     private String UPLOADED_FILES_FOLDER;
 
 
-
-
     @Override
     @Transactional
     public FileData uploadFile(MultipartFile file, FileData oldDocument) throws IOException {
         if (oldDocument != null) {
             deleteFile(oldDocument);
         }
-        FileData document = new FileData();
+        return save(file);
+    }
+
+    @Override
+    public FileData uploadFile(MultipartFile file) throws IOException {
+        return save(file);
+    }
+
+    private FileData save( MultipartFile file) {
+        FileData document=new FileData();
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
 
         // Normalize file name
-        String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        if (file.getOriginalFilename()!=null){
+            fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        }
 
         // Check if the file's name contains invalid characters
         if (fileName.contains("..")) {
@@ -82,19 +92,6 @@ public class FileDataServiceImpl implements FileDataService {
         return repository.save(document);
     }
 
-    @Override
-    public FileData uploadFile(MultipartFile file) throws IOException {
-
-        FileData fileData = repository.save(FileData.builder()
-                .name(file.getOriginalFilename())
-                .type(file.getContentType())
-                .fileData(file.getBytes())
-                .build());
-        System.out.println(fileData.getId() + "lddl2nd\n\n\n");
-
-
-        return repository.save(fileData);
-    }
     private void uploadFileToS3Bucket(MultipartFile file, String key) {
         try {
             ObjectMetadata metadata = new ObjectMetadata();
@@ -110,6 +107,7 @@ public class FileDataServiceImpl implements FileDataService {
             throw new RuntimeException(e);
         }
     }
+
     protected void deleteFile(FileData file) {
         try {
             String sourceKey = UPLOADED_FILES_FOLDER + file.getName();
@@ -122,6 +120,7 @@ public class FileDataServiceImpl implements FileDataService {
             e.printStackTrace();
         }
     }
+
     private String validateFileName(String fileName) {
         // Get file name without extension
         String fileNameWithoutExtension = fileName.substring(0, fileName.lastIndexOf("."));

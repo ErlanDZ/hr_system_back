@@ -2,24 +2,23 @@ package com.example.hr_system.controller;
 
 
 import com.example.hr_system.dto.JobSeekerVacanciesResponses;
+import com.example.hr_system.dto.category.CategoryResponse;
 import com.example.hr_system.dto.employer.EmployerRequests;
 import com.example.hr_system.dto.employer.EmployerResponses;
 import com.example.hr_system.dto.experience.ExperienceResponse;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
+import com.example.hr_system.dto.jobSeeker.RespondedResponse;
 import com.example.hr_system.dto.position.CandidateResponse;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.*;
 import com.example.hr_system.enums.Education;
-import com.example.hr_system.mapper.ExperienceMapper;
-import com.example.hr_system.mapper.JobSeekerMapper;
-import com.example.hr_system.mapper.PositionMapper;
-import com.example.hr_system.mapper.VacancyMapper;
+import com.example.hr_system.enums.TypeOfEmployment;
+import com.example.hr_system.mapper.*;
 import com.example.hr_system.repository.*;
 import com.example.hr_system.service.EmployerService;
 import com.example.hr_system.service.JobSeekerService;
-import com.example.hr_system.service.StorageService;
 import com.example.hr_system.service.VacancyService;
 import com.example.hr_system.service.emailSender.EmailSenderService;
 import jakarta.mail.MessagingException;
@@ -31,8 +30,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -42,11 +39,11 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class EmployerController {
     private final EmployerService employerService;
+    private final CategoryMapper categoryMapper;
+    private final CategoryRepository categoryRepository;
     private final VacancyService vacancyService;
     private final JobSeekerService jobSeekerService;
     private final FileRepository fileRepository;
-    private final StorageService service;
-    private final StorageRepository storageRepository;
     private final PositionRepository positionRepository;
     private final PositionMapper positionMapper;
     private final JobSeekerRepository jobSeekerRepository;
@@ -102,21 +99,15 @@ public class EmployerController {
         Long employerId = user.getEmployer().getId();
         return employerService.update(employerId, employerRequests);
     }
-    @PostMapping("resume/upload/{id}")
-    public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file,@PathVariable Long id) throws IOException {
 
-        // User user = userRepository.findById(id);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(jobSeekerService.uploadResume(file,id));
-    }
-    @GetMapping("/resume/{id}")
-    public ResponseEntity<?> downloadFile(@PathVariable Long id){
-        System.out.println("asghjd");
-        return service.downloadFile(id);
-    }
     @GetMapping("/positions")
     public List<CandidateResponse> positions(){
         return positionMapper.listCandidatePositionToDto(positionRepository.findAll());
+    }
+
+    @GetMapping("/categories")
+    List<CategoryResponse> getAllCategories(){
+        return categoryMapper.toDtos(categoryRepository.findAll());
     }
     @GetMapping("/educations")
     public Education[] education(){
@@ -219,30 +210,7 @@ public class EmployerController {
 
 
 
-    @PostMapping("/image/upload/{userId}")
-    public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile file, @PathVariable Long userId) throws IOException {
-        User user = userRepository.findById(userId).orElseThrow(()->
-                new NotFoundException("User not found!"+userId));
-        Long employerId = user.getEmployer().getId();
 
-
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(employerService.uploadImage(file,employerId));
-    }
-
-    @GetMapping("/image/{imageId}")
-    public ResponseEntity<?> downloadImage(@PathVariable Long imageId){
-        System.out.println("asghjd");
-        return service.downloadImage(imageId);
-    }
-    @GetMapping("/image/get/{imageId}")
-    public byte[] jj (@PathVariable Long imageId){
-        System.out.println("asghjd");
-        return storageRepository.findById(imageId).get().getImageData();
-
-
-    }
-    /// FROM VACANCY CONTROLLER
 
 
 
@@ -276,6 +244,8 @@ public class EmployerController {
         return vacancyService.searchVacancy(search);
     }
 
+
+
     @GetMapping("/vacancy/filter")
     public List<JobSeekerVacanciesResponses> filter(@RequestParam(required = false) String category, @RequestParam(required = false) String position, @RequestParam(required = false)String country,
                                                     @RequestParam(required = false)String city, @RequestParam(required = false) Experience experience){
@@ -294,4 +264,25 @@ public class EmployerController {
         Long jobSeekerId = user.getJobSeeker().getId();
         vacancyService.setStatusOfJobSeeker(vacancyId,jobSeekerId,status);
     }
+
+    @GetMapping("/list/responded/{vacancyId}")
+    public List<RespondedResponse> responded(@PathVariable Long vacancyId) {
+        return vacancyService.listForResponded(vacancyId);
+    }
+    @GetMapping("/typeofEmployments")
+    public TypeOfEmployment[] responseEntity(){
+        return TypeOfEmployment.values();
+    }
+
+
+
+    // IMAGE AND FILE UPLOAD
+
+    @PostMapping("resume/upload/{employerId}")
+    public ResponseEntity<?> uploadResume(@RequestBody MultipartFile file, @PathVariable Long employerId) throws IOException {
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(employerService.uploadResume(file, employerId));
+    }
+
 }

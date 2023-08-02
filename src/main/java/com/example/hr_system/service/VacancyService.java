@@ -47,7 +47,7 @@ public interface VacancyService {
 
     Response uploadImage(MultipartFile file, Long id) throws IOException;
 
-    void responded(Long vacancyId, Long jobSeekerId);
+    VacancyResponse responded(Long vacancyId, Long jobSeekerId);
 
     void setStatusOfJobSeeker(Long vacancyId, Long jobSeekerId, String status);
 
