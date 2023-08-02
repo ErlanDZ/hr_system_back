@@ -4,7 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="" />
+    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d2df3982-047d-4643-bd5f-691b006a3bd4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d2df3982-047d-4643-bd5f-691b006a3bd4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/auth/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/auth/AuthenticationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/config/GoogleCloudConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/EmployerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/EmployerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/JobSeekerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/JobSeekerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/employer/EmployerRequests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/employer/EmployerRequests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/jobSeeker/CandidateResponses.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/jobSeeker/CandidateResponses.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/JobSeeker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/JobSeeker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/JobSeekerMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/JobSeekerMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/EmployerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/EmployerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/FileDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/FileDataService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/JobSeekerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/JobSeekerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/EmployerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/EmployerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/FileDataServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/FileDataServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/JobSeekerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/JobSeekerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V0__create_token_seq.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V10__create_table_position.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V11__create_table_salaries.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V12__create_table_token.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V13__create_table_users_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V14__create_table_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V15__create_table_vacancies_job_seekers.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V16__alter_table_categories_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V17__alter_table_employer.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V18__alter_table_employer_favorites.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V19__alter_table_job_seeker_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V1__create_table_categories.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V20__alter_table_job_seeker_table_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V21__alter_table_position_categories.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V22__alter_table_token_users_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V23__alter_table_users_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V24__alter_table_vacancies_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V25__alter_table_vacancies_job_seekers.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V26__insert_into_categories.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V27__insert_into_position.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V28__insert_into_experience.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V2__create_table_categories_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V3__create_table_contact_information.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V4__create_table_employer.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V5__create_table_employer_favorites.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V6__create_table_experience.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V7__create_table_image_data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V8__create_table_job_seeker_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migrations/V9__create_table_job_seeker_table_vacancies.sql" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +138,8 @@
       <workItem from="1690775530307" duration="7644000" />
       <workItem from="1690861273621" duration="29000" />
       <workItem from="1690861321024" duration="4105000" />
-      <workItem from="1690889217602" duration="383000" />
+      <workItem from="1690889217602" duration="1477000" />
+      <workItem from="1690948081697" duration="1326000" />
     </task>
     <servers />
   </component>
