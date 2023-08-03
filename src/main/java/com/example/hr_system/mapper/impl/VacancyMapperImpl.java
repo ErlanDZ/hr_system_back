@@ -10,9 +10,15 @@ import com.example.hr_system.repository.EmployerRepository;
 import com.example.hr_system.repository.PositionRepository;
 import com.example.hr_system.repository.VacancyRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -24,26 +30,31 @@ public class VacancyMapperImpl implements VacancyMapper {
     private final PositionRepository positionRepository;
     private final EmployerRepository employerRepository;
     private final VacancyRepository vacancyRepository;
+//      private TypeOfEmployment typeOfEmployment;
+//
+//    private Double salary;
+//
+//    private Valute valute;
 
     @Override
     public VacancyResponse toDto(Vacancy vacancy) {
         VacancyResponse vacancyResponse = new VacancyResponse();
         //vacancyResponse.setExperience(vacancy.getE);
         vacancyResponse.setId(vacancy.getId());
-        vacancyResponse.setName(vacancy.getName());
-        vacancyResponse.setSkills(vacancy.getSkills());
+        vacancyResponse.setAbout_company(vacancy.getAbout_company());
+        vacancyResponse.setPosition(vacancy.getPosition()!=null?
+                vacancy.getPosition().getName():
+                null);
+        vacancyResponse.setIndustry(vacancy.getIndustry());
         vacancyResponse.setDescription(vacancy.getDescription());
-        vacancyResponse.setStatusOfVacancy(String.valueOf(vacancy.getStatusOfVacancy()));
-
-        if (vacancy.getPosition() != null) {
-            vacancyResponse.setPositionResponse(vacancy.getPosition().getName());
-        }
-        if (vacancy.getSalary() != null) {
-            vacancyResponse.setSalaryId(vacancy.getSalary().getId());
-        }
-        if (vacancy.getContactInformation() != null) {
-            vacancyResponse.setContactInformationResponse(contactInformationMapper.toDto(vacancy.getContactInformation()));
-        }
+        vacancyResponse.setSkills(vacancy.getSkills());
+        vacancyResponse.setSalaryResponse(salaryMapper.toDto(vacancy.getSalary()));
+        vacancyResponse.setTypeOfEmploymentS(vacancy.getTypeOfEmploymentS());
+        vacancyResponse.setExperience(vacancy.getExperience());
+        vacancyResponse.setContactInformationResponse(contactInformationMapper.toDto(vacancy.getContactInformation()));
+        vacancyResponse.setAdditionalInformation(vacancy.getAdditionalInformation());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        vacancyResponse.setDate(timeStamp);
         return vacancyResponse;
     }
 
@@ -60,12 +71,24 @@ public class VacancyMapperImpl implements VacancyMapper {
     @Override
     public VacancyResponse requestToResponse(VacancyRequest vacancyRequest) {
         VacancyResponse vacancyResponse = new VacancyResponse();
-        vacancyResponse.setPositionResponse(vacancyRequest.getPositionRequest());
-        vacancyResponse.setSalaryId(vacancyResponse.getSalaryId());
-        vacancyResponse.setSkills(vacancyRequest.getSkills());
-        vacancyResponse.setContactInformationResponse(contactInformationMapper.requestToresponse(vacancyRequest.getContactInformationRequest()));
-        vacancyResponse.setName(vacancyRequest.getName());
+        vacancyResponse.setAbout_company(vacancyRequest.getAbout_company());
+        vacancyResponse.setPosition(vacancyRequest.getPosition());
+        vacancyResponse.setIndustry(vacancyRequest.getIndustry());
         vacancyResponse.setDescription(vacancyRequest.getDescription());
+        vacancyResponse.setSkills(vacancyRequest.getSkills());
+        vacancyResponse.setSalaryResponse(salaryMapper.toDto(salaryMapper.toEntity(vacancyRequest.getSalaryRequest())));
+        vacancyResponse.setTypeOfEmploymentS(vacancyRequest.getTypeOfEmploymentS());
+        vacancyResponse.setExperience(vacancyRequest.getExperience());
+        vacancyResponse.setContactInformationResponse(contactInformationMapper.requestToresponse(vacancyRequest.getContactInformationRequest()));
+        vacancyResponse.setAdditionalInformation(vacancyRequest.getAdditionalInformation());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        vacancyResponse.setDate(timeStamp);
+//        vacancyResponse.setPositionResponse(vacancyRequest.getPositionRequest());
+//        vacancyResponse.setSalaryId(vacancyResponse.getSalaryId());
+//        vacancyResponse.setSkills(vacancyRequest.getSkills());
+//        vacancyResponse.setContactInformationResponse(contactInformationMapper.requestToresponse(vacancyRequest.getContactInformationRequest()));
+//        vacancyResponse.setName(vacancyRequest.getName());
+//        vacancyResponse.setDescription(vacancyRequest.getDescription());
         return vacancyResponse;
     }
 

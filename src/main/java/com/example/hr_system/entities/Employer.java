@@ -50,12 +50,7 @@ public class Employer {
     @OneToOne(cascade = CascadeType.ALL)
     private FileData resume;
 
-    public void addVacancy(Vacancy vacancy) {
-        if (vacancyList == null) {
-            vacancyList = new ArrayList<>();
-        }
-        vacancyList.add(vacancy);
-    }
+
 //sekflm
 
 

@@ -73,7 +73,7 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         }
         JobSeekerVacanciesResponses vacanciesResponses = new JobSeekerVacanciesResponses();
         vacanciesResponses.setId(vacancy.getId());
-        vacanciesResponses.setOwnerName(vacancy.getName());
+        vacanciesResponses.setOwnerName(vacancy.getAbout_company());
         vacanciesResponses.setVacancyResponse(vacancyMapper.toDto(vacancy));
         return null;
     }
@@ -127,6 +127,7 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
     @Override
     public RespondedResponse toDtoForResponded(JobSeeker jobSeeker) {
         if (jobSeeker == null) {
+            System.out.println("its null\n\n\n");
             return null;
         }
         RespondedResponse respondedResponses = new RespondedResponse();

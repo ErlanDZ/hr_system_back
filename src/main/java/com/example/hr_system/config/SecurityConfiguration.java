@@ -51,8 +51,7 @@ public class SecurityConfiguration {
                     "/vacancy/**",
                     "/api/v1/management/**",
                     "/chatting/**",
-                    "/swagger-ui/**",
-                    "**/**"
+                    "/swagger-ui/**"
             )
             .permitAll()
 

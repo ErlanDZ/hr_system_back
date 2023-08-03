@@ -14,6 +14,7 @@ import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.*;
 import com.example.hr_system.enums.Education;
+import com.example.hr_system.enums.StatusOfVacancy;
 import com.example.hr_system.enums.TypeOfEmployment;
 import com.example.hr_system.mapper.*;
 import com.example.hr_system.repository.*;
@@ -132,10 +133,7 @@ public class EmployerController {
 
 
 
-    @GetMapping("/experience")
-    public List<ExperienceResponse> experienceResponses(){
-        return experienceMapper.listExperienceResponseToDto(experienceRepository.findAll());
-    }
+
     @GetMapping("/candidate/{employerId}")
     public List<CandidateResponses> candidateResponses(@PathVariable Long employerId){
         User user = userRepository.findById(employerId).orElseThrow(()-> new NotFoundException("not found user"));
@@ -197,10 +195,7 @@ public class EmployerController {
     }
     @PostMapping("/vacancy/{employerId}")
     public VacancyResponse save(@PathVariable Long employerId,@RequestBody VacancyRequest vacancyRequest) {
-        User user = userRepository.findById(employerId).orElseThrow(()->
-                new NotFoundException("user not found! employerController"));
-        Long employerIdd = user.getEmployer().getId();
-        return vacancyService.saveVacancy(employerIdd, vacancyRequest);
+        return vacancyService.saveVacancy(employerId, vacancyRequest);
     }
     @GetMapping("/jobSeeker")
     public List<JobSeekerVacanciesResponses> getAllForJobSeeker() {
@@ -269,10 +264,27 @@ public class EmployerController {
     public List<RespondedResponse> responded(@PathVariable Long vacancyId) {
         return vacancyService.listForResponded(vacancyId);
     }
+
+
+    //    OPEN,
+    //    ARCHIVE,
+    //    CLOSED,
+    @GetMapping("/statusOfVacancy")
+    public StatusOfVacancy[] status(){
+        return StatusOfVacancy.values();
+    }
+
+    //    FULL,GIBRID,FIXED
     @GetMapping("/typeofEmployments")
     public TypeOfEmployment[] responseEntity(){
         return TypeOfEmployment.values();
     }
+
+    @GetMapping("/experience")
+    public List<ExperienceResponse> experienceResponses(){
+        return experienceMapper.listExperienceResponseToDto(experienceRepository.findAll());
+    }
+
 
 
 

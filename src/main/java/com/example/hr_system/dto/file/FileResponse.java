@@ -11,6 +11,7 @@ public class FileResponse {
     String type;
     byte[] fileData;
     Long jobSeekerId;
+    String path;
 
 
 }

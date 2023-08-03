@@ -13,13 +13,16 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VacancyRequest {
-    private String name;
+    private String about_company;
+    private String position;
+    private String industry;
     private String description;
     private String skills;
-    private String positionRequest;
     private SalaryRequest salaryRequest;
+    private String typeOfEmploymentS;
     private String experience;
-    private Date date;
     private ContactInformationRequest contactInformationRequest;
     private String additionalInformation;
+    private Date date;
+
 }

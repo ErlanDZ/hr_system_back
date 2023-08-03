@@ -5,84 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5490ebf6-24ea-4480-bbf5-9d4c68a94261.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5490ebf6-24ea-4480-bbf5-9d4c68a94261.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/d2df3982-047d-4643-bd5f-691b006a3bd4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d2df3982-047d-4643-bd5f-691b006a3bd4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d2df3982-047d-4643-bd5f-691b006a3bd4/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d2df3982-047d-4643-bd5f-691b006a3bd4/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/AuthenticationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/EmployerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/EmployerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/JobSeekerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/JobSeekerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/VacancyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/VacancyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/employer/EmployerResponses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/employer/EmployerResponses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerRequests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerRequests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerResponses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerResponses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/RespondedResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/RespondedResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/vacancy/VacancyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/vacancy/VacancyRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/vacancy/VacancyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/vacancy/VacancyResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Employer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Employer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/FileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/FileData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/ImageData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/JobSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/JobSeeker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Vacancy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Vacancy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/ImageMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/JobSeekerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/JobSeekerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/VacancyMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/VacancyMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/EmployerMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/EmployerMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/ImageMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/JobSeekerMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/JobSeekerMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/SalaryMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/SalaryMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/VacancyMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/VacancyMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/StorageRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/EmployerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/EmployerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/JobSeekerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/JobSeekerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/StorageService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/VacancyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/VacancyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/EmployerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/EmployerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/FileDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/FileDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/JobSeekerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/JobSeekerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/StorageServiceImp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/VacancyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/VacancyServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migrationd/V29__add_notification_column_to_table_joob_seeker.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migrationd/V30__alter_table_job_seeker_table_column_notification.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migrationd/V31__create_table_notification.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/auth/AuthenticationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/auth/AuthenticationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/auth/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/auth/AuthenticationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/config/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/config/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/EmployerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/EmployerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/JobSeekerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/JobSeekerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/VacancyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/controller/VacancyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/employer/EmployerResponses.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/employer/EmployerResponses.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/jobSeeker/JobSeekerResponses.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/jobSeeker/JobSeekerResponses.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/vacancy/VacancyRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/vacancy/VacancyRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/vacancy/VacancyResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/vacancy/VacancyResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/Employer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/Employer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/FileData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/FileData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/ImageData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/JobSeeker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/JobSeeker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/Vacancy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/entities/Vacancy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/ImageMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/VacancyMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/VacancyMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/EmployerMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/EmployerMapperImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/ImageMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/JobSeekerMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/JobSeekerMapperImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/SalaryMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/SalaryMapperImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/VacancyMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/mapper/impl/VacancyMapperImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/repository/StorageRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/EmployerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/EmployerService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/JobSeekerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/JobSeekerService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/StorageService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/VacancyService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/VacancyService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/EmployerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/EmployerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/FileDataServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/FileDataServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/JobSeekerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/JobSeekerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/StorageServiceImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/VacancyServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/service/impl/VacancyServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/migrationd/V29__add_notification_column_to_table_joob_seeker.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/migrationd/V30__alter_table_job_seeker_table_column_notification.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/migrationd/V31__create_table_notification.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +98,7 @@
       <workItem from="1690889217602" duration="1477000" />
       <workItem from="1690948081697" duration="1326000" />
       <workItem from="1690974996488" duration="368000" />
+      <workItem from="1691042259236" duration="598000" />
     </task>
     <servers />
   </component>

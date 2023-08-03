@@ -19,7 +19,7 @@ public class JobSeekerVacanciesResponsesMapperImpl implements JobSeekerVacancies
         JobSeekerVacanciesResponses jobSeekerVacanciesResponses = new JobSeekerVacanciesResponses();
         jobSeekerVacanciesResponses.setVacancyResponse(vacancyMapper.toDto(v));
         jobSeekerVacanciesResponses.setId(v.getId());
-        jobSeekerVacanciesResponses.setOwnerName(v.getName());
+        jobSeekerVacanciesResponses.setOwnerName(v.getAbout_company());
         return jobSeekerVacanciesResponses;
     }
 }
