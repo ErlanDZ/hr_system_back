@@ -7,10 +7,12 @@ import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.Experience;
 import com.example.hr_system.entities.Vacancy;
+import com.example.hr_system.enums.StatusOfJobSeeker;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -54,5 +56,8 @@ public interface VacancyService {
     void setStatusOfVacancy(Long id, String statusOfVacancy);
 
     List<RespondedResponse> listForResponded(Long vacancyId);
+
+    List<RespondedResponse> listForResponded(Long vacancyId
+            , String statusOfJobSeeker, String experience, String applicationDate);
 }
 

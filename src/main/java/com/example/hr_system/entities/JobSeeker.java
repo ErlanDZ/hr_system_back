@@ -36,6 +36,9 @@ public class JobSeeker {
     private String address;
     @Enumerated(EnumType.STRING)
     private StatusOfJobSeeker statusOfJobSeeker;
+    // Add this field to your JobSeeker entity
+    private LocalDate userApplicationDate;
+
 
     private String phoneNumber;
 

@@ -1,14 +1,11 @@
 package com.example.hr_system.service.impl;
 
 import com.example.hr_system.dto.file.FileResponse;
-import com.example.hr_system.dto.image.Response;
-import com.example.hr_system.dto.jobSeeker.JobSeekerRequest;
-import com.example.hr_system.dto.jobSeeker.JobSeekerRequests;
-import com.example.hr_system.dto.jobSeeker.JobSeekerResponse;
-import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
+import com.example.hr_system.dto.jobSeeker.*;
 import com.example.hr_system.entities.*;
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.enums.Role;
+import com.example.hr_system.enums.StatusOfJobSeeker;
 import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.mapper.JobSeekerMapper;
 import com.example.hr_system.repository.*;
@@ -21,9 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -194,6 +189,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
 
         );
     }
+
 
 
 }

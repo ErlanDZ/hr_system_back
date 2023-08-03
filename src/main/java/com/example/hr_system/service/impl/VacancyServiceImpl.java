@@ -15,7 +15,6 @@ import com.example.hr_system.service.VacancyService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -23,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -46,6 +46,7 @@ public class VacancyServiceImpl implements VacancyService {
     private final JobSeekerVacanciesResponsesMapper jobSeekerVacanciesResponsesMapper;
     private final ContactInformationServiceImpl contactInformationService;
     private final ContactInformationRepository contactInformationRepository;
+    private final ExperienceRepository experienceRepository;
 
     @Override
     public VacancyResponse saveVacancy(Long id, VacancyRequest vacancyRequest) {
@@ -280,5 +281,21 @@ public class VacancyServiceImpl implements VacancyService {
     public List<RespondedResponse> listForResponded(Long vacancyId) {
         Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new EntityNotFoundException("Vacancy not found"));
         return jobSeekerMapper.toDtosForListResponded(vacancy.getJobSeekers());
+    }
+    @Override
+    public List<RespondedResponse> listForResponded(
+            Long vacancyId, String statusOfJobSeeker,
+            String experience, String applicationDate) {
+        StatusOfJobSeeker statusOfJobSeeker1 = StatusOfJobSeeker.valueOf(statusOfJobSeeker);
+        Experience experience1 = experienceRepository.findByName(experience);
+        LocalDate localDate = applicationDate.length()<2?null:
+                LocalDate.parse(applicationDate);
+
+        List<JobSeeker> jobSeekers = (vacancyRepository.findById(vacancyId)).orElseThrow(() -> new EntityNotFoundException("Vacancy not found")).getJobSeekers();
+        List<JobSeeker> jobSeekers1= jobSeekerRepository.findByStatusOfJobSeekerAndExperienceAndUserApplicationDate(
+                statusOfJobSeeker1, experience1, localDate);
+        jobSeekers1.retainAll(jobSeekers);
+
+        return jobSeekerMapper.toDtosForListResponded(jobSeekers1);
     }
 }

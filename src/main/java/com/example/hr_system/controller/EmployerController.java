@@ -264,6 +264,15 @@ public class EmployerController {
     public List<RespondedResponse> responded(@PathVariable Long vacancyId) {
         return vacancyService.listForResponded(vacancyId);
     }
+    @GetMapping("/list/responded/filter/{vacancyId}")
+    public List<RespondedResponse> filter(@PathVariable Long vacancyId,@RequestParam String statusOfVacancy,String experience,
+                                          String localDate){
+        return vacancyService.listForResponded(vacancyId,statusOfVacancy,experience,localDate);
+    }
+
+
+
+
 
 
     //    OPEN,

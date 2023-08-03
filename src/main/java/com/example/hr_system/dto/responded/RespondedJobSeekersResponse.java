@@ -17,4 +17,6 @@ public class RespondedJobSeekersResponse {
     private String industry;
     private String experience;
     private String country_city;
+    private String application_date;
+    private String statusOfVacancy;
 }
