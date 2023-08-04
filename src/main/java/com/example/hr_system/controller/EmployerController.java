@@ -13,9 +13,7 @@ import com.example.hr_system.dto.position.CandidateResponse;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.*;
-import com.example.hr_system.enums.Education;
-import com.example.hr_system.enums.StatusOfVacancy;
-import com.example.hr_system.enums.TypeOfEmployment;
+import com.example.hr_system.enums.*;
 import com.example.hr_system.mapper.*;
 import com.example.hr_system.repository.*;
 import com.example.hr_system.service.EmployerService;
@@ -256,7 +254,9 @@ public class EmployerController {
     public void setStatusForJobSeeker(@PathVariable Long vacancyId,@PathVariable Long userId,@RequestParam(required = false) String status){
         User user = userRepository.findById(userId).orElseThrow(()->
                 new NotFoundException("user not found!"+userId));
-        Long jobSeekerId = user.getJobSeeker().getId();
+        Long jobSeekerId = user.getJobSeeker()==null? null:
+                user.getJobSeeker().getId();
+
         vacancyService.setStatusOfJobSeeker(vacancyId,jobSeekerId,status);
     }
 
@@ -292,6 +292,14 @@ public class EmployerController {
     @GetMapping("/experience")
     public List<ExperienceResponse> experienceResponses(){
         return experienceMapper.listExperienceResponseToDto(experienceRepository.findAll());
+    }
+    @GetMapping("/statusOfJobSeekerForVacancy")
+    public StatusOfJobSeeker[] statusOfJobSeekers(){
+        return StatusOfJobSeeker.values();
+    }
+    @GetMapping("/byApplicationDate")
+    public ApplicationDate[] applicationDates(){
+        return ApplicationDate.values();
     }
 
 

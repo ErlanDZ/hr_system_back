@@ -3,9 +3,17 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.49">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>25046</IntrospectionStateNumber>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+4||-9223372036854775808|c|G
+4||10|c|G
+4||10|C|G
+4||10|T|G</Grants>
+      <IntrospectionStateNumber>25952</IntrospectionStateNumber>
       <ServerVersion>15.3</ServerVersion>
-      <StartupTime>1690947997</StartupTime>
+      <StartupTime>1691042104</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -802,7 +810,7 @@ false Zulu
 13449||10|C|G
 13449||-9223372036854775808|U|G
 13449||10|U|G</Grants>
-      <IntrospectionStateNumber>25046</IntrospectionStateNumber>
+      <IntrospectionStateNumber>25952</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -826,14 +834,14 @@ false Zulu
       <ObjectId>25580</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
-    <role id="8" parent="1" name="pg_database_owner">
+    <role id="8" parent="1" name="pg_checkpoint">
+      <ObjectId>4544</ObjectId>
+    </role>
+    <role id="9" parent="1" name="pg_database_owner">
       <ObjectId>6171</ObjectId>
     </role>
-    <role id="9" parent="1" name="pg_read_all_data">
-      <ObjectId>6181</ObjectId>
-    </role>
-    <role id="10" parent="1" name="pg_write_all_data">
-      <ObjectId>6182</ObjectId>
+    <role id="10" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
     </role>
     <role id="11" parent="1" name="pg_monitor">
       <ObjectId>3373</ObjectId>
@@ -841,29 +849,29 @@ false Zulu
 3375
 3377</RoleGrants>
     </role>
-    <role id="12" parent="1" name="pg_read_all_settings">
+    <role id="12" parent="1" name="pg_read_all_data">
+      <ObjectId>6181</ObjectId>
+    </role>
+    <role id="13" parent="1" name="pg_read_all_settings">
       <ObjectId>3374</ObjectId>
     </role>
-    <role id="13" parent="1" name="pg_read_all_stats">
+    <role id="14" parent="1" name="pg_read_all_stats">
       <ObjectId>3375</ObjectId>
-    </role>
-    <role id="14" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
     </role>
     <role id="15" parent="1" name="pg_read_server_files">
       <ObjectId>4569</ObjectId>
     </role>
-    <role id="16" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="17" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="18" parent="1" name="pg_signal_backend">
+    <role id="16" parent="1" name="pg_signal_backend">
       <ObjectId>4200</ObjectId>
     </role>
-    <role id="19" parent="1" name="pg_checkpoint">
-      <ObjectId>4544</ObjectId>
+    <role id="17" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+    </role>
+    <role id="18" parent="1" name="pg_write_all_data">
+      <ObjectId>6182</ObjectId>
+    </role>
+    <role id="19" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
     </role>
     <role id="20" parent="1" name="postgres">
       <BypassRls>1</BypassRls>
@@ -4249,12 +4257,1418 @@ false Zulu
     <schema id="267" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>25046</IntrospectionStateNumber>
-      <IntrospectionTimestamp>2023-08-02.17:23:49.136</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-08-02.11:23:49</LocalIntrospectionTimestamp>
+      <IntrospectionStateNumber>25952</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2023-08-04.12:39:59.163</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-08-04.06:40:00</LocalIntrospectionTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>518</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
+    <sequence id="268" parent="267" name="categories_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70824</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25050</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="269" parent="267" name="contact_information_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70836</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25054</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="270" parent="267" name="employer_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70845</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25056</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="271" parent="267" name="experience_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70859</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25060</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="272" parent="267" name="image_data_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70866</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25062</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="273" parent="267" name="job_seeker_table_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70875</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25064</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="274" parent="267" name="position_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70895</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25068</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="275" parent="267" name="salaries_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70902</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25070</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="276" parent="267" name="token_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70823</ObjectId>
+      <SequenceIdentity>1(1)+50</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25048</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="277" parent="267" name="users_table_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70921</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25074</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="278" parent="267" name="vacancies_id_seq">
+      <DasType>bigint|0s</DasType>
+      <ObjectId>70935</ObjectId>
+      <SequenceIdentity>1(1)</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>25076</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="279" parent="267" name="categories">
+      <ObjectId>70825</ObjectId>
+      <StateNumber>25080</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="280" parent="267" name="categories_vacancies">
+      <ObjectId>70831</ObjectId>
+      <StateNumber>25080</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="281" parent="267" name="contact_information">
+      <ObjectId>70837</ObjectId>
+      <StateNumber>25096</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="282" parent="267" name="employer">
+      <ObjectId>70846</ObjectId>
+      <StateNumber>25082</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="283" parent="267" name="employer_favorites">
+      <ObjectId>70856</ObjectId>
+      <StateNumber>25084</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="284" parent="267" name="experience">
+      <ObjectId>70860</ObjectId>
+      <StateNumber>25086</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="285" parent="267" name="flyway_schema_history">
+      <ObjectId>70814</ObjectId>
+      <StateNumber>25047</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="286" parent="267" name="image_data">
+      <ObjectId>70867</ObjectId>
+      <StateNumber>25082</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="287" parent="267" name="job_seeker_table">
+      <ObjectId>70876</ObjectId>
+      <StateNumber>25084</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="288" parent="267" name="job_seeker_table_vacancies">
+      <ObjectId>70892</ObjectId>
+      <StateNumber>25088</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="289" parent="267" name="position">
+      <ObjectId>70896</ObjectId>
+      <StateNumber>25086</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="290" parent="267" name="salaries">
+      <ObjectId>70903</ObjectId>
+      <StateNumber>25096</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="291" parent="267" name="token">
+      <ObjectId>70911</ObjectId>
+      <StateNumber>25092</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="292" parent="267" name="users_table">
+      <ObjectId>70922</ObjectId>
+      <StateNumber>25092</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="293" parent="267" name="vacancies">
+      <ObjectId>70936</ObjectId>
+      <StateNumber>25080</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="294" parent="267" name="vacancies_job_seekers">
+      <ObjectId>70951</ObjectId>
+      <StateNumber>25098</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="295" parent="279" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;categories_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25050</StateNumber>
+      <SequenceId>70824</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="296" parent="279" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25050</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="297" parent="279" name="categories_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70829</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25050</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="298" parent="279" name="categories_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70830</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25050</StateNumber>
+      <UnderlyingIndexId>70829</UnderlyingIndexId>
+    </key>
+    <column id="299" parent="280" name="category_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25052</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="300" parent="280" name="vacancies_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>25052</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="301" parent="280" name="fke6ctc5s7k20pugqu4uf4evrqu">
+      <ColNames>category_id</ColNames>
+      <ObjectId>70959</ObjectId>
+      <StateNumber>25080</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70825</RefTableId>
+    </foreign-key>
+    <foreign-key id="302" parent="280" name="fkvvmk0brsaqyoek0abib74xic">
+      <ColNames>vacancies_id</ColNames>
+      <ObjectId>70954</ObjectId>
+      <StateNumber>25080</StateNumber>
+      <RefKeyColPositions>8</RefKeyColPositions>
+      <RefTableId>70936</RefTableId>
+    </foreign-key>
+    <index id="303" parent="280" name="categories_vacancies_vacancies_id_key">
+      <ColNames>vacancies_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70834</ObjectId>
+      <StateNumber>25052</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="304" parent="280" name="categories_vacancies_vacancies_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70835</ObjectId>
+      <StateNumber>25052</StateNumber>
+      <UnderlyingIndexId>70834</UnderlyingIndexId>
+    </key>
+    <column id="305" parent="281" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;contact_information_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25054</StateNumber>
+      <SequenceId>70836</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="306" parent="281" name="city">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25054</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="307" parent="281" name="country">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>25054</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="308" parent="281" name="street_house">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>25054</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="309" parent="281" name="contact_information_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70843</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25054</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="310" parent="281" name="contact_information_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70844</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25054</StateNumber>
+      <UnderlyingIndexId>70843</UnderlyingIndexId>
+    </key>
+    <column id="311" parent="282" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;employer_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25056</StateNumber>
+      <SequenceId>70845</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="312" parent="282" name="image_id">
+      <DasType>bigint|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="313" parent="282" name="about_company">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="314" parent="282" name="address">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="315" parent="282" name="city">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>5</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="316" parent="282" name="company_name">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="317" parent="282" name="country">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>7</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="318" parent="282" name="email">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>8</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="319" parent="282" name="password">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>9</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="320" parent="282" name="phone_number">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>10</Position>
+      <StateNumber>25056</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="321" parent="282" name="fk56gsgc6l5td3qihfhs4okje7b">
+      <ColNames>image_id</ColNames>
+      <ObjectId>70964</ObjectId>
+      <StateNumber>25082</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70867</RefTableId>
+    </foreign-key>
+    <index id="322" parent="282" name="employer_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70852</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25056</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="323" parent="282" name="employer_image_id_key">
+      <ColNames>image_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70854</ObjectId>
+      <StateNumber>25056</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="324" parent="282" name="employer_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70853</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25056</StateNumber>
+      <UnderlyingIndexId>70852</UnderlyingIndexId>
+    </key>
+    <key id="325" parent="282" name="employer_image_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70855</ObjectId>
+      <StateNumber>25056</StateNumber>
+      <UnderlyingIndexId>70854</UnderlyingIndexId>
+    </key>
+    <column id="326" parent="283" name="employers_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25058</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="327" parent="283" name="favorites_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>25058</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="328" parent="283" name="fkdo81iey0sh0ovscx5h5b4ef5c">
+      <ColNames>employers_id</ColNames>
+      <ObjectId>70974</ObjectId>
+      <StateNumber>25084</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70846</RefTableId>
+    </foreign-key>
+    <foreign-key id="329" parent="283" name="fk9dy3syjvkojvkex5gfvxrrqjk">
+      <ColNames>favorites_id</ColNames>
+      <ObjectId>70969</ObjectId>
+      <StateNumber>25084</StateNumber>
+      <RefKeyColPositions>8</RefKeyColPositions>
+      <RefTableId>70876</RefTableId>
+    </foreign-key>
+    <column id="330" parent="284" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;experience_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25060</StateNumber>
+      <SequenceId>70859</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="331" parent="284" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25060</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="332" parent="284" name="experience_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70864</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25060</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="333" parent="284" name="experience_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70865</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25060</StateNumber>
+      <UnderlyingIndexId>70864</UnderlyingIndexId>
+    </key>
+    <column id="334" parent="285" name="installed_rank">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="335" parent="285" name="version">
+      <DasType>varchar(50)|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="336" parent="285" name="description">
+      <DasType>varchar(200)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="337" parent="285" name="type">
+      <DasType>varchar(20)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="338" parent="285" name="script">
+      <DasType>varchar(1000)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="339" parent="285" name="checksum">
+      <DasType>integer|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="340" parent="285" name="installed_by">
+      <DasType>varchar(100)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="341" parent="285" name="installed_on">
+      <DasType>timestamp|0s</DasType>
+      <DefaultExpression>now()</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="342" parent="285" name="execution_time">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="343" parent="285" name="success">
+      <DasType>boolean|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+      <StateNumber>25047</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <index id="344" parent="285" name="flyway_schema_history_pk">
+      <ColNames>installed_rank</ColNames>
+      <ObjectId>70820</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25047</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="345" parent="285" name="flyway_schema_history_s_idx">
+      <ColNames>success</ColNames>
+      <ObjectId>70822</ObjectId>
+      <StateNumber>25047</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="346" parent="285" name="flyway_schema_history_pk">
+      <ObjectId>70821</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25047</StateNumber>
+      <UnderlyingIndexId>70820</UnderlyingIndexId>
+    </key>
+    <column id="347" parent="286" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;image_data_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25062</StateNumber>
+      <SequenceId>70866</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="348" parent="286" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25062</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="349" parent="286" name="path">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>25062</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="350" parent="286" name="type">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>25062</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="351" parent="286" name="image_data">
+      <DasType>bytea|0s</DasType>
+      <Position>5</Position>
+      <StateNumber>25062</StateNumber>
+      <TypeId>17</TypeId>
+    </column>
+    <index id="352" parent="286" name="image_data_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70873</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25062</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="353" parent="286" name="image_data_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70874</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25062</StateNumber>
+      <UnderlyingIndexId>70873</UnderlyingIndexId>
+    </key>
+    <check id="354" parent="287" name="job_seeker_table_education_check">
+      <ColNames>education</ColNames>
+      <ObjectId>70880</ObjectId>
+      <Predicate>(education &gt;= 0) AND (education &lt;= 5)</Predicate>
+      <StateNumber>25064</StateNumber>
+    </check>
+    <check id="355" parent="287" name="job_seeker_table_month_check">
+      <ColNames>month</ColNames>
+      <ObjectId>70881</ObjectId>
+      <Predicate>(month &gt;= 0) AND (month &lt;= 11)</Predicate>
+      <StateNumber>25064</StateNumber>
+    </check>
+    <check id="356" parent="287" name="job_seeker_table_rol_check">
+      <ColNames>rol</ColNames>
+      <ObjectId>70882</ObjectId>
+      <Predicate>(rol)::text = ANY ((ARRAY[&apos;ADMIN&apos;::character varying, &apos;JOB_SEEKER&apos;::character varying, &apos;EMPLOYER&apos;::character varying])::text[])</Predicate>
+      <StateNumber>25064</StateNumber>
+    </check>
+    <check id="357" parent="287" name="job_seeker_table_status_of_job_seeker_check">
+      <ColNames>status_of_job_seeker</ColNames>
+      <ObjectId>70883</ObjectId>
+      <Predicate>(status_of_job_seeker)::text = ANY ((ARRAY[&apos;ACCEPT&apos;::character varying, &apos;REJECT&apos;::character varying, &apos;CONSIDERED&apos;::character varying, &apos;AN_INTERVIEW&apos;::character varying, &apos;OFFER&apos;::character varying])::text[])</Predicate>
+      <StateNumber>25064</StateNumber>
+    </check>
+    <column id="358" parent="287" name="birthday">
+      <DasType>date|0s</DasType>
+      <Position>1</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="359" parent="287" name="education">
+      <DasType>smallint|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="360" parent="287" name="graduation_date">
+      <DasType>date|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="361" parent="287" name="month">
+      <DasType>smallint|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="362" parent="287" name="until_now">
+      <DasType>boolean|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="363" parent="287" name="year">
+      <DasType>date|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="364" parent="287" name="experience_id">
+      <DasType>bigint|0s</DasType>
+      <Position>7</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="365" parent="287" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;job_seeker_table_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+      <StateNumber>25064</StateNumber>
+      <SequenceId>70875</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="366" parent="287" name="image_id">
+      <DasType>bigint|0s</DasType>
+      <Position>9</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="367" parent="287" name="is_favorite">
+      <DasType>bigint|0s</DasType>
+      <Position>10</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="368" parent="287" name="position_id">
+      <DasType>bigint|0s</DasType>
+      <Position>11</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="369" parent="287" name="resume_id">
+      <DasType>bigint|0s</DasType>
+      <Position>12</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="370" parent="287" name="about">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>13</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="371" parent="287" name="address">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>14</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="372" parent="287" name="city">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>15</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="373" parent="287" name="country">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>16</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="374" parent="287" name="email">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>17</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="375" parent="287" name="firstname">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>18</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="376" parent="287" name="institution">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>19</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="377" parent="287" name="lastname">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>20</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="378" parent="287" name="password">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>21</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="379" parent="287" name="phone_number">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>22</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="380" parent="287" name="rol">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>23</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="381" parent="287" name="skills">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>24</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="382" parent="287" name="status_of_job_seeker">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>25</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="383" parent="287" name="working_place">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>26</Position>
+      <StateNumber>25064</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="384" parent="287" name="fkccskwyyx8lxlm7jitdw3n0mk4">
+      <ColNames>experience_id</ColNames>
+      <ObjectId>70979</ObjectId>
+      <StateNumber>25086</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70860</RefTableId>
+    </foreign-key>
+    <foreign-key id="385" parent="287" name="fk415ebajp45xbht0bf4ljn7f2r">
+      <ColNames>image_id</ColNames>
+      <ObjectId>70984</ObjectId>
+      <StateNumber>25086</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70867</RefTableId>
+    </foreign-key>
+    <foreign-key id="386" parent="287" name="fkjoo09mvqldikrn35lqau03eff">
+      <ColNames>position_id</ColNames>
+      <ObjectId>70989</ObjectId>
+      <StateNumber>25086</StateNumber>
+      <RefKeyColPositions>2</RefKeyColPositions>
+      <RefTableId>70896</RefTableId>
+    </foreign-key>
+    <foreign-key id="387" parent="287" name="fkgy49oihkbu3cse89jsacay09d">
+      <ColNames>resume_id</ColNames>
+      <ObjectId>70994</ObjectId>
+      <StateNumber>25086</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70867</RefTableId>
+    </foreign-key>
+    <index id="388" parent="287" name="job_seeker_table_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70886</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25064</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="389" parent="287" name="job_seeker_table_image_id_key">
+      <ColNames>image_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70888</ObjectId>
+      <StateNumber>25064</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="390" parent="287" name="job_seeker_table_resume_id_key">
+      <ColNames>resume_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70890</ObjectId>
+      <StateNumber>25064</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="391" parent="287" name="job_seeker_table_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70887</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25064</StateNumber>
+      <UnderlyingIndexId>70886</UnderlyingIndexId>
+    </key>
+    <key id="392" parent="287" name="job_seeker_table_image_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70889</ObjectId>
+      <StateNumber>25064</StateNumber>
+      <UnderlyingIndexId>70888</UnderlyingIndexId>
+    </key>
+    <key id="393" parent="287" name="job_seeker_table_resume_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70891</ObjectId>
+      <StateNumber>25064</StateNumber>
+      <UnderlyingIndexId>70890</UnderlyingIndexId>
+    </key>
+    <column id="394" parent="288" name="job_seeker_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25066</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="395" parent="288" name="vacancies_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>25066</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="396" parent="288" name="fk44lghaylk6s85kv7u62fk09tu">
+      <ColNames>job_seeker_id</ColNames>
+      <ObjectId>71004</ObjectId>
+      <StateNumber>25088</StateNumber>
+      <RefKeyColPositions>8</RefKeyColPositions>
+      <RefTableId>70876</RefTableId>
+    </foreign-key>
+    <foreign-key id="397" parent="288" name="fkm6k1lx1bxj6wy2ktpiet80obf">
+      <ColNames>vacancies_id</ColNames>
+      <ObjectId>70999</ObjectId>
+      <StateNumber>25088</StateNumber>
+      <RefKeyColPositions>8</RefKeyColPositions>
+      <RefTableId>70936</RefTableId>
+    </foreign-key>
+    <column id="398" parent="289" name="category_id">
+      <DasType>bigint|0s</DasType>
+      <Position>1</Position>
+      <StateNumber>25068</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="399" parent="289" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;position_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>25068</StateNumber>
+      <SequenceId>70895</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="400" parent="289" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>25068</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="401" parent="289" name="fk5ldqv9mghmop1efnpqdm4j4rh">
+      <ColNames>category_id</ColNames>
+      <ObjectId>71009</ObjectId>
+      <StateNumber>25090</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70825</RefTableId>
+    </foreign-key>
+    <index id="402" parent="289" name="position_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70900</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25068</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="403" parent="289" name="position_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70901</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25068</StateNumber>
+      <UnderlyingIndexId>70900</UnderlyingIndexId>
+    </key>
+    <check id="404" parent="290" name="salaries_type_of_employment_check">
+      <ColNames>type_of_employment</ColNames>
+      <ObjectId>70907</ObjectId>
+      <Predicate>(type_of_employment &gt;= 0) AND (type_of_employment &lt;= 2)</Predicate>
+      <StateNumber>25070</StateNumber>
+    </check>
+    <check id="405" parent="290" name="salaries_valute_check">
+      <ColNames>valute</ColNames>
+      <ObjectId>70908</ObjectId>
+      <Predicate>(valute &gt;= 0) AND (valute &lt;= 5)</Predicate>
+      <StateNumber>25070</StateNumber>
+    </check>
+    <column id="406" parent="290" name="salary">
+      <DasType>double precision|0s</DasType>
+      <Position>1</Position>
+      <StateNumber>25070</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="407" parent="290" name="type_of_employment">
+      <DasType>smallint|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25070</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="408" parent="290" name="valute">
+      <DasType>smallint|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>25070</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="409" parent="290" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;salaries_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>25070</StateNumber>
+      <SequenceId>70902</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="410" parent="290" name="salaries_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70909</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25070</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="411" parent="290" name="salaries_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70910</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25070</StateNumber>
+      <UnderlyingIndexId>70909</UnderlyingIndexId>
+    </key>
+    <check id="412" parent="291" name="token_token_type_check">
+      <ColNames>token_type</ColNames>
+      <ObjectId>70914</ObjectId>
+      <Predicate>(token_type)::text = &apos;BEARER&apos;::text</Predicate>
+      <StateNumber>25072</StateNumber>
+    </check>
+    <column id="413" parent="291" name="expired">
+      <DasType>boolean|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25072</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="414" parent="291" name="revoked">
+      <DasType>boolean|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>25072</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="415" parent="291" name="id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>25072</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="416" parent="291" name="user_id">
+      <DasType>bigint|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>25072</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="417" parent="291" name="token">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>5</Position>
+      <StateNumber>25072</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="418" parent="291" name="token_type">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>25072</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="419" parent="291" name="fkfqwpt67padn81jdnsa5e8qlh6">
+      <ColNames>user_id</ColNames>
+      <ObjectId>71014</ObjectId>
+      <StateNumber>25092</StateNumber>
+      <RefKeyColPositions>2</RefKeyColPositions>
+      <RefTableId>70922</RefTableId>
+    </foreign-key>
+    <index id="420" parent="291" name="token_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70917</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25072</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="421" parent="291" name="token_token_key">
+      <ColNames>token</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70919</ObjectId>
+      <StateNumber>25072</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="422" parent="291" name="token_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70918</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25072</StateNumber>
+      <UnderlyingIndexId>70917</UnderlyingIndexId>
+    </key>
+    <key id="423" parent="291" name="token_token_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70920</ObjectId>
+      <StateNumber>25072</StateNumber>
+      <UnderlyingIndexId>70919</UnderlyingIndexId>
+    </key>
+    <check id="424" parent="292" name="users_table_role_check">
+      <ColNames>role</ColNames>
+      <ObjectId>70926</ObjectId>
+      <Predicate>(role)::text = ANY ((ARRAY[&apos;ADMIN&apos;::character varying, &apos;JOB_SEEKER&apos;::character varying, &apos;EMPLOYER&apos;::character varying])::text[])</Predicate>
+      <StateNumber>25074</StateNumber>
+    </check>
+    <column id="425" parent="292" name="employer_id">
+      <DasType>bigint|0s</DasType>
+      <Position>1</Position>
+      <StateNumber>25074</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="426" parent="292" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;users_table_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>25074</StateNumber>
+      <SequenceId>70921</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="427" parent="292" name="job_seeker_id">
+      <DasType>bigint|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>25074</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="428" parent="292" name="email">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>25074</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="429" parent="292" name="firstname">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>5</Position>
+      <StateNumber>25074</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="430" parent="292" name="image">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>25074</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="431" parent="292" name="lastname">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>7</Position>
+      <StateNumber>25074</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="432" parent="292" name="password">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>8</Position>
+      <StateNumber>25074</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="433" parent="292" name="role">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>9</Position>
+      <StateNumber>25074</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="434" parent="292" name="fksm1hxi4uhbi4v6o6w00fr5opf">
+      <ColNames>employer_id</ColNames>
+      <ObjectId>71019</ObjectId>
+      <StateNumber>25094</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70846</RefTableId>
+    </foreign-key>
+    <foreign-key id="435" parent="292" name="fkoirnb6ic7xd01mqjhq7gio94i">
+      <ColNames>job_seeker_id</ColNames>
+      <ObjectId>71024</ObjectId>
+      <StateNumber>25094</StateNumber>
+      <RefKeyColPositions>8</RefKeyColPositions>
+      <RefTableId>70876</RefTableId>
+    </foreign-key>
+    <index id="436" parent="292" name="users_table_employer_id_key">
+      <ColNames>employer_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70931</ObjectId>
+      <StateNumber>25074</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="437" parent="292" name="users_table_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70929</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25074</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="438" parent="292" name="users_table_job_seeker_id_key">
+      <ColNames>job_seeker_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70933</ObjectId>
+      <StateNumber>25074</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="439" parent="292" name="users_table_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70930</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25074</StateNumber>
+      <UnderlyingIndexId>70929</UnderlyingIndexId>
+    </key>
+    <key id="440" parent="292" name="users_table_employer_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70932</ObjectId>
+      <StateNumber>25074</StateNumber>
+      <UnderlyingIndexId>70931</UnderlyingIndexId>
+    </key>
+    <key id="441" parent="292" name="users_table_job_seeker_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70934</ObjectId>
+      <StateNumber>25074</StateNumber>
+      <UnderlyingIndexId>70933</UnderlyingIndexId>
+    </key>
+    <check id="442" parent="293" name="vacancies_status_of_vacancy_check">
+      <ColNames>status_of_vacancy</ColNames>
+      <ObjectId>70940</ObjectId>
+      <Predicate>(status_of_vacancy &gt;= 0) AND (status_of_vacancy &lt;= 2)</Predicate>
+      <StateNumber>25076</StateNumber>
+    </check>
+    <column id="443" parent="293" name="is_response">
+      <DasType>boolean|0s</DasType>
+      <Position>1</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>16</TypeId>
+    </column>
+    <column id="444" parent="293" name="response">
+      <DasType>integer|0s</DasType>
+      <Position>2</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="445" parent="293" name="status_of_vacancy">
+      <DasType>smallint|0s</DasType>
+      <Position>3</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>21</TypeId>
+    </column>
+    <column id="446" parent="293" name="contact_information_id">
+      <DasType>bigint|0s</DasType>
+      <Position>4</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="447" parent="293" name="date">
+      <DasType>timestamp(6)|0s</DasType>
+      <Position>5</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="448" parent="293" name="employer_id">
+      <DasType>bigint|0s</DasType>
+      <Position>6</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="449" parent="293" name="employers_id">
+      <DasType>bigint|0s</DasType>
+      <Position>7</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="450" parent="293" name="id">
+      <DasType>bigint|0s</DasType>
+      <DefaultExpression>nextval(&apos;vacancies_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+      <StateNumber>25076</StateNumber>
+      <SequenceId>70935</SequenceId>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="451" parent="293" name="image_id">
+      <DasType>bigint|0s</DasType>
+      <Position>9</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="452" parent="293" name="position_id">
+      <DasType>bigint|0s</DasType>
+      <Position>10</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="453" parent="293" name="salary_id">
+      <DasType>bigint|0s</DasType>
+      <Position>11</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="454" parent="293" name="contact_info">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>12</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="455" parent="293" name="description">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>13</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="456" parent="293" name="name">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>14</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="457" parent="293" name="skills">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>15</Position>
+      <StateNumber>25076</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="458" parent="293" name="fkp60ht8jhtjutdgmhs9c6lg4ya">
+      <ColNames>contact_information_id</ColNames>
+      <ObjectId>71029</ObjectId>
+      <StateNumber>25096</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70837</RefTableId>
+    </foreign-key>
+    <foreign-key id="459" parent="293" name="fk2hy77i9hkv6hntcqogfkwadys">
+      <ColNames>employer_id</ColNames>
+      <ObjectId>71034</ObjectId>
+      <StateNumber>25096</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70846</RefTableId>
+    </foreign-key>
+    <foreign-key id="460" parent="293" name="fkoxj6y30b3apucsovhhvxbofj6">
+      <ColNames>image_id</ColNames>
+      <ObjectId>71039</ObjectId>
+      <StateNumber>25096</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>70867</RefTableId>
+    </foreign-key>
+    <foreign-key id="461" parent="293" name="fkq070b22i1hcvhgk0wlyvqat8d">
+      <ColNames>position_id</ColNames>
+      <ObjectId>71044</ObjectId>
+      <StateNumber>25096</StateNumber>
+      <RefKeyColPositions>2</RefKeyColPositions>
+      <RefTableId>70896</RefTableId>
+    </foreign-key>
+    <foreign-key id="462" parent="293" name="fk4wp7dfvu0l04i8sinprqhofxg">
+      <ColNames>salary_id</ColNames>
+      <ObjectId>71049</ObjectId>
+      <StateNumber>25096</StateNumber>
+      <RefKeyColPositions>4</RefKeyColPositions>
+      <RefTableId>70903</RefTableId>
+    </foreign-key>
+    <index id="463" parent="293" name="vacancies_contact_information_id_key">
+      <ColNames>contact_information_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70945</ObjectId>
+      <StateNumber>25076</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="464" parent="293" name="vacancies_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70943</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25076</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="465" parent="293" name="vacancies_image_id_key">
+      <ColNames>image_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70947</ObjectId>
+      <StateNumber>25076</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="466" parent="293" name="vacancies_salary_id_key">
+      <ColNames>salary_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70949</ObjectId>
+      <StateNumber>25076</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="467" parent="293" name="vacancies_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70944</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>25076</StateNumber>
+      <UnderlyingIndexId>70943</UnderlyingIndexId>
+    </key>
+    <key id="468" parent="293" name="vacancies_contact_information_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70946</ObjectId>
+      <StateNumber>25076</StateNumber>
+      <UnderlyingIndexId>70945</UnderlyingIndexId>
+    </key>
+    <key id="469" parent="293" name="vacancies_image_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70948</ObjectId>
+      <StateNumber>25076</StateNumber>
+      <UnderlyingIndexId>70947</UnderlyingIndexId>
+    </key>
+    <key id="470" parent="293" name="vacancies_salary_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>70950</ObjectId>
+      <StateNumber>25076</StateNumber>
+      <UnderlyingIndexId>70949</UnderlyingIndexId>
+    </key>
+    <column id="471" parent="294" name="job_seekers_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>25078</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="472" parent="294" name="vacancy_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>25078</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <foreign-key id="473" parent="294" name="fkgj502hlg7gi1kb86lpsk61erg">
+      <ColNames>job_seekers_id</ColNames>
+      <ObjectId>71054</ObjectId>
+      <StateNumber>25098</StateNumber>
+      <RefKeyColPositions>8</RefKeyColPositions>
+      <RefTableId>70876</RefTableId>
+    </foreign-key>
+    <foreign-key id="474" parent="294" name="fkt6179hiq5n5rm4p57ovgei6wc">
+      <ColNames>vacancy_id</ColNames>
+      <ObjectId>71059</ObjectId>
+      <StateNumber>25098</StateNumber>
+      <RefKeyColPositions>8</RefKeyColPositions>
+      <RefTableId>70936</RefTableId>
+    </foreign-key>
   </database-model>
 </dataSource>

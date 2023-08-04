@@ -259,13 +259,15 @@ public class VacancyServiceImpl implements VacancyService {
     public void setStatusOfJobSeeker(Long vacancyId, Long jobSeekerId, String status) {
         Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NotFoundException("Vacancy not found!"));
         System.out.println("list size: " + vacancy.getJobSeekers().size());
+        System.out.println("its working!\n\n\n");
         for (JobSeeker jobSeeker1 : vacancy.getJobSeekers()) {
-            if (jobSeeker1.getId().equals(jobSeekerId)) {
+           // if (jobSeeker1.getId().equals(jobSeekerId)) {
                 jobSeeker1.setStatusOfJobSeeker(StatusOfJobSeeker.valueOf(status));
+                jobSeeker1.setUserApplicationDate(LocalDate.now());
                 jobSeekerRepository.save(jobSeeker1);
-            } else {
-                System.out.println("JobSeeker not");
-            }
+//            } else {
+//                System.out.println("JobSeeker not");
+//            }
         }
     }
 
