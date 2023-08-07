@@ -5,6 +5,7 @@ import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.Salary;
 import com.example.hr_system.entities.Vacancy;
+import com.example.hr_system.enums.TypeOfEmployment;
 import com.example.hr_system.mapper.*;
 import com.example.hr_system.repository.EmployerRepository;
 import com.example.hr_system.repository.PositionRepository;
@@ -49,7 +50,7 @@ public class VacancyMapperImpl implements VacancyMapper {
         vacancyResponse.setDescription(vacancy.getDescription());
         vacancyResponse.setSkills(vacancy.getSkills());
         vacancyResponse.setSalaryResponse(salaryMapper.toDto(vacancy.getSalary()));
-        vacancyResponse.setTypeOfEmploymentS(vacancy.getTypeOfEmploymentS());
+        vacancyResponse.setTypeOfEmploymentS(TypeOfEmployment.valueOf(vacancy.getTypeOfEmploymentS()));
         vacancyResponse.setExperience(vacancy.getExperience());
         vacancyResponse.setContactInformationResponse(contactInformationMapper.toDto(vacancy.getContactInformation()));
         vacancyResponse.setAdditionalInformation(vacancy.getAdditionalInformation());
@@ -77,7 +78,7 @@ public class VacancyMapperImpl implements VacancyMapper {
         vacancyResponse.setDescription(vacancyRequest.getDescription());
         vacancyResponse.setSkills(vacancyRequest.getSkills());
         vacancyResponse.setSalaryResponse(salaryMapper.toDto(salaryMapper.toEntity(vacancyRequest.getSalaryRequest())));
-        vacancyResponse.setTypeOfEmploymentS(vacancyRequest.getTypeOfEmploymentS());
+        vacancyResponse.setTypeOfEmploymentS(TypeOfEmployment.valueOf(vacancyRequest.getTypeOfEmploymentS()));
         vacancyResponse.setExperience(vacancyRequest.getExperience());
         vacancyResponse.setContactInformationResponse(contactInformationMapper.requestToresponse(vacancyRequest.getContactInformationRequest()));
         vacancyResponse.setAdditionalInformation(vacancyRequest.getAdditionalInformation());
@@ -97,7 +98,7 @@ public class VacancyMapperImpl implements VacancyMapper {
         Salary salary = new Salary();
         salary.setSalary(salaryRequest.getSalary());
         salary.setValute(salaryRequest.getValute());
-        salary.setTypeOfEmployment(salaryRequest.getTypeOfEmployment());
+        salary.setSalaryType(salaryRequest.getSalaryType());
         //salary.setVacancy(employerRepository.findById(employerId));
         return null;
     }

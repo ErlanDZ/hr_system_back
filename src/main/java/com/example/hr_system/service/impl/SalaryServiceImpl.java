@@ -16,7 +16,7 @@ public class SalaryServiceImpl {
             return null;
         }
         Salary salary = new Salary();
-        salary.setTypeOfEmployment(salaryRequest.getTypeOfEmployment());
+        salary.setSalaryType(salaryRequest.getSalaryType());
         salary.setValute(salaryRequest.getValute());
         salary.setSalary(salaryRequest.getSalary());
         return salary;

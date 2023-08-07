@@ -1,5 +1,6 @@
 package com.example.hr_system.entities;
 
+import com.example.hr_system.enums.SalaryType;
 import com.example.hr_system.enums.TypeOfEmployment;
 import com.example.hr_system.enums.Valute;
 import jakarta.persistence.*;
@@ -17,7 +18,7 @@ public class Salary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private TypeOfEmployment typeOfEmployment;
+    private SalaryType salaryType;
 
     private Double salary;
 

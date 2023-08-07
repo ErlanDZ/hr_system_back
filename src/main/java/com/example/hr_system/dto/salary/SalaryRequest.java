@@ -1,5 +1,6 @@
 package com.example.hr_system.dto.salary;
 
+import com.example.hr_system.enums.SalaryType;
 import com.example.hr_system.enums.TypeOfEmployment;
 import com.example.hr_system.enums.Valute;
 import lombok.*;
@@ -9,7 +10,7 @@ import lombok.*;
 @RequiredArgsConstructor
 public class SalaryRequest {
 
-    private TypeOfEmployment typeOfEmployment;
+    private SalaryType salaryType;
 
     private Double salary;
 

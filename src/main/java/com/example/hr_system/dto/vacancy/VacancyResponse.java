@@ -27,7 +27,7 @@ public class VacancyResponse {
     private String description;
     private String skills;
     private SalaryResponse salaryResponse;
-    private String typeOfEmploymentS;
+    private TypeOfEmployment typeOfEmploymentS;
     private String experience;
     private ContactInformationResponse contactInformationResponse;
     private String additionalInformation;
