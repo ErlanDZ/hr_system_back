@@ -29,10 +29,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/employer")
+@CrossOrigin(origins = "*")
+
 //@PreAuthorize("hasAnyAuthority('EMPLOYER')")
 @RequiredArgsConstructor
 public class EmployerController {
@@ -52,6 +55,8 @@ public class EmployerController {
     private final VacancyMapper vacancyMapper;
     private  final VacancyRepository vacancyRepository;
     private final EmailSenderService emailSenderService;
+    private final EmployerRepository employerRepository;
+
 
 
     @GetMapping("profile/{id}")
@@ -108,8 +113,15 @@ public class EmployerController {
         return categoryMapper.toDtos(categoryRepository.findAll());
     }
     @GetMapping("/educations")
-    public Education[] education(){
-        return Education.values();
+    public List<String> education(){
+        List<String> strings = new ArrayList<>();
+        strings.add(String.valueOf(Education.ADJUNCT));
+        strings.add(String.valueOf(Education.MASTER));
+        strings.add(String.valueOf(Education.BACHELOR));
+        strings.add(String.valueOf(Education.ORDINATE));
+        strings.add(String.valueOf(Education.GRADUATE_STUDENT));
+        strings.add(String.valueOf(Education.SPECIALTY));
+        return strings;
     }
     @GetMapping("/filter")
     public List<CandidateResponses> filter(@RequestParam String position,
@@ -118,6 +130,7 @@ public class EmployerController {
         List<CandidateResponses> candidateResponses
                 = jobSeekerMapper.listConvertToCandidateResponse(
                         jobSeekerService.filterJobSeekers(positionRepository.findByName(position),
+                education==null?Education.valueOf(null):
                 Education.valueOf(education),
                 country, city,experienceRepository.findByName(experience)));
         return candidateResponses;
@@ -257,8 +270,12 @@ public class EmployerController {
 
     //    FULL,GIBRID,FIXED
     @GetMapping("/typeofEmployments")
-    public TypeOfEmployment[] responseEntity(){
-        return TypeOfEmployment.values();
+    public List<String> responseEntity(){
+        List<String> strings = new ArrayList<>();
+        strings.add(String.valueOf(TypeOfEmployment.NEPOLNIY_RABOCHIY_DEYN));
+        strings.add(String.valueOf(TypeOfEmployment.POLNIY_RABOCHIY_DEN));
+        strings.add(String.valueOf(TypeOfEmployment.UDALENNAYA_RABOTA));
+        return strings;
     }
 
     @GetMapping("/experience")
@@ -266,8 +283,14 @@ public class EmployerController {
         return experienceMapper.listExperienceResponseToDto(experienceRepository.findAll());
     }
     @GetMapping("/statusOfJobSeekerForVacancy")
-    public StatusOfJobSeeker[] statusOfJobSeekers(){
-        return StatusOfJobSeeker.values();
+    public List<String> statusOfJobSeekers(){
+        List<String> strings=new ArrayList<>();
+        strings.add(String.valueOf(StatusOfJobSeeker.AN_INTERVIEW));
+        strings.add(String.valueOf(StatusOfJobSeeker.ACCEPT));
+        strings.add(String.valueOf(StatusOfJobSeeker.OFFER));
+        strings.add(String.valueOf(StatusOfJobSeeker.REJECT));
+        strings.add(String.valueOf(StatusOfJobSeeker.AN_INTERVIEW));
+        return strings;
     }
     @GetMapping("/byApplicationDate")
     public ApplicationDate[] applicationDates(){
@@ -284,6 +307,40 @@ public class EmployerController {
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(employerService.uploadResume(file, employerId));
+    }
+
+    @GetMapping("/salaryType")
+    public List<String> salaryType(){
+        List<String> strings = new ArrayList<>();
+        strings.add(String.valueOf(SalaryType.GIBRID));
+        strings.add(String.valueOf(SalaryType.FULL));
+        strings.add(String.valueOf(SalaryType.FIXED));
+        return strings;
+    }
+
+    @GetMapping("getValute")
+    public List<String> valute(){
+        List<String> list= new ArrayList<>();
+        list.add(String.valueOf(Valute.USD));
+        list.add(String.valueOf(Valute.EUR));
+        list.add(String.valueOf(Valute.KZT));
+        list.add(String.valueOf(Valute.SOM));
+        list.add(String.valueOf(Valute.RUB));
+        list.add(String.valueOf(Valute.UZB));
+        return list;
+    }
+
+
+    @GetMapping("/sendToEmail/{employerId}/{jobSeekerId}/{fileId}")
+    public String send(@PathVariable Long employerId, @PathVariable Long jobSeekerId,
+    @PathVariable Long fileId,
+    @RequestParam String message) throws MessagingException {
+        FileData fileData = fileRepository.findById(fileId).orElseThrow();
+        Employer employer = employerRepository.findById(employerId).orElseThrow();
+        JobSeeker jobSeeker = jobSeekerRepository.findById(jobSeekerId).orElseThrow();
+        emailSenderService.inviteJobSeeker(employer.getEmail(),jobSeeker.getEmail(),message,
+               fileData );
+        return "ok";
     }
 
 }

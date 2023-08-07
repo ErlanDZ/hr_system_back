@@ -52,6 +52,10 @@ public class VacancyServiceImpl implements VacancyService {
     @Override
     public VacancyResponse saveVacancy(Long id, VacancyRequest vacancyRequest) {
         Vacancy vacancy = new Vacancy();
+//        if (vacancyRequest.getSalaryRequest() != null) {
+//            vacancy.setSalary(salaryMapper.toEntity(vacancyRequest.getSalaryRequest()));
+//        }
+        vacancy.setSalary(null);
         vacancy.setAbout_company(vacancyRequest.getAbout_company());
         vacancy.setIndustry(vacancyRequest.getIndustry());
         vacancy.setExperience(vacancyRequest.getExperience());
@@ -66,9 +70,9 @@ public class VacancyServiceImpl implements VacancyService {
         Position position = positionRepository.findByName(vacancyRequest.getPosition());
         vacancy.setPosition(position);
 
-        Salary salary = salaryMapper.toEntity(vacancyRequest.getSalaryRequest());
-        vacancy.setSalary(salary);
-        salaryRepository.save(salary);
+//        Salary salary = salaryMapper.toEntity(vacancyRequest.getSalaryRequest());
+//        vacancy.setSalary(salary);
+//        salaryRepository.save(salary);
 
         ContactInformation contactInformation = contactInformationService.convertToEntity(vacancyRequest.getContactInformationRequest());
         contactInformationRepository.save(contactInformation);

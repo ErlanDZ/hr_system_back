@@ -14,6 +14,8 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/vacancy")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
+
 //@PreAuthorize("hasAnyAuthority('ADMIN')")
 public class VacancyController {
 

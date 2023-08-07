@@ -15,5 +15,5 @@ public interface FileDataService {
 
     void downloadFile(Long id, HttpServletResponse http) throws IOException;
 
-    FileResponse getFileById(Long id);
+    void getFileById(Long id, HttpServletResponse httpServletResponse);
 }

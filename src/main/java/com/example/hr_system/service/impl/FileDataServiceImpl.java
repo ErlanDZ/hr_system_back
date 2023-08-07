@@ -71,6 +71,11 @@ public class FileDataServiceImpl implements FileDataService {
 
     private FileData save( MultipartFile file) {
         FileData document=new FileData();
+        System.out.println(document.toString()+"\n\n\n");
+        System.out.println(file.toString()+"\n\n\n");
+//        if (document.getId()==null){
+//            throw new NotFoundException("id is null");
+//        }
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
 
         // Normalize file name
@@ -85,13 +90,16 @@ public class FileDataServiceImpl implements FileDataService {
 
         fileName = validateFileName(fileName);
 
-        String url = "https://hrsystemback-production.up.railway.app/job_seeker/resume/" + document.getId();
+        System.out.println(document.getName() + " \n " + document.getPath()+" \n\n\n");
         document.setName(fileName);
 //        document.set(file.getSize());
-        document.setPath(url);
 
         uploadFileToS3Bucket(file, UPLOADED_FILES_FOLDER + document.getName());
         log.info("File with name = {} has successfully uploaded", document.getName());
+        repository.save(document);
+        String url = "https://hrsystemback-production.up.railway.app/job_seeker/resume/"+document.getId();
+
+        document.setPath(url);
         return repository.save(document);
     }
 
@@ -165,6 +173,7 @@ public class FileDataServiceImpl implements FileDataService {
             // Установка заголовков ответа
             http.setContentType(mimeType);
             http.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"");
+            http.getOutputStream();
             http.flushBuffer();
 
             // Создание потока для записи файла в ответ HTTP
@@ -182,8 +191,34 @@ public class FileDataServiceImpl implements FileDataService {
     }
 
     @Override
-    public FileResponse getFileById(Long id) {
-        FileData fileData = repository.findById(id).orElseThrow(()-> new NotFoundException("aefsf"));
-        return fileMapper.toDto(fileData);
+    public void getFileById(Long id, HttpServletResponse httpServletResponse) {
+        FileData file = repository.findById(id).orElseThrow(()-> new NotFoundException("aefsf"));
+        // Указание имени и ведра (bucket) файла в Amazon S3
+        String bucketName = AWS3_BUCKET;
+        String key = UPLOADED_FILES_FOLDER + file.getName();
+
+        try {
+            // Получение объекта файла из Amazon S3
+            S3Object s3Object = amazonS3.getObject(new GetObjectRequest(bucketName, key));
+            // Определение типа MIME файла
+            String mimeType = URLConnection.guessContentTypeFromName(file.getName());
+
+            // Установка заголовков ответа
+            httpServletResponse.setContentType(mimeType);
+            httpServletResponse.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"");
+            httpServletResponse.flushBuffer();
+
+            // Создание потока для записи файла в ответ HTTP
+            try (OutputStream outputStream = httpServletResponse.getOutputStream()) {
+                // Чтение содержимого файла из объекта Amazon S3 и запись в ответ HTTP
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = s3Object.getObjectContent().read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+            }
+        } catch (AmazonClientException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -13,6 +13,7 @@ import com.example.hr_system.service.impl.FileDataServiceImpl;
 import com.example.hr_system.service.impl.JobSeekerServiceImpl;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
+import org.springdoc.core.providers.HateoasHalProvider;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -54,15 +55,13 @@ public class JobSeekerController {
     }
 
     @GetMapping("/resume/{id}")
-    public FileResponse getFileById(@PathVariable Long id) {
-       return service.getFileById(id);
+    public void getFileById(@PathVariable Long id, HttpServletResponse httpServletResponse) throws IOException {
+        service.getFileById(id, httpServletResponse);
     }
 
     @GetMapping("/download/file/{id}")
     public void downloadFile(@PathVariable Long id, HttpServletResponse http) throws IOException {
         service.downloadFile(id, http);
-        http.getOutputStream();
-        http.flushBuffer();
     }
 
 

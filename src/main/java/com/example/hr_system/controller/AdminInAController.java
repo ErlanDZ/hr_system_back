@@ -24,6 +24,7 @@ import java.util.List;
 @RequestMapping("/admin")
 @AllArgsConstructor
 //@PreAuthorize("hasAnyAuthority('ADMIN')")
+@CrossOrigin(origins = "*")
 public class AdminInAController {
 
     //private final RestTemplate restTemplate;

@@ -8,5 +8,5 @@ public enum Education {
     SPECIALTY,
     GRADUATE_STUDENT,
     ADJUNCT,
-    ORDINATE,
+    ORDINATE
 }

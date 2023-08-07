@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "*")
+
+
+
 public class CategoryController {
 
     private final CategoryServiceImpl categoryService;

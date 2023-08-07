@@ -206,7 +206,8 @@ public class EmployerServiceImpl implements EmployerService {
         Employer employer = user.getEmployer();
 
         if (employer.getResume() != null) {
-            FileData fileData = employer.getResume();
+            FileData fileData = new FileData();
+            fileData = employer.getResume();
             employer.setResume(null);
             FileData save = fileDataService.uploadFile(file, fileData);
             employer.setResume(save);
