@@ -22,6 +22,7 @@ public class Vacancy {
     private String industry;
     private String description;
     private String skills;
+    @Enumerated(EnumType.STRING)
     private TypeOfEmployment typeOfEmploymentS;
     private String experience;
     private String additionalInformation;
