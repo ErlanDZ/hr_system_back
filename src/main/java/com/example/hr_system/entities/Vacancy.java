@@ -2,6 +2,7 @@ package com.example.hr_system.entities;
 
 
 import com.example.hr_system.enums.StatusOfVacancy;
+import com.example.hr_system.enums.TypeOfEmployment;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +22,7 @@ public class Vacancy {
     private String industry;
     private String description;
     private String skills;
-    private String typeOfEmploymentS;
+    private TypeOfEmployment typeOfEmploymentS;
     private String experience;
     private String additionalInformation;
     private Date date;

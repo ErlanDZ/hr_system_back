@@ -25,8 +25,8 @@ public class SalaryMapperImpl implements SalaryMapper {
         SalaryResponse salaryResponse = new SalaryResponse();
         salaryResponse.setId(salary.getId());
         salaryResponse.setValute(salary.getValute());
-        salaryResponse.setSalary(salary.getSalaryType());
-        salaryResponse.setSum(salary.getSalary());
+        salaryResponse.setSalaryType(salary.getSalaryType());
+        salaryResponse.setSum(salary.getSalarySum());
         return salaryResponse;
     }
 
@@ -42,8 +42,12 @@ public class SalaryMapperImpl implements SalaryMapper {
     @Override
     public Salary toEntity(SalaryRequest salaryRequest) {
         Salary salary = new Salary();
-        salary.setSalary(salaryRequest.getSalary());
-        salary.setValute(salaryRequest.getValute());
+        salary.setSalaryType(salaryRequest.getSalaryType()==null?null:
+                salaryRequest.getSalaryType());
+        salary.setSalarySum(salary.getSalarySum()==null?null:
+                salaryRequest.getSalarySum());
+        salary.setValute(salaryRequest.getValute()==null?null:
+                salaryRequest.getValute());
         //salary.setSalaryType(salaryRequest.getTypeOfEmployment());
         return salary;
     }

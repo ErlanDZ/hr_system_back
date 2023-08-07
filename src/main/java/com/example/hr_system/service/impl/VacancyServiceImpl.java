@@ -8,6 +8,7 @@ import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.*;
 import com.example.hr_system.enums.StatusOfJobSeeker;
 import com.example.hr_system.enums.StatusOfVacancy;
+import com.example.hr_system.enums.TypeOfEmployment;
 import com.example.hr_system.mapper.*;
 import com.example.hr_system.repository.*;
 import com.example.hr_system.service.FileDataService;
@@ -55,12 +56,12 @@ public class VacancyServiceImpl implements VacancyService {
 //        if (vacancyRequest.getSalaryRequest() != null) {
 //            vacancy.setSalary(salaryMapper.toEntity(vacancyRequest.getSalaryRequest()));
 //        }
-        vacancy.setSalary(null);
+        vacancy.setSalary(vacancyRequest.getSalaryRequest()!=null?salaryMapper.toEntity(vacancyRequest.getSalaryRequest()):null);
         vacancy.setAbout_company(vacancyRequest.getAbout_company());
         vacancy.setIndustry(vacancyRequest.getIndustry());
         vacancy.setExperience(vacancyRequest.getExperience());
         vacancy.setAdditionalInformation(vacancyRequest.getAdditionalInformation());
-        vacancy.setTypeOfEmploymentS(vacancyRequest.getTypeOfEmploymentS());
+        vacancy.setTypeOfEmploymentS(TypeOfEmployment.valueOf(vacancyRequest.getTypeOfEmploymentS()));
         vacancy.setDate(vacancyRequest.getDate());
         vacancy.setSkills(vacancyRequest.getSkills());
         vacancy.setDescription(vacancyRequest.getDescription());
@@ -70,9 +71,10 @@ public class VacancyServiceImpl implements VacancyService {
         Position position = positionRepository.findByName(vacancyRequest.getPosition());
         vacancy.setPosition(position);
 
-//        Salary salary = salaryMapper.toEntity(vacancyRequest.getSalaryRequest());
-//        vacancy.setSalary(salary);
-//        salaryRepository.save(salary);
+        Salary salary = salaryMapper.toEntity(vacancyRequest.getSalaryRequest());
+        salaryRepository.save(salary);
+        vacancy.setSalary(salary);
+
 
         ContactInformation contactInformation = contactInformationService.convertToEntity(vacancyRequest.getContactInformationRequest());
         contactInformationRepository.save(contactInformation);

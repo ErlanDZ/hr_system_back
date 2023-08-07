@@ -9,7 +9,7 @@ public class SalaryResponse {
 
     private Long id;
 
-    private SalaryType salary;
+    private SalaryType salaryType;
 
     private Double sum;
 

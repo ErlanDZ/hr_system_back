@@ -49,8 +49,8 @@ public class VacancyMapperImpl implements VacancyMapper {
         vacancyResponse.setIndustry(vacancy.getIndustry());
         vacancyResponse.setDescription(vacancy.getDescription());
         vacancyResponse.setSkills(vacancy.getSkills());
-        //vacancyResponse.setSalaryResponse(salaryMapper.toDto(vacancy.getSalary()));
-       // vacancyResponse.setTypeOfEmploymentS(TypeOfEmployment.valueOf(vacancy.getTypeOfEmploymentS()));
+        vacancyResponse.setSalaryResponse(salaryMapper.toDto(vacancy.getSalary()));
+        vacancyResponse.setTypeOfEmploymentS(vacancy.getTypeOfEmploymentS());
         vacancyResponse.setExperience(vacancy.getExperience());
         vacancyResponse.setContactInformationResponse(contactInformationMapper.toDto(vacancy.getContactInformation()));
         vacancyResponse.setAdditionalInformation(vacancy.getAdditionalInformation());
@@ -96,11 +96,11 @@ public class VacancyMapperImpl implements VacancyMapper {
     @Override
     public Salary toEntity(SalaryRequest salaryRequest) {
         Salary salary = new Salary();
-        salary.setSalary(salaryRequest.getSalary());
+        salary.setSalarySum(salaryRequest.getSalarySum());
         salary.setValute(salaryRequest.getValute());
         salary.setSalaryType(salaryRequest.getSalaryType());
         //salary.setVacancy(employerRepository.findById(employerId));
-        return null;
+        return salary;
     }
 
 

@@ -18,11 +18,9 @@ public class Salary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-
     private SalaryType salaryType;
 
-    private Double salary;
+    private Double salarySum;
 
     private Valute valute;
 

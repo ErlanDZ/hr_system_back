@@ -18,7 +18,7 @@ public class SalaryServiceImpl {
         Salary salary = new Salary();
         salary.setSalaryType(salaryRequest.getSalaryType());
         salary.setValute(salaryRequest.getValute());
-        salary.setSalary(salaryRequest.getSalary());
+        salary.setSalarySum(salaryRequest.getSalarySum());
         return salary;
     }
 
