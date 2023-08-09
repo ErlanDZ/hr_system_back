@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +54,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -101,6 +102,7 @@
       <workItem from="1691379158123" duration="710000" />
       <workItem from="1691380986125" duration="7277000" />
       <workItem from="1691465489177" duration="689000" />
+      <workItem from="1691577045326" duration="796000" />
     </task>
     <servers />
   </component>
