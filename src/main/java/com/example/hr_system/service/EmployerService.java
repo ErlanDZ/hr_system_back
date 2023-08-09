@@ -8,6 +8,7 @@ import com.example.hr_system.dto.employer.EmployerResponses;
 import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
 import com.example.hr_system.entities.Employer;
+import com.example.hr_system.entities.Vacancy;
 import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
@@ -29,6 +30,8 @@ public interface EmployerService {
 
     EmployerResponses update(Long id, EmployerRequests employerRequests);
 
+    String getTimeLeft(String creationDateVacancy);
+
     EmployerResponses getById(Long id);
 
     SimpleResponse deleteById(Long id);
@@ -43,6 +46,14 @@ public interface EmployerService {
     List<CandidateResponses> filter(String position, String education, String country, String city, String experience);
 
     FileResponse uploadResume(MultipartFile file, Long id) throws IOException;
+
+    boolean containsEducation(String str);
+
+    boolean containsTypeOfEmployment(String str);
+
+    boolean containsStatusOfJobSeeker(String str);
+
+    boolean containsApplicationDate(String str);
 
 
     // FileResponse uploadResume(MultipartFile file, Long id) throws IOException;

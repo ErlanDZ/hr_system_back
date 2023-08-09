@@ -6,6 +6,7 @@ import jakarta.activation.DataSource;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamSource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -44,11 +45,11 @@ public class EmailSenderService {
         MimeMessage messages = mailSender.createMimeMessage();
 
         MimeMessageHelper helper = new MimeMessageHelper(messages, true);
-
+        helper.setFrom("devsfactoryback@gmail.com");
         helper.setTo(email);
-        helper.setText(message);
-        helper.addAttachment("the file", (DataSource) fileData);
-
+        helper.setText(setFrom+" is sent you message: "+message);
+        FileDataInputStreamSourceAdapter inputStreamSource = new FileDataInputStreamSourceAdapter(fileData);
+        helper.addAttachment("file.txt", inputStreamSource);
 
 //        for(Resource attachment: fileData)
 //            helper.addAttachment(Objects.requireNonNull(attachment.getFilename()), attachment, "application/pdf");

@@ -10,6 +10,7 @@ import com.example.hr_system.mapper.*;
 import com.example.hr_system.repository.EmployerRepository;
 import com.example.hr_system.repository.PositionRepository;
 import com.example.hr_system.repository.VacancyRepository;
+import com.example.hr_system.service.EmployerService;
 import lombok.AllArgsConstructor;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -31,6 +33,7 @@ public class VacancyMapperImpl implements VacancyMapper {
     private final PositionRepository positionRepository;
     private final EmployerRepository employerRepository;
     private final VacancyRepository vacancyRepository;
+    private final EmployerService employerService;
 //      private TypeOfEmployment typeOfEmployment;
 //
 //    private Double salary;
@@ -54,8 +57,7 @@ public class VacancyMapperImpl implements VacancyMapper {
         vacancyResponse.setExperience(vacancy.getExperience());
         vacancyResponse.setContactInformationResponse(contactInformationMapper.toDto(vacancy.getContactInformation()));
         vacancyResponse.setAdditionalInformation(vacancy.getAdditionalInformation());
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-        vacancyResponse.setDate(timeStamp);
+        vacancyResponse.setCreationDate(employerService.getTimeLeft(String.valueOf(vacancy.getCreationDate())));
         return vacancyResponse;
     }
 
@@ -82,8 +84,7 @@ public class VacancyMapperImpl implements VacancyMapper {
         vacancyResponse.setExperience(vacancyRequest.getExperience());
         vacancyResponse.setContactInformationResponse(contactInformationMapper.requestToresponse(vacancyRequest.getContactInformationRequest()));
         vacancyResponse.setAdditionalInformation(vacancyRequest.getAdditionalInformation());
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-        vacancyResponse.setDate(timeStamp);
+        vacancyResponse.setCreationDate(String.valueOf(LocalDateTime.now()));
 //        vacancyResponse.setPositionResponse(vacancyRequest.getPositionRequest());
 //        vacancyResponse.setSalaryId(vacancyResponse.getSalaryId());
 //        vacancyResponse.setSkills(vacancyRequest.getSkills());

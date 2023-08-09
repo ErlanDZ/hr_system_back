@@ -2,6 +2,7 @@ package com.example.hr_system.repository;
 
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
 import com.example.hr_system.entities.*;
+import com.example.hr_system.enums.ApplicationDate;
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.enums.StatusOfJobSeeker;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -19,7 +21,12 @@ public interface JobSeekerRepository extends JpaRepository<JobSeeker, Long> {
 //List<Vacancy> findJobSeekerByIdAndVacancies(Long jobSeekerId);
 
     List<JobSeeker> findByStatusOfJobSeekerAndExperienceAndUserApplicationDate(
-            StatusOfJobSeeker statusOfJobSeeker, Experience experience, LocalDate applicationDate);
+            StatusOfJobSeeker statusOfJobSeeker, Experience experience, ApplicationDate applicationDate);
+
+
+
+    @Query("SELECT j FROM JobSeeker j WHERE j.userApplicationDate >= ?1 AND j.userApplicationDate <= ?2")
+    List<JobSeeker> findByUserApplicationDateRange(LocalDateTime start, LocalDateTime end);
 
 
     @Query("SELECT j FROM JobSeeker j WHERE " +

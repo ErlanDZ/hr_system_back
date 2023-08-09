@@ -6,6 +6,7 @@ import com.example.hr_system.dto.jobSeeker.RespondedResponse;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.Experience;
+import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Vacancy;
 import com.example.hr_system.enums.StatusOfJobSeeker;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,7 @@ public interface VacancyService {
 
     List<JobSeekerVacanciesResponses> searchVacancy(String search);
 
-    List<JobSeekerVacanciesResponses> filter(String category, String position, String country, String city, Experience experience);
+    List<JobSeekerVacanciesResponses> filter(String category, String position, String country, String city, String experience);
 
     VacancyResponse updateById(Long id, VacancyRequest vacancyRequest);
 
@@ -56,6 +57,8 @@ public interface VacancyService {
     void setStatusOfVacancy(Long id, String statusOfVacancy);
 
     List<RespondedResponse> listForResponded(Long vacancyId);
+
+    List<RespondedResponse> listForResponded(Long vacancyId, List<JobSeeker> jobSeekers);
 
     List<RespondedResponse> listForResponded(Long vacancyId
             , String statusOfJobSeeker, String experience, String applicationDate);

@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -18,15 +19,17 @@ public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(columnDefinition = "varchar(3000)")
     private String about_company;
     private String industry;
+    @Column(columnDefinition = "varchar(3000")
     private String description;
     private String skills;
     @Enumerated(EnumType.STRING)
     private TypeOfEmployment typeOfEmploymentS;
     private String experience;
     private String additionalInformation;
-    private Date date;
+    private LocalDateTime creationDate;
     @Enumerated(EnumType.STRING)
     private StatusOfVacancy statusOfVacancy;
     @ManyToMany
@@ -48,4 +51,6 @@ public class Vacancy {
 
     @OneToOne(cascade = CascadeType.ALL)
     private FileData resume;
+
+
 }

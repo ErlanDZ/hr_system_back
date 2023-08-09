@@ -8,6 +8,10 @@ import com.example.hr_system.dto.SimpleResponse;
 import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
 import com.example.hr_system.entities.*;
+import com.example.hr_system.enums.ApplicationDate;
+import com.example.hr_system.enums.Education;
+import com.example.hr_system.enums.StatusOfJobSeeker;
+import com.example.hr_system.enums.TypeOfEmployment;
 import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.repository.EmployerRepository;
 import com.example.hr_system.repository.JobSeekerRepository;
@@ -22,6 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -157,6 +163,24 @@ public class EmployerServiceImpl implements EmployerService {
 
         return employerResponses;
     }
+    @Override
+    public String getTimeLeft(String creationDateVacancy) {
+
+        if (creationDateVacancy == null) {
+            return "N/A";
+        }
+
+        LocalDateTime creationDate = LocalDateTime.parse(creationDateVacancy);
+        LocalDateTime now = LocalDateTime.now();
+
+        Duration duration = Duration.between(creationDate, now);
+        long days = duration.toDays();
+        long hours = duration.toHours();
+        long minutes = duration.toMinutes();
+
+        return String.valueOf(days>0?days +" days":hours>0?hours+" hours":minutes+" minutes");
+        //return String.valueOf(minutes);
+    }
 
     @Override
     public EmployerResponses getById(Long id) {
@@ -219,6 +243,45 @@ public class EmployerServiceImpl implements EmployerService {
             employerRepository.save(employer);
             return fileMapper.toDto(fileData);
         }
+    }
+
+    @Override
+    public boolean containsEducation(String str) {
+        for (Education education : Education.values()) {
+            if (education.name().equalsIgnoreCase(str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean containsTypeOfEmployment(String str) {
+        for (TypeOfEmployment education : TypeOfEmployment.values()) {
+            if (education.name().equalsIgnoreCase(str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean containsStatusOfJobSeeker(String str) {
+        for (StatusOfJobSeeker education : StatusOfJobSeeker.values()) {
+            if (education.name().equalsIgnoreCase(str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean containsApplicationDate(String str) {
+        for (ApplicationDate education : ApplicationDate.values()) {
+            if (education.name().equalsIgnoreCase(str)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

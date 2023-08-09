@@ -6,11 +6,13 @@ import com.example.hr_system.dto.jobSeeker.RespondedResponse;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.*;
+import com.example.hr_system.enums.ApplicationDate;
 import com.example.hr_system.enums.StatusOfJobSeeker;
 import com.example.hr_system.enums.StatusOfVacancy;
 import com.example.hr_system.enums.TypeOfEmployment;
 import com.example.hr_system.mapper.*;
 import com.example.hr_system.repository.*;
+import com.example.hr_system.service.EmployerService;
 import com.example.hr_system.service.FileDataService;
 import com.example.hr_system.service.VacancyService;
 import jakarta.persistence.EntityNotFoundException;
@@ -23,12 +25,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
+import java.util.*;
 
 @Service
 @Transactional
@@ -49,6 +51,7 @@ public class VacancyServiceImpl implements VacancyService {
     private final ContactInformationServiceImpl contactInformationService;
     private final ContactInformationRepository contactInformationRepository;
     private final ExperienceRepository experienceRepository;
+    private final EmployerService employerService;
 
     @Override
     public VacancyResponse saveVacancy(Long id, VacancyRequest vacancyRequest) {
@@ -61,8 +64,9 @@ public class VacancyServiceImpl implements VacancyService {
         vacancy.setIndustry(vacancyRequest.getIndustry());
         vacancy.setExperience(vacancyRequest.getExperience());
         vacancy.setAdditionalInformation(vacancyRequest.getAdditionalInformation());
-        vacancy.setTypeOfEmploymentS(TypeOfEmployment.valueOf(vacancyRequest.getTypeOfEmploymentS()));
-        vacancy.setDate(vacancyRequest.getDate());
+        vacancy.setTypeOfEmploymentS(
+                employerService.containsTypeOfEmployment(vacancyRequest.getTypeOfEmploymentS())?
+                TypeOfEmployment.valueOf(vacancyRequest.getTypeOfEmploymentS()):TypeOfEmployment.NEPOLNIY_RABOCHIY_DEYN);
         vacancy.setSkills(vacancyRequest.getSkills());
         vacancy.setDescription(vacancyRequest.getDescription());
 
@@ -74,6 +78,7 @@ public class VacancyServiceImpl implements VacancyService {
         Salary salary = salaryMapper.toEntity(vacancyRequest.getSalaryRequest());
         salaryRepository.save(salary);
         vacancy.setSalary(salary);
+        vacancy.setCreationDate(LocalDateTime.now());
 
 
         ContactInformation contactInformation = contactInformationService.convertToEntity(vacancyRequest.getContactInformationRequest());
@@ -89,7 +94,13 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public void delete(Long id) {
-        vacancyRepository.deleteById(id);
+        Vacancy vacancy = vacancyRepository.findById(id).orElseThrow(()->
+                new NotFoundException("is always dropped or not, the id: "+id));
+        vacancy.getJobSeekers().clear();
+        vacancy.setEmployer(null);
+        vacancy.setJobSeeker(null);
+       // vacancyRepository.save(vacancy);
+        vacancyRepository.delete(vacancy);
     }
 
     @Override
@@ -145,9 +156,9 @@ public class VacancyServiceImpl implements VacancyService {
         if (vacancyRequest.getDescription() != null) {
             vacancy.setDescription(vacancyRequest.getDescription());
         }
-        if (vacancyRequest.getDate() != null) {
-            vacancy.setDate(vacancyRequest.getDate());
-        }
+//        if (vacancyRequest.getDate() != null) {
+//            vacancy.setDate(vacancyRequest.getDate());
+//        }
 
         if (vacancyRequest.getPosition() != null) {
             vacancy.setPosition(positionRepository.findByName(vacancyRequest.getPosition()));
@@ -179,9 +190,10 @@ public class VacancyServiceImpl implements VacancyService {
 //    }
 
     @Override
-    public List<JobSeekerVacanciesResponses> filter(String category, String position, String country, String city, Experience experience) {
+    public List<JobSeekerVacanciesResponses> filter(String category, String position, String country, String city, String experience1) {
         List<Vacancy> all = vacancyRepository.findAll();
         Iterator<Vacancy> iterator = all.iterator();
+        //Experience experience = experienceRepository.findByName(experience1);
 
         while (iterator.hasNext()) {
             Vacancy v = iterator.next();
@@ -264,13 +276,15 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public void setStatusOfJobSeeker(Long vacancyId, Long jobSeekerId, String status) {
-        Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NotFoundException("Vacancy not found!"));
+        Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NotFoundException("Vacancy not found!"+vacancyId));
         System.out.println("list size: " + vacancy.getJobSeekers().size());
         System.out.println("its working!\n\n\n");
         for (JobSeeker jobSeeker1 : vacancy.getJobSeekers()) {
            // if (jobSeeker1.getId().equals(jobSeekerId)) {
-                jobSeeker1.setStatusOfJobSeeker(StatusOfJobSeeker.valueOf(status));
-                jobSeeker1.setUserApplicationDate( LocalDateTime.now().withSecond(0).withNano(0)
+                jobSeeker1.setStatusOfJobSeeker(
+                        employerService.containsStatusOfJobSeeker(status)?
+                        StatusOfJobSeeker.valueOf(status):null);
+                jobSeeker1.setUserApplicationDate( LocalDateTime.now()
 );
                 jobSeekerRepository.save(jobSeeker1);
 //            } else {
@@ -284,6 +298,7 @@ public class VacancyServiceImpl implements VacancyService {
     public void setStatusOfVacancy(Long id, String statusOfVacancy) {
         Vacancy vacancy = vacancyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Vacancy not found!"));
         vacancy.setStatusOfVacancy(StatusOfVacancy.valueOf(statusOfVacancy));
+
         vacancyRepository.save(vacancy);
     }
 
@@ -293,19 +308,50 @@ public class VacancyServiceImpl implements VacancyService {
         return jobSeekerMapper.toDtosForListResponded(vacancy.getJobSeekers());
     }
     @Override
+    public List<RespondedResponse> listForResponded(Long vacancyId, List<JobSeeker> jobSeekers) {
+        Optional<Vacancy> vacancyOptional = vacancyRepository.findById(vacancyId);
+        if (vacancyOptional.isEmpty()) {
+            return null; // or handle the vacancy not found case as needed
+        }
+        List<JobSeeker> jobSeekers1 = (vacancyRepository.findById(vacancyId)).orElseThrow(() -> new EntityNotFoundException("Vacancy not found")).getJobSeekers();
+        jobSeekers.retainAll(jobSeekers1);
+        return jobSeekerMapper.toDtosForListResponded(jobSeekers);
+    }
+    @Override
     public List<RespondedResponse> listForResponded(
             Long vacancyId, String statusOfJobSeeker,
             String experience, String applicationDate) {
         StatusOfJobSeeker statusOfJobSeeker1 = StatusOfJobSeeker.valueOf(statusOfJobSeeker);
         Experience experience1 = experienceRepository.findByName(experience);
-        LocalDate localDate = applicationDate.length()<2?null:
-                LocalDate.parse(applicationDate);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime start;
+        LocalDateTime end;
 
+        switch (applicationDate) {
+            case "TODAY":
+                start = now.with(LocalTime.MIN);
+                end = now.with(LocalTime.MAX);
+                break;
+            case "THIS_WEEK":
+                start = now.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)).with(LocalTime.MIN);
+                end = now.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY)).with(LocalTime.MAX);
+                break;
+            case "THIS_MONTH":
+                start = now.with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
+                end = now.with(TemporalAdjusters.lastDayOfMonth()).with(LocalTime.MAX);
+                break;
+            case "THIS_YEAR":
+                start = now.with(TemporalAdjusters.firstDayOfYear()).with(LocalTime.MIN);
+                end = now.with(TemporalAdjusters.lastDayOfYear()).with(LocalTime.MAX);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid time period");
+        }
+        List<JobSeeker> jobSeekers2 = jobSeekerRepository.findByUserApplicationDateRange(start, end);
         List<JobSeeker> jobSeekers = (vacancyRepository.findById(vacancyId)).orElseThrow(() -> new EntityNotFoundException("Vacancy not found")).getJobSeekers();
         List<JobSeeker> jobSeekers1= jobSeekerRepository.findByStatusOfJobSeekerAndExperienceAndUserApplicationDate(
-                statusOfJobSeeker1, experience1, localDate);
+                statusOfJobSeeker1, experience1, null);
         jobSeekers1.retainAll(jobSeekers);
-
-        return jobSeekerMapper.toDtosForListResponded(jobSeekers1);
+        return jobSeekerMapper.toDtosForListResponded(jobSeekers2);
     }
 }

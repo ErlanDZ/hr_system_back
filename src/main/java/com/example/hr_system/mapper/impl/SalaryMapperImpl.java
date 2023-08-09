@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 @AllArgsConstructor
@@ -22,11 +23,16 @@ public class SalaryMapperImpl implements SalaryMapper {
         if (salary == null) {
             return null;
         }
+        Random random = new Random();
+
+        double randomDouble = random.nextDouble();
+        double roundedValue = (int) Math.round(randomDouble);
+
         SalaryResponse salaryResponse = new SalaryResponse();
         salaryResponse.setId(salary.getId());
         salaryResponse.setValute(salary.getValute());
         salaryResponse.setSalaryType(salary.getSalaryType());
-        salaryResponse.setSum(salary.getSalarySum());
+        salaryResponse.setSalarySum(roundedValue);
         return salaryResponse;
     }
 
@@ -42,12 +48,17 @@ public class SalaryMapperImpl implements SalaryMapper {
     @Override
     public Salary toEntity(SalaryRequest salaryRequest) {
         Salary salary = new Salary();
+        Random random = new Random();
+
+        double randomDouble = random.nextDouble();
+        double roundedValue = (int) Math.round(randomDouble);
+
         salary.setSalaryType(salaryRequest.getSalaryType()==null?null:
                 salaryRequest.getSalaryType());
-        salary.setSalarySum(salary.getSalarySum()==null?null:
-                salaryRequest.getSalarySum());
+        salary.setSalarySum(roundedValue);
         salary.setValute(salaryRequest.getValute()==null?null:
                 salaryRequest.getValute());
+
         //salary.setSalaryType(salaryRequest.getTypeOfEmployment());
         return salary;
     }

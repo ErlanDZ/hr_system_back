@@ -23,6 +23,4 @@ public class VacancyRequest {
     private String experience;
     private ContactInformationRequest contactInformationRequest;
     private String additionalInformation;
-    private Date date;
-
 }

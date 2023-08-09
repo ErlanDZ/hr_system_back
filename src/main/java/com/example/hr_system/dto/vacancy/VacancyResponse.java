@@ -31,10 +31,5 @@ public class VacancyResponse {
     private String experience;
     private ContactInformationResponse contactInformationResponse;
     private String additionalInformation;
-    private String date;
-
-
-
-
-
+    private String CreationDate;
 }

@@ -131,7 +131,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
                 jobSeeker1.getResume() == null ? null :
                         jobSeeker1.getResume().getId(), jobSeeker1.getBirthday(), jobSeeker1.getCountry(),
                 jobSeeker1.getCity(),
-                jobSeeker1.getAddress(), jobSeeker1.getEmail(), jobSeeker1.getPhoneNumber(), jobSeeker1.getRole());
+                jobSeeker1.getAddress(), jobSeeker1.getEmail(), jobSeeker1.getPhoneNumber(), jobSeeker1.getRole(), null);
     }
 
     @Override

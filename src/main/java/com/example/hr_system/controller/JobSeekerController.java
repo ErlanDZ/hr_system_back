@@ -4,7 +4,9 @@ import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.jobSeeker.*;
 import com.example.hr_system.entities.Vacancy;
 import com.example.hr_system.mapper.FileMapper;
+import com.example.hr_system.mapper.JobSeekerMapper;
 import com.example.hr_system.repository.FileRepository;
+import com.example.hr_system.repository.JobSeekerRepository;
 import com.example.hr_system.repository.UserRepository;
 import com.example.hr_system.service.FileDataService;
 import com.example.hr_system.service.JobSeekerService;
@@ -36,6 +38,8 @@ public class JobSeekerController {
     private final FileRepository fileRepository;
     private final UserRepository userRepository;
     private final FileDataServiceImpl fileDataService;
+    public final JobSeekerMapper jobSeekerMapper;
+    private final JobSeekerRepository jobSeekerRepository;
 
 //
 //    @PostMapping("resume/downloadUrl")
@@ -46,6 +50,11 @@ public class JobSeekerController {
 //    public ResponseEntity<String> getFileuploadUrl(@RequestParam String filename){
 //        return ResponseEntity.ok(fileDataService.generateUrl(filename, HttpMethod.GET));
 //    }
+    @GetMapping("/get/jobseeker/{jobSeekerId}")
+    public JobSeekerResponses jobSeekerResponses(@PathVariable Long jobSeekerId){
+        return jobSeekerMapper.toDto(jobSeekerRepository.findById(jobSeekerId).orElseThrow(()->
+                new NotFoundException("not found jobseeker with id: "+ jobSeekerId)));
+    }
 
     @PostMapping("resume/upload/{id}")
     public ResponseEntity<?> uploadResume(@RequestParam("resume") MultipartFile file, @PathVariable Long id) throws IOException {

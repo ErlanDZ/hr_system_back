@@ -11,7 +11,7 @@ public class SalaryResponse {
 
     private SalaryType salaryType;
 
-    private Double sum;
+    private Double salarySum;
 
     private Valute valute;
 
