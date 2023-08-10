@@ -2,23 +2,24 @@ package com.example.hr_system.service.impl;
 
 import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.jobSeeker.*;
+import com.example.hr_system.dto.notification.NotificationResponse;
 import com.example.hr_system.entities.*;
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.enums.Role;
-import com.example.hr_system.enums.StatusOfJobSeeker;
 import com.example.hr_system.mapper.FileMapper;
 import com.example.hr_system.mapper.JobSeekerMapper;
+import com.example.hr_system.mapper.NotificationMapper;
 import com.example.hr_system.repository.*;
 import com.example.hr_system.service.FileDataService;
 import com.example.hr_system.service.JobSeekerService;
 import lombok.AllArgsConstructor;
 import org.apache.logging.log4j.message.SimpleMessage;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -33,6 +34,7 @@ public class JobSeekerServiceImpl implements JobSeekerService {
     private final UserRepository userRepository;
     private final FileRepository fileRepository;
     private final FileMapper fileMapper;
+    NotificationMapper notificationMapper;
 
     @Override
     public FileResponse uploadResume(MultipartFile file, Long id) throws IOException {
@@ -40,19 +42,19 @@ public class JobSeekerServiceImpl implements JobSeekerService {
                 new NotFoundException("user not found!" + id));
         JobSeeker jobSeeker = user.getJobSeeker();
 
-            if (jobSeeker.getResume() != null) {
-                FileData fileData = jobSeeker.getResume();
-                jobSeeker.setResume(null);
-                FileData save = fileDataService.uploadFile(file, fileData);
-                jobSeeker.setResume(save);
-                jobSeekerRepository.save(jobSeeker);
-               return fileMapper.toDto(save);
-            } else {
-                FileData fileData=fileDataService.uploadFile(file);
-                jobSeeker.setResume(fileData);
-                jobSeekerRepository.save(jobSeeker);
-                return fileMapper.toDto(fileData);
-            }
+        if (jobSeeker.getResume() != null) {
+            FileData fileData = jobSeeker.getResume();
+            jobSeeker.setResume(null);
+            FileData save = fileDataService.uploadFile(file, fileData);
+            jobSeeker.setResume(save);
+            jobSeekerRepository.save(jobSeeker);
+            return fileMapper.toDto(save);
+        } else {
+            FileData fileData = fileDataService.uploadFile(file);
+            jobSeeker.setResume(fileData);
+            jobSeekerRepository.save(jobSeeker);
+            return fileMapper.toDto(fileData);
+        }
     }
 
 
@@ -156,7 +158,6 @@ public class JobSeekerServiceImpl implements JobSeekerService {
     }
 
 
-
     @Override
     public List<JobSeeker> filterJobSeekers(
             Position position,
@@ -181,8 +182,6 @@ public class JobSeekerServiceImpl implements JobSeekerService {
 
     @Override
     public List<JobSeeker> searchByFirstAndLastName(String firstname, String lastname) {
-
-
         return jobSeekerRepository.searchJobSeekers(
                 firstname != null && !firstname.isEmpty() ? firstname : null,
                 lastname != null && !lastname.isEmpty() ? lastname : null
@@ -190,6 +189,10 @@ public class JobSeekerServiceImpl implements JobSeekerService {
         );
     }
 
-
+    @Override
+    public List<NotificationResponse> findAllNotificationsByUserId(@PathVariable Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("USER not found!"));
+        return notificationMapper.toDtos(user.getNotification());
+    }
 
 }

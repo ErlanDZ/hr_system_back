@@ -85,4 +85,5 @@ public class AdminInAController {
         jobSeekerService.responseForVacancy(vacancyId);
     }
 
+    
 }

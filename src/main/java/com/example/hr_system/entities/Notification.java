@@ -11,8 +11,8 @@ public class Notification {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "job_seeker")
-    private JobSeeker userId;
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "content")
     private String content;

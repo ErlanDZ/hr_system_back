@@ -3,12 +3,14 @@ package com.example.hr_system.service;
 import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.image.Response;
 import com.example.hr_system.dto.jobSeeker.*;
+import com.example.hr_system.dto.notification.NotificationResponse;
 import com.example.hr_system.entities.Experience;
 import com.example.hr_system.entities.JobSeeker;
 import com.example.hr_system.entities.Position;
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.enums.StatusOfJobSeeker;
 import org.apache.logging.log4j.message.SimpleMessage;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -43,5 +45,7 @@ public interface JobSeekerService {
             String lastname
     );
 
-   // List<RespondedResponse> filterJobSeekers(StatusOfJobSeeker statusOfJobSeeker, Experience experience, LocalDate applicationDate);
+    List<NotificationResponse> findAllNotificationsByUserId(@PathVariable Long userId);
+
+    // List<RespondedResponse> filterJobSeekers(StatusOfJobSeeker statusOfJobSeeker, Experience experience, LocalDate applicationDate);
 }

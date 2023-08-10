@@ -32,7 +32,7 @@ public class SalaryMapperImpl implements SalaryMapper {
         salaryResponse.setId(salary.getId());
         salaryResponse.setValute(salary.getValute());
         salaryResponse.setSalaryType(salary.getSalaryType());
-        salaryResponse.setSalarySum(roundedValue);
+        salaryResponse.setSalarySum(salary.getSalarySum());
         return salaryResponse;
     }
 
@@ -55,7 +55,8 @@ public class SalaryMapperImpl implements SalaryMapper {
 
         salary.setSalaryType(salaryRequest.getSalaryType()==null?null:
                 salaryRequest.getSalaryType());
-        salary.setSalarySum(roundedValue);
+        salary.setSalarySum(salaryRequest.getSalarySum());
+        System.out.println(salary.getSalarySum());
         salary.setValute(salaryRequest.getValute()==null?null:
                 salaryRequest.getValute());
 

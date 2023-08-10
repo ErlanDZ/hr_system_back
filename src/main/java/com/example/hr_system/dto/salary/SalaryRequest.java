@@ -12,7 +12,7 @@ public class SalaryRequest {
 
     private SalaryType salaryType;
 
-    private Double salarySum;
+    private double salarySum;
 
     private Valute valute;
 

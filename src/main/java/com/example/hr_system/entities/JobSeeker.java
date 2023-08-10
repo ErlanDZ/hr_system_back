@@ -26,7 +26,7 @@ public class JobSeeker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "jobSeeker")
+    @OneToOne(mappedBy = "jobSeeker")
     private User user;
 
 
@@ -82,7 +82,5 @@ public class JobSeeker {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH,CascadeType.DETACH})
     private Experience experience;
 
-    @OneToMany(mappedBy = "userId")
-    private List<Notification> notification;
 
 }

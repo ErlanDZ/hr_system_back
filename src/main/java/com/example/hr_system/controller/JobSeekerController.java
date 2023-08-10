@@ -2,9 +2,15 @@ package com.example.hr_system.controller;
 
 import com.example.hr_system.dto.file.FileResponse;
 import com.example.hr_system.dto.jobSeeker.*;
+import com.example.hr_system.dto.notification.NotificationResponse;
+import com.example.hr_system.dto.vacancy.VacancyResponse;
+import com.example.hr_system.entities.User;
 import com.example.hr_system.entities.Vacancy;
 import com.example.hr_system.mapper.FileMapper;
+import com.example.hr_system.mapper.NotificationMapper;
+
 import com.example.hr_system.mapper.JobSeekerMapper;
+
 import com.example.hr_system.repository.FileRepository;
 import com.example.hr_system.repository.JobSeekerRepository;
 import com.example.hr_system.repository.UserRepository;
@@ -38,6 +44,7 @@ public class JobSeekerController {
     private final FileRepository fileRepository;
     private final UserRepository userRepository;
     private final FileDataServiceImpl fileDataService;
+    private final NotificationMapper notificationMapper;
     public final JobSeekerMapper jobSeekerMapper;
     private final JobSeekerRepository jobSeekerRepository;
 
@@ -96,11 +103,12 @@ public class JobSeekerController {
     }
 
 
-
-    @PutMapping("/responded/{vacancyId}/{jobSeekerId}")
-    public void respondedForVacancy(@PathVariable Long vacancyId, @PathVariable Long jobSeekerId) {
-        vacancyService.responded(vacancyId, jobSeekerId);
+    @PutMapping("/responded/{vacancyId}/{userId}")
+    public VacancyResponse respondedForVacancy(@PathVariable Long vacancyId, @PathVariable Long userId) {
+        return vacancyService.responded(vacancyId, userId);
     }
-
-
+@GetMapping("/notifications/{userId}")
+    public List<NotificationResponse> findAllNotificationsByUserId(@PathVariable Long userId) {
+        return jobSeekerService.findAllNotificationsByUserId(userId);
+    }
 }

@@ -10,6 +10,7 @@ import com.example.hr_system.dto.experience.ExperienceResponse;
 import com.example.hr_system.dto.jobSeeker.CandidateResponses;
 import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
 import com.example.hr_system.dto.jobSeeker.RespondedResponse;
+import com.example.hr_system.dto.notification.NotificationResponse;
 import com.example.hr_system.dto.position.CandidateResponse;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
@@ -19,6 +20,7 @@ import com.example.hr_system.mapper.*;
 import com.example.hr_system.repository.*;
 import com.example.hr_system.service.EmployerService;
 import com.example.hr_system.service.JobSeekerService;
+import com.example.hr_system.service.NotificationService;
 import com.example.hr_system.service.VacancyService;
 import com.example.hr_system.service.emailSender.EmailSenderService;
 import jakarta.mail.MessagingException;
@@ -59,8 +61,8 @@ public class EmployerController {
     private final VacancyMapper vacancyMapper;
     private final VacancyRepository vacancyRepository;
     private final EmailSenderService emailSenderService;
+    private final NotificationService notificationService;
     private final EmployerRepository employerRepository;
-
 
 
 
@@ -243,9 +245,10 @@ public class EmployerController {
     }
 
     @PutMapping("/newStatusForVacancy/{vacancyId}")
-    public void newStatus(@PathVariable Long vacancyId, @RequestParam(required = false) String status) {
-        vacancyService.setStatusOfVacancy(vacancyId, status);
-    }
+    public void newStatus(@PathVariable Long vacancyId, @RequestParam(required = false) String status){
+        vacancyService.setStatusOfVacancy(vacancyId,status);
+         }
+
 
     @PutMapping("/setStatusForJobSeeker/{vacancyId}/{userId}")
     public void setStatusForJobSeeker(@PathVariable Long vacancyId, @PathVariable Long userId, @RequestParam(required = false) String status) {

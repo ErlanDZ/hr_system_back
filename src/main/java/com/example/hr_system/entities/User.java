@@ -32,6 +32,9 @@ public class User implements UserDetails {
     private String password;
     private String image;
 
+    @OneToMany(mappedBy = "user")
+    private List<Notification> notification;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;

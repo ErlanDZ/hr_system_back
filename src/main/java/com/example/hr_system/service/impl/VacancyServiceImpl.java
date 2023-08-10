@@ -3,6 +3,7 @@ package com.example.hr_system.service.impl;
 import com.example.hr_system.dto.JobSeekerVacanciesResponses;
 import com.example.hr_system.dto.image.Response;
 import com.example.hr_system.dto.jobSeeker.RespondedResponse;
+import com.example.hr_system.dto.notification.NotificationResponse;
 import com.example.hr_system.dto.vacancy.VacancyRequest;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import com.example.hr_system.entities.*;
@@ -47,11 +48,22 @@ public class VacancyServiceImpl implements VacancyService {
     private final JobSeekerRepository jobSeekerRepository;
     private final VacancyMapper vacancyMapper;
     private final JobSeekerMapper jobSeekerMapper;
+    private final NotificationMapper notificationMapper;
+    private final NotificationRepository notificationRepository;
     private final JobSeekerVacanciesResponsesMapper jobSeekerVacanciesResponsesMapper;
     private final ContactInformationServiceImpl contactInformationService;
     private final ContactInformationRepository contactInformationRepository;
     private final ExperienceRepository experienceRepository;
     private final EmployerService employerService;
+
+    private void saveNotification(User user, String content) {
+        Notification notification = new Notification();
+        if (user != null) {
+            notification.setUser(user);
+            notification.setContent(content);
+            notificationRepository.save(notification);
+        }
+    }
 
     @Override
     public VacancyResponse saveVacancy(Long id, VacancyRequest vacancyRequest) {
@@ -59,14 +71,14 @@ public class VacancyServiceImpl implements VacancyService {
 //        if (vacancyRequest.getSalaryRequest() != null) {
 //            vacancy.setSalary(salaryMapper.toEntity(vacancyRequest.getSalaryRequest()));
 //        }
-        vacancy.setSalary(vacancyRequest.getSalaryRequest()!=null?salaryMapper.toEntity(vacancyRequest.getSalaryRequest()):null);
+        vacancy.setSalary(vacancyRequest.getSalaryRequest() != null ? salaryMapper.toEntity(vacancyRequest.getSalaryRequest()) : null);
         vacancy.setAbout_company(vacancyRequest.getAbout_company());
         vacancy.setIndustry(vacancyRequest.getIndustry());
         vacancy.setExperience(vacancyRequest.getExperience());
         vacancy.setAdditionalInformation(vacancyRequest.getAdditionalInformation());
         vacancy.setTypeOfEmploymentS(
-                employerService.containsTypeOfEmployment(vacancyRequest.getTypeOfEmploymentS())?
-                TypeOfEmployment.valueOf(vacancyRequest.getTypeOfEmploymentS()):TypeOfEmployment.NEPOLNIY_RABOCHIY_DEYN);
+                employerService.containsTypeOfEmployment(vacancyRequest.getTypeOfEmploymentS()) ?
+                        TypeOfEmployment.valueOf(vacancyRequest.getTypeOfEmploymentS()) : TypeOfEmployment.NEPOLNIY_RABOCHIY_DEYN);
         vacancy.setSkills(vacancyRequest.getSkills());
         vacancy.setDescription(vacancyRequest.getDescription());
 
@@ -88,9 +100,26 @@ public class VacancyServiceImpl implements VacancyService {
 
         Employer employer = user.getEmployer();
         vacancy.setEmployer(employer);
+        List<Notification> notifications = new ArrayList<>();
+
+
+        for (User userJobSeeker : userRepository.findAll()) {
+            if (vacancy.getPosition() != null && userJobSeeker.getJobSeeker() != null && userJobSeeker.getJobSeeker().getPosition() != null) {
+                if (vacancy.getPosition().getName().equals(userJobSeeker.getJobSeeker().getPosition().getName())) {
+                    Notification notification = new Notification();
+                    notification.setUser(userJobSeeker);
+                    notification.setContent("Появилась новая вакансия, " +
+                            "соответствующая вашим интересам. " +
+                            "Проверьте подробности и отправьте отклик.");
+                    notifications.add(notification);
+                }
+            }
+        }
+        notificationRepository.saveAll(notifications);
 
         return vacancyMapper.toDto(vacancyRepository.save(vacancy));
     }
+
 
     @Override
     public void delete(Long id) {
@@ -245,9 +274,9 @@ public class VacancyServiceImpl implements VacancyService {
     }
 
     @Override
-    public VacancyResponse responded(Long vacancyId, Long jobSeekerId) {
+    public VacancyResponse responded(Long vacancyId, Long userId) {
         Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new EntityNotFoundException("Vacancy not found"));
-        User user = userRepository.findById(jobSeekerId).orElseThrow();
+        User user = userRepository.findById(userId).orElseThrow();
         JobSeeker jobSeeker = user.getJobSeeker();
 
         List<JobSeeker> jobSeekers = new ArrayList<>();
@@ -262,7 +291,7 @@ public class VacancyServiceImpl implements VacancyService {
                 vacancyRepository.save(vacancy);
             } else {
                 for (JobSeeker jobSeeker1 : vacancy.getJobSeekers()) {
-                    if (!Objects.equals(jobSeeker1.getId(), jobSeekerId)) {
+                    if (!Objects.equals(jobSeeker1.getId(), userId)) {
                         vacancy.getJobSeekers().add(jobSeeker);
                         vacancy.setResponse(vacancy.getJobSeekers().size());
                         vacancyRepository.save(vacancy);
@@ -270,26 +299,47 @@ public class VacancyServiceImpl implements VacancyService {
                     break;
                 }
             }
+
+            Notification notification = new Notification();
+            User userEmployer = vacancy.getEmployer().getUser();
+            if (userEmployer != null) {
+                notification.setUser(userEmployer);
+                notification.setContent("Job Seeker " + jobSeeker.getFirstname() +
+                        " responded your vacancy " + vacancy.getPosition());
+                notificationRepository.save(notification);
+            }
+
         }
         return vacancyMapper.toDto(vacancy);
     }
 
     @Override
     public void setStatusOfJobSeeker(Long vacancyId, Long jobSeekerId, String status) {
-        Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NotFoundException("Vacancy not found!"+vacancyId));
-        System.out.println("list size: " + vacancy.getJobSeekers().size());
-        System.out.println("its working!\n\n\n");
-        for (JobSeeker jobSeeker1 : vacancy.getJobSeekers()) {
-           // if (jobSeeker1.getId().equals(jobSeekerId)) {
-                jobSeeker1.setStatusOfJobSeeker(
-                        employerService.containsStatusOfJobSeeker(status)?
-                        StatusOfJobSeeker.valueOf(status):null);
-                jobSeeker1.setUserApplicationDate( LocalDateTime.now()
-);
-                jobSeekerRepository.save(jobSeeker1);
-//            } else {
-//                System.out.println("JobSeeker not");
-//            }
+
+        Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NotFoundException("Vacancy not found!" + vacancyId));
+        JobSeeker jobSeeker = jobSeekerRepository.findById(jobSeekerId).orElseThrow(() -> new NotFoundException("Job Seeker not found!"));
+
+        if (vacancy.getJobSeekers().contains(jobSeeker)) {
+            jobSeeker.setStatusOfJobSeeker(
+                    employerService.containsStatusOfJobSeeker(status) ?
+                            StatusOfJobSeeker.valueOf(status) : null);
+            jobSeeker.setUserApplicationDate(LocalDateTime.now());
+            jobSeekerRepository.save(jobSeeker);
+
+            Notification notification = new Notification();
+            notification.setUser(jobSeeker.getUser());
+            if (jobSeeker.getStatusOfJobSeeker().equals(StatusOfJobSeeker.AN_INTERVIEW)) {
+                notification.setContent("Вас пригласили на собеседование в " +
+                        vacancy.getEmployer().getCompanyName() + " Подготовьтесь к встрече и ознакомьтесь с деталями.");
+
+            } else if (jobSeeker.getStatusOfJobSeeker().equals(StatusOfJobSeeker.CONSIDERED)) {
+                notification.setContent("Вы в расмотрении");
+            } else if (jobSeeker.getStatusOfJobSeeker().equals(StatusOfJobSeeker.OFFER)) {
+                notification.setContent("УРА вас приняли на работу");
+            } else if (jobSeeker.getStatusOfJobSeeker().equals(StatusOfJobSeeker.REJECT)) {
+                notification.setContent("Вас отклонили");
+            }
+            notificationRepository.save(notification);
         }
     }
 
@@ -297,7 +347,20 @@ public class VacancyServiceImpl implements VacancyService {
     @Override
     public void setStatusOfVacancy(Long id, String statusOfVacancy) {
         Vacancy vacancy = vacancyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Vacancy not found!"));
+
         vacancy.setStatusOfVacancy(StatusOfVacancy.valueOf(statusOfVacancy));
+
+
+        for (JobSeeker jobSeeker : vacancy.getJobSeekers()) {
+            Notification notification = new Notification();
+            if (jobSeeker.getUser() != null) {
+                User user = jobSeeker.getUser();
+                notification.setUser(user);
+                notification.setContent("Company " + vacancy.getEmployer().getCompanyName() +
+                        " change status vacancy of " + StatusOfVacancy.valueOf(statusOfVacancy));
+                notificationRepository.save(notification);
+            }
+        }
 
         vacancyRepository.save(vacancy);
     }
@@ -307,6 +370,7 @@ public class VacancyServiceImpl implements VacancyService {
         Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new EntityNotFoundException("Vacancy not found"));
         return jobSeekerMapper.toDtosForListResponded(vacancy.getJobSeekers());
     }
+
     @Override
     public List<RespondedResponse> listForResponded(Long vacancyId, List<JobSeeker> jobSeekers) {
         Optional<Vacancy> vacancyOptional = vacancyRepository.findById(vacancyId);
@@ -317,15 +381,21 @@ public class VacancyServiceImpl implements VacancyService {
         jobSeekers.retainAll(jobSeekers1);
         return jobSeekerMapper.toDtosForListResponded(jobSeekers);
     }
+
     @Override
     public List<RespondedResponse> listForResponded(
             Long vacancyId, String statusOfJobSeeker,
             String experience, String applicationDate) {
         StatusOfJobSeeker statusOfJobSeeker1 = StatusOfJobSeeker.valueOf(statusOfJobSeeker);
         Experience experience1 = experienceRepository.findByName(experience);
+
+        LocalDate localDate = applicationDate.length() < 2 ? null :
+                LocalDate.parse(applicationDate);
+
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime start;
         LocalDateTime end;
+
 
         switch (applicationDate) {
             case "TODAY":
@@ -349,8 +419,11 @@ public class VacancyServiceImpl implements VacancyService {
         }
         List<JobSeeker> jobSeekers2 = jobSeekerRepository.findByUserApplicationDateRange(start, end);
         List<JobSeeker> jobSeekers = (vacancyRepository.findById(vacancyId)).orElseThrow(() -> new EntityNotFoundException("Vacancy not found")).getJobSeekers();
-        List<JobSeeker> jobSeekers1= jobSeekerRepository.findByStatusOfJobSeekerAndExperienceAndUserApplicationDate(
+
+
+        List<JobSeeker> jobSeekers1 = jobSeekerRepository.findByStatusOfJobSeekerAndExperienceAndUserApplicationDate(
                 statusOfJobSeeker1, experience1, null);
+
         jobSeekers1.retainAll(jobSeekers);
         return jobSeekerMapper.toDtosForListResponded(jobSeekers2);
     }

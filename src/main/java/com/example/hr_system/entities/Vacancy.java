@@ -22,7 +22,7 @@ public class Vacancy {
     @Column(columnDefinition = "varchar(3000)")
     private String about_company;
     private String industry;
-    @Column(columnDefinition = "varchar(3000")
+    @Column(columnDefinition = "varchar(3000)")
     private String description;
     private String skills;
     @Enumerated(EnumType.STRING)
