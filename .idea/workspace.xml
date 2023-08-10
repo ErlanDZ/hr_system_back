@@ -4,7 +4,181 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="" />
+    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/HrSystemApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/AuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/AuthenticationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/AuthenticationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/AuthenticationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/GoogleAccess.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/RegisterEmployerRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/RegisterJobSeekerRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/responses/AuthenticationEmployerResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/responses/AuthenticationJobSeekerResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/auth/responses/UserWrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/AmazonConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/ApplicationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/CorsConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/ImageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/JwtAuthenticationFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/JwtService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/JwtToUserConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/LogoutService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/OpenApiConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/RestTemplateConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/SwaggerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/messageConfig/WebSocketConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/config/messageConfig/WebSocketEventListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/AdminInAController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/EmployerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/JobSeekerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/NewClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/VacancyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/EmployeeVacanciesResponses.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/JobSeekerVacanciesResponses.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/NewClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/SimpleResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/UserResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/cand/EducationDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/category/CategoryRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/category/CategoryResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/contactInformation/ContactInformationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/contactInformation/ContactInformationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/employer/EmployerRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/employer/EmployerRequests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/employer/EmployerResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/employer/EmployerResponses.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/experience/ExperienceResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/file/FileResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/image/Response.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/CandidateResponses.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerRequests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/JobSeekerResponses.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/jobSeeker/RespondedResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/notification/NotificationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/position/CandidateResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/position/PositionRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/position/PositionResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/responded/RespondedJobSeekersRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/responded/RespondedJobSeekersResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/salary/SalaryRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/salary/SalaryResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/vacancy/VacancyRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/dto/vacancy/VacancyResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/ContactInformation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Employer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Experience.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/FileData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/JobSeeker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Notification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Position.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Salary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Vacancy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/ApplicationDate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/Education.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/Month.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/SalaryType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/StatusOfJobSeeker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/StatusOfVacancy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/TypeOfEmployment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/enums/Valute.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/CategoryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/ContactInformationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/EmployerMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/ExperienceMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/FileMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/JobSeekerMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/JobSeekerVacanciesResponsesMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/NotificationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/PositionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/SalaryMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/VacancyMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/CategoryMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/ContactInformationMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/EmployerMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/ExperienceMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/FileMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/JobSeekerMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/JobSeekerVacanciesResponsesMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/NotificationMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/PositionMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/SalaryMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/mapper/impl/VacancyMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/CategoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/ContactInformationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/EmployerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/ExperienceRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/FileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/JobSeekerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/NotificationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/PositionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/SalaryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/repository/VacancyRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/ContactInfromationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/EmployerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/FileDataService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/JobSeekerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/NotificationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/VacancyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/emailSender/EmailSenderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/emailSender/FileDataInputStreamSourceAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/CategoryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/ContactInformationServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/EmployerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/FileDataServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/JobSeekerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/NotificationServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/PositionServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/SalaryServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/service/impl/VacancyServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/token/Token.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/token/TokenRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/token/TokenType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V0__create_token_seq.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V0__create_token_seq.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V10__create_table_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V10__create_table_position.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V11__create_table_salaries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V11__create_table_salaries.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V12__create_table_token.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V12__create_table_token.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V13__create_table_users_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V13__create_table_users_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V14__create_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V14__create_table_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V15__create_table_vacancies_job_seekers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V15__create_table_vacancies_job_seekers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V16__create_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V16__create_table_notification.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V17__alter_table_categories_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V17__alter_table_categories_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V18__alter_table_employer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V18__alter_table_employer.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V19__alter_table_employer_favorites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V19__alter_table_employer_favorites.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V1__create_table_categories.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V1__create_table_categories.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V20__alter_table_job_seeker_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V20__alter_table_job_seeker_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V21__alter_table_job_seeker_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V21__alter_table_job_seeker_table_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V22__alter_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V22__alter_table_notification.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V23__alter_table_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V23__alter_table_position.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V24__alter_table_token.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V24__alter_table_token.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V25__alter_table_users_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V25__alter_table_users_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V26__alter_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V26__alter_table_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V27__alter_table_vacancies_job_seekers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V27__alter_table_vacancies_job_seekers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V28__alter_table_job_seeker_and_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V28__alter_table_job_seeker_and_user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V29__alter_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V29__alter_table_notification.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V2__create_table_categories_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V2__create_table_categories_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V30__insert_into_categories.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V30__insert_into_categories.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V31__insert_into_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V31__insert_into_position.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V32__insert_into_experience.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V32__insert_into_experience.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V3__create_table_contact_information.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V3__create_table_contact_information.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V4__create_table_employer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V4__create_table_employer.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V5__create_table_employer_favorites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V5__create_table_employer_favorites.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V6__create_table_experience.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V6__create_table_experience.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V7__create_table_file_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V7__create_table_file_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V8__create_table_job_seeker_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V8__create_table_job_seeker_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationd/V9__create_table_job_seeker_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V9__create_table_job_seeker_table_vacancies.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +273,7 @@
       <workItem from="1691379158123" duration="710000" />
       <workItem from="1691380986125" duration="7277000" />
       <workItem from="1691465489177" duration="689000" />
-      <workItem from="1691577045326" duration="5240000" />
+      <workItem from="1691577045326" duration="6893000" />
     </task>
     <servers />
   </component>

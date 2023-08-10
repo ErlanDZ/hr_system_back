@@ -276,7 +276,7 @@ public class VacancyServiceImpl implements VacancyService {
     @Override
     public VacancyResponse responded(Long vacancyId, Long userId) {
         Vacancy vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new EntityNotFoundException("Vacancy not found"));
-        User user = userRepository.findById(userId).orElseThrow();
+        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found: "+userId));
         JobSeeker jobSeeker = user.getJobSeeker();
 
         List<JobSeeker> jobSeekers = new ArrayList<>();

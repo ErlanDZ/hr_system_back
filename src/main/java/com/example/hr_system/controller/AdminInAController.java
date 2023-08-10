@@ -49,18 +49,21 @@ public class AdminInAController {
         return true;
     }
 
-    @PutMapping("password/change")
-    public boolean changePassword(@RequestParam String email, @RequestParam String this_password,
+    @PutMapping("/password/change")
+    public String changePassword(@RequestParam String email, @RequestParam String this_password,
                                   @RequestParam String lastPassword){
-        User user = userRepository.findByEmail(email).orElseThrow();
-        if (user.getPassword()==this_password){
-
+        System.out.println("jakhd");
+        User user = userRepository.findByEmail(email).orElseThrow(()->
+                new NotFoundException("The user not found! :"+email));
+        if (encoder.encode(this_password).equals(user.getPassword())) {
+            System.out.println();
             user.setPassword(encoder.encode(lastPassword));
-            return true;
+            return "success changed!" + lastPassword;
         }
         else {
-            throw new BadCredentialsException("the password is wrong for email: "+email);
+            return "the password is wrong for email: "+email+" "+user.getPassword();
         }
+
     }
 
 
@@ -84,6 +87,5 @@ public class AdminInAController {
     public void responseForVacancy(@PathVariable Long vacancyId) {
         jobSeekerService.responseForVacancy(vacancyId);
     }
-
 
 }
