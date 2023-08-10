@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/VacancyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/controller/VacancyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +99,7 @@
       <workItem from="1691379158123" duration="710000" />
       <workItem from="1691380986125" duration="7277000" />
       <workItem from="1691465489177" duration="689000" />
-      <workItem from="1691577045326" duration="4566000" />
+      <workItem from="1691577045326" duration="4908000" />
     </task>
     <servers />
   </component>
