@@ -1,6 +1,8 @@
 package com.example.hr_system.dto;
 
 import com.example.hr_system.dto.contactInformation.ContactInformationResponse;
+import com.example.hr_system.dto.jobSeeker.JobSeekerResponse;
+import com.example.hr_system.dto.jobSeeker.JobSeekerResponses;
 import com.example.hr_system.dto.position.PositionResponse;
 import com.example.hr_system.dto.salary.SalaryResponse;
 import com.example.hr_system.entities.JobSeeker;
@@ -18,7 +20,7 @@ public class EmployeeVacanciesResponses {
     private PositionResponse positionResponse;
     private SalaryResponse salaryResponse;
     private ContactInformationResponse contactInformationResponse;
-    private List<JobSeeker> jobSeekers;
+    private List<JobSeekerResponses> jobSeekers;
     private Date date;
     private String status;
     private Integer response;
