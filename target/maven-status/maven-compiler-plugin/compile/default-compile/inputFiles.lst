@@ -11,7 +11,6 @@
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/entities/FileData.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/enums/StatusOfVacancy.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/controller/JobSeekerController.java
-/Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/dto/responded/RespondedJobSeekersRequest.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/token/TokenRepository.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/dto/employer/EmployerRequest.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/service/impl/CategoryServiceImpl.java
@@ -53,7 +52,6 @@
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/mapper/JobSeekerMapper.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/entities/Employer.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/mapper/CategoryMapper.java
-/Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/dto/NewClass.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/controller/NewClass.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/service/impl/VacancyServiceImpl.java
 /Users/bambook/Desktop/deploy/hr_system_back/src/main/java/com/example/hr_system/dto/contactInformation/ContactInformationRequest.java

@@ -10,5 +10,4 @@ public class HrSystemApplication {
 		SpringApplication.run(HrSystemApplication.class, args);
 		System.err.print("Welcome to HR System Application");
 	}
-
 }

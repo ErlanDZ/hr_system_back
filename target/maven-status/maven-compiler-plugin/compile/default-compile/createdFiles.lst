@@ -77,7 +77,6 @@ com/example/hr_system/auth/GoogleAccess.class
 com/example/hr_system/enums/TypeOfEmployment.class
 com/example/hr_system/dto/jobSeeker/JobSeekerResponse.class
 com/example/hr_system/auth/RegisterJobSeekerRequest.class
-com/example/hr_system/dto/NewClass.class
 com/example/hr_system/mapper/impl/JobSeekerVacanciesResponsesMapperImpl.class
 com/example/hr_system/HrSystemApplication.class
 com/example/hr_system/dto/employer/EmployerRequests.class
@@ -90,7 +89,6 @@ com/example/hr_system/dto/employer/EmployerResponses.class
 com/example/hr_system/entities/Experience.class
 com/example/hr_system/config/ApplicationConfig.class
 com/example/hr_system/mapper/JobSeekerVacanciesResponsesMapper.class
-com/example/hr_system/dto/responded/RespondedJobSeekersRequest.class
 com/example/hr_system/config/RestTemplateConfig.class
 com/example/hr_system/enums/SalaryType.class
 com/example/hr_system/mapper/JobSeekerMapper.class
