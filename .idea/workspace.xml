@@ -4,50 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/HrSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/HrSystemApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V0__create_token_seq.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V0__create_token_seq.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V10__create_table_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V10__create_table_position.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V11__create_table_salaries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V11__create_table_salaries.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V12__create_table_token.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V12__create_table_token.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V13__create_table_users_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V13__create_table_users_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V14__create_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V14__create_table_vacancies.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V15__create_table_vacancies_job_seekers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V15__create_table_vacancies_job_seekers.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V16__create_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V16__create_table_notification.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V17__alter_table_categories_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V17__alter_table_categories_vacancies.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V18__alter_table_employer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V18__alter_table_employer.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V19__alter_table_employer_favorites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V19__alter_table_employer_favorites.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V1__create_table_categories.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V1__create_table_categories.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V20__alter_table_job_seeker_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V20__alter_table_job_seeker_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V21__alter_table_job_seeker_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V21__alter_table_job_seeker_table_vacancies.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V22__alter_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V22__alter_table_notification.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V23__alter_table_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V23__alter_table_position.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V24__alter_table_token.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V24__alter_table_token.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V25__alter_table_users_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V25__alter_table_users_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V26__alter_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V26__alter_table_vacancies.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V27__alter_table_vacancies_job_seekers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V27__alter_table_vacancies_job_seekers.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V28__alter_table_job_seeker_and_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V28__alter_table_job_seeker_and_user.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V29__alter_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V29__alter_table_notification.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V2__create_table_categories_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V2__create_table_categories_vacancies.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V30__insert_into_categories.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V30__insert_into_categories.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V31__insert_into_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V31__insert_into_position.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V32__insert_into_experience.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V32__insert_into_experience.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V3__create_table_contact_information.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V3__create_table_contact_information.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V4__create_table_employer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V4__create_table_employer.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V5__create_table_employer_favorites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V5__create_table_employer_favorites.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V6__create_table_experience.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V6__create_table_experience.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V7__create_table_file_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V7__create_table_file_data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V8__create_table_job_seeker_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V8__create_table_job_seeker_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationad/V9__create_table_job_seeker_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V9__create_table_job_seeker_table_vacancies.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/EmployeeVacanciesResponses.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/hr_system/dto/EmployeeVacanciesResponses.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.hr_system.HrSystemApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.hr_system.HrSystemApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.hr_system.HrSystemApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.hr_system.HrSystemApplicationTests.txt" afterDir="false" />
-    </list>
+    <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +100,7 @@
       <workItem from="1691380986125" duration="7277000" />
       <workItem from="1691465489177" duration="689000" />
       <workItem from="1691577045326" duration="11217000" />
-      <workItem from="1691727003270" duration="7103000" />
+      <workItem from="1691727003270" duration="7704000" />
     </task>
     <servers />
   </component>
