@@ -54,6 +54,7 @@ public class JobSeekerMapperImpl implements JobSeekerMapper {
         response.setEmail(jobSeeker.getEmail());
         response.setPhoneNumber(jobSeeker.getPhoneNumber());
         response.setRole(jobSeeker.getRole());
+        response.setStatusOfJobSeeker(jobSeeker.getStatusOfJobSeeker());
         return response;
     }
 

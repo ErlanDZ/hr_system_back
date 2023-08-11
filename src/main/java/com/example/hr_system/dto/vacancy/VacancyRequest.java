@@ -9,9 +9,11 @@ import lombok.*;
 
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
+
 public class VacancyRequest {
     private String about_company;
     private String position;

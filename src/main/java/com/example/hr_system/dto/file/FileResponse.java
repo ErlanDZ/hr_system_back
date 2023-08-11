@@ -1,9 +1,12 @@
 package com.example.hr_system.dto.file;
 
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class FileResponse {
 
     Long id;

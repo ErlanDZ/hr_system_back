@@ -2,11 +2,10 @@ package com.example.hr_system.dto;
 
 
 import com.example.hr_system.enums.Role;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResponse {

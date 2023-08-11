@@ -3,6 +3,7 @@ package com.example.hr_system.dto.jobSeeker;
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.enums.Month;
 import com.example.hr_system.enums.Role;
+import com.example.hr_system.enums.StatusOfJobSeeker;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +38,7 @@ public class JobSeekerResponses {
     private String email;
     private String phoneNumber;
     private Role role;
-    private Integer responses;
+    private StatusOfJobSeeker statusOfJobSeeker;
 
 
 

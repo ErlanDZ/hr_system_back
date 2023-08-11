@@ -9,8 +9,10 @@ import lombok.*;
 import java.util.Date;
 import java.util.List;
 
-@Data
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeVacanciesResponses {
     private Long id;
     private PositionResponse positionResponse;

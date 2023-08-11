@@ -5,9 +5,10 @@ import com.example.hr_system.enums.TypeOfEmployment;
 import com.example.hr_system.enums.Valute;
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class SalaryRequest {
 
     private SalaryType salaryType;

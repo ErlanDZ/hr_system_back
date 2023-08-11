@@ -1,16 +1,14 @@
 package com.example.hr_system.dto.jobSeeker;
 
 import com.example.hr_system.enums.StatusOfJobSeeker;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class RespondedResponse {
 
     private Long id;

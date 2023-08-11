@@ -1,9 +1,12 @@
 package com.example.hr_system.dto.image;
 
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Response {
 
     Long id;

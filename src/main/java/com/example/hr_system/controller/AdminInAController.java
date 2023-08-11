@@ -15,7 +15,10 @@ import com.example.hr_system.service.JobSeekerService;
 import com.example.hr_system.service.VacancyService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -36,6 +39,7 @@ public class AdminInAController {
     private final VacancyService vacancyService;
     private final UserRepository userRepository;
     private final PasswordEncoder encoder;
+    private final AuthenticationManager authenticationManager;
 
 //    @PostMapping("employer")
 //    public EmployerResponse save(@RequestBody EmployerRequest employerRequest){
@@ -50,19 +54,21 @@ public class AdminInAController {
     }
 
     @PutMapping("/password/change")
-    public String changePassword(@RequestParam String email, @RequestParam String this_password,
-                                  @RequestParam String lastPassword){
-        System.out.println("jakhd");
-        User user = userRepository.findByEmail(email).orElseThrow(()->
-                new NotFoundException("The user not found! :"+email));
-        if (encoder.encode(this_password).equals(user.getPassword())) {
-            System.out.println();
-            user.setPassword(encoder.encode(lastPassword));
-            return "success changed!" + lastPassword;
-        }
-        else {
-            return "the password is wrong for email: "+email+" "+user.getPassword();
-        }
+    public String changePassword(@RequestParam String email,
+                                 @RequestParam String oldPassword,
+                                 @RequestParam(required = false) String newPassword) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new NotFoundException("The user not found! :" + email));
+
+       if (encoder.matches(oldPassword, user.getPassword())){
+           user.setPassword(encoder.encode(newPassword));
+           return "successfully changed!";
+       }
+       else{
+           return "password is wrong!";
+       }
+
+
 
     }
 

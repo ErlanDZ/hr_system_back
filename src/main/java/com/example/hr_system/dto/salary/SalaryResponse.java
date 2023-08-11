@@ -4,7 +4,10 @@ import com.example.hr_system.enums.SalaryType;
 import com.example.hr_system.enums.Valute;
 import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class SalaryResponse {
 
     private Long id;

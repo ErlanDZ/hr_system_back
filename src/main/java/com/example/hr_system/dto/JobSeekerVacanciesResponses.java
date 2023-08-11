@@ -6,7 +6,10 @@ import com.example.hr_system.dto.salary.SalaryResponse;
 import com.example.hr_system.dto.vacancy.VacancyResponse;
 import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class JobSeekerVacanciesResponses {
     private Long id;

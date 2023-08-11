@@ -1,9 +1,12 @@
 package com.example.hr_system.dto.jobSeeker;
 
-import lombok.Data;
+import lombok.*;
 
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CandidateResponses {
     Long candidateId;
     boolean red = false;

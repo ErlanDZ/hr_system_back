@@ -1,17 +1,20 @@
 package com.example.hr_system.service.emailSender;
 
 import com.example.hr_system.entities.FileData;
-import com.nimbusds.jose.util.Resource;
 import jakarta.activation.DataSource;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.InputStreamSource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.net.MalformedURLException;
 import java.util.Objects;
 
 @Service
@@ -48,9 +51,14 @@ public class EmailSenderService {
         helper.setFrom("devsfactoryback@gmail.com");
         helper.setTo(email);
         helper.setText(setFrom+" is sent you message: "+message);
-        FileDataInputStreamSourceAdapter inputStreamSource = new FileDataInputStreamSourceAdapter(fileData);
-        helper.addAttachment("file.txt", inputStreamSource);
 
+        Resource resource = null;
+        try {
+             resource = new UrlResource(fileData.getPath());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        helper.addAttachment(Objects.requireNonNull(fileData.getName()), resource, "application/pdf");
 //        for(Resource attachment: fileData)
 //            helper.addAttachment(Objects.requireNonNull(attachment.getFilename()), attachment, "application/pdf");
 

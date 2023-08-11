@@ -3,11 +3,14 @@ package com.example.hr_system.dto.jobSeeker;
 
 import com.example.hr_system.enums.Education;
 import com.example.hr_system.enums.Month;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobSeekerRequests {
 
     private Long imageId;

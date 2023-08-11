@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.49">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>25041</IntrospectionStateNumber>
+      <IntrospectionStateNumber>29196</IntrospectionStateNumber>
       <ServerVersion>15.3</ServerVersion>
-      <StartupTime>1690947997</StartupTime>
+      <StartupTime>1691552275</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -802,7 +802,7 @@ false Zulu
 13449||10|C|G
 13449||-9223372036854775808|U|G
 13449||10|U|G</Grants>
-      <IntrospectionStateNumber>25041</IntrospectionStateNumber>
+      <IntrospectionStateNumber>29196</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4249,107 +4249,12 @@ false Zulu
     <schema id="267" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>25041</IntrospectionStateNumber>
-      <IntrospectionTimestamp>2023-08-02.17:22:38.147</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-08-02.11:22:38</LocalIntrospectionTimestamp>
+      <IntrospectionStateNumber>29196</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2023-08-11.09:37:56.097</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-08-11.03:38:02</LocalIntrospectionTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>518</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
-    <table id="268" parent="267" name="flyway_schema_history">
-      <ObjectId>70805</ObjectId>
-      <StateNumber>25040</StateNumber>
-      <AccessMethodId>2</AccessMethodId>
-      <OwnerName>postgres</OwnerName>
-    </table>
-    <column id="269" parent="268" name="installed_rank">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="270" parent="268" name="version">
-      <DasType>varchar(50)|0s</DasType>
-      <Position>2</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="271" parent="268" name="description">
-      <DasType>varchar(200)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>3</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="272" parent="268" name="type">
-      <DasType>varchar(20)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>4</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="273" parent="268" name="script">
-      <DasType>varchar(1000)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>5</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="274" parent="268" name="checksum">
-      <DasType>integer|0s</DasType>
-      <Position>6</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="275" parent="268" name="installed_by">
-      <DasType>varchar(100)|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="276" parent="268" name="installed_on">
-      <DasType>timestamp|0s</DasType>
-      <DefaultExpression>now()</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>8</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>1114</TypeId>
-    </column>
-    <column id="277" parent="268" name="execution_time">
-      <DasType>integer|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>9</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>23</TypeId>
-    </column>
-    <column id="278" parent="268" name="success">
-      <DasType>boolean|0s</DasType>
-      <NotNull>1</NotNull>
-      <Position>10</Position>
-      <StateNumber>25040</StateNumber>
-      <TypeId>16</TypeId>
-    </column>
-    <index id="279" parent="268" name="flyway_schema_history_pk">
-      <ColNames>installed_rank</ColNames>
-      <ObjectId>70811</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>25040</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="280" parent="268" name="flyway_schema_history_s_idx">
-      <ColNames>success</ColNames>
-      <ObjectId>70813</ObjectId>
-      <StateNumber>25040</StateNumber>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <key id="281" parent="268" name="flyway_schema_history_pk">
-      <ObjectId>70812</ObjectId>
-      <Primary>1</Primary>
-      <StateNumber>25040</StateNumber>
-      <UnderlyingIndexId>70811</UnderlyingIndexId>
-    </key>
   </database-model>
 </dataSource>

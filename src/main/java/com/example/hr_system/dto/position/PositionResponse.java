@@ -4,7 +4,10 @@ import com.example.hr_system.dto.category.CategoryResponse;
 import com.example.hr_system.dto.experience.ExperienceResponse;
 import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PositionResponse {
 
     private Long id;

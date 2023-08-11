@@ -1,8 +1,11 @@
 package com.example.hr_system.dto.contactInformation;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ContactInformationRequest {
     private String country;
     private String city;
