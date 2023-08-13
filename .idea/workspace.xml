@@ -6,8 +6,83 @@
   <component name="ChangeListManager">
     <list default="true" id="a30b0eb1-5f81-43a7-9bd8-d5aa8ecc77d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/ContactInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/ContactInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Employer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Employer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Experience.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Experience.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/FileData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/FileData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/JobSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/JobSeeker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hr_system/entities/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V0__create_token_seq.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V0__create_token_seq.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V10__create_table_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V10__create_table_position.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V11__create_table_salaries.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V11__create_table_salaries.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V12__create_table_token.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V12__create_table_token.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V13__create_table_users_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V13__create_table_users_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V14__create_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V14__create_table_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V15__create_table_vacancies_job_seekers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V15__create_table_vacancies_job_seekers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V16__create_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V16__create_table_notification.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V17__alter_table_categories_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V17__alter_table_categories_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V18__alter_table_employer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V18__alter_table_employer.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V19__alter_table_employer_favorites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V19__alter_table_employer_favorites.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V1__create_table_categories.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V1__create_table_categories.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V20__alter_table_job_seeker_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V20__alter_table_job_seeker_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V21__alter_table_job_seeker_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V21__alter_table_job_seeker_table_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V22__alter_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V22__alter_table_notification.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V23__alter_table_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V23__alter_table_position.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V24__alter_table_token.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V24__alter_table_token.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V25__alter_table_users_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V25__alter_table_users_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V26__alter_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V26__alter_table_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V27__alter_table_vacancies_job_seekers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V27__alter_table_vacancies_job_seekers.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V28__alter_table_job_seeker_and_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V28__alter_table_job_seeker_and_user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V29__alter_table_notification.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V29__alter_table_notification.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V2__create_table_categories_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V2__create_table_categories_vacancies.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V30__insert_into_categories.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V30__insert_into_categories.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V31__insert_into_position.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V31__insert_into_position.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V32__insert_into_experience.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V32__insert_into_experience.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V3__create_table_contact_information.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V3__create_table_contact_information.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V4__create_table_employer.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V4__create_table_employer.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V5__create_table_employer_favorites.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V5__create_table_employer_favorites.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V6__create_table_experience.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V6__create_table_experience.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V7__create_table_file_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V7__create_table_file_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V8__create_table_job_seeker_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V8__create_table_job_seeker_table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.migrationlkj/V9__create_table_job_seeker_table_vacancies.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.migration/V9__create_table_job_seeker_table_vacancies.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V0__create_token_seq.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V10__create_table_position.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V11__create_table_salaries.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V12__create_table_token.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V13__create_table_users_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V14__create_table_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V15__create_table_vacancies_job_seekers.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V16__create_table_notification.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V17__alter_table_categories_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V18__alter_table_employer.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V19__alter_table_employer_favorites.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V1__create_table_categories.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V20__alter_table_job_seeker_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V21__alter_table_job_seeker_table_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V22__alter_table_notification.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V23__alter_table_position.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V24__alter_table_token.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V25__alter_table_users_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V26__alter_table_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V27__alter_table_vacancies_job_seekers.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V28__alter_table_job_seeker_and_user.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V29__alter_table_notification.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V2__create_table_categories_vacancies.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V30__insert_into_categories.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V31__insert_into_position.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V32__insert_into_experience.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V3__create_table_contact_information.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V4__create_table_employer.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V5__create_table_employer_favorites.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V6__create_table_experience.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V7__create_table_file_data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V8__create_table_job_seeker_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db.migrationlkj/V9__create_table_job_seeker_table_vacancies.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +180,7 @@
       <workItem from="1691465489177" duration="689000" />
       <workItem from="1691577045326" duration="11217000" />
       <workItem from="1691727003270" duration="8859000" />
+      <workItem from="1691847848979" duration="1705000" />
     </task>
     <servers />
   </component>
